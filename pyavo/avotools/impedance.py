@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-#Functions to calculate acoustic and elastic impedances
+# Functions to calculate acoustic and elastic impedances
 """
 Created on Thur 1 21:39:03 2021
 @author: Tola Abiodun
 """
 import numpy as np
+
 
 def ai(vp: float, rho: float):
     """
@@ -16,7 +17,7 @@ def ai(vp: float, rho: float):
     """
 
     z = vp * rho
-    return (z)
+    return z
 
 
 def ei(vp, vs, rho, ang):
@@ -39,7 +40,7 @@ def ei(vp, vs, rho, ang):
     z = 1 - 4 * k * np.sin(theta) ** 2
 
     ei = (vp ** x) * (vs ** y) * (rho ** z)
-    return (ei)
+    return ei
 
 
 def norm_ei(vp, vs, rho, vp_sh, vs_sh, rho_sh, ang):
@@ -67,7 +68,7 @@ def norm_ei(vp, vs, rho, vp_sh, vs_sh, rho_sh, ang):
     z = 1 - 4 * k * np.sin(theta) ** 2
 
     nei = vp_sh * rho_sh * ((vp / vp_sh) ** x) * ((vs / vs_sh) ** y) * ((rho / rho_sh) ** z)
-    return (nei)
+    return nei
 
 
 def lame(vp, vs, rho):
@@ -92,4 +93,4 @@ def lame(vp, vs, rho):
     lambda_rho = vp_imp ** 2 - 2 * vs_imp ** 2
     mu_rho = vs_imp ** 2
 
-    return (lambda_rho, mu_rho)
+    return lambda_rho, mu_rho
