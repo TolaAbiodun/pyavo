@@ -1,9 +1,9 @@
 """
 Initialize the library.
+:license: MIT
 """
 from . import avotools
 from . import seismodel
-from .pyavo import PyAvoError
 
 __version__ = "unknown"
 try:

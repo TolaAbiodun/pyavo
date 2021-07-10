@@ -1,9 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+Python installation file.
+"""
 import setuptools
 import re
 
 verstr = 'unknown'
 VERSIONFILE = "pyavo/_version.py"
-with open(VERSIONFILE, "r")as f:
+with open(VERSIONFILE, "r") as f:
     verstrline = f.read().strip()
     pattern = re.compile(r"__version__ = ['\"](.*)['\"]")
     mo = pattern.search(verstrline)
@@ -18,12 +22,12 @@ with open("README.rst", "r") as f:
 
 setuptools.setup(
     name="pyavo",
-    version="1.0.0",
+    version="verstr",
     author="Tola Abiodun",
     author_email="tola.abiodun@fluxgateng.com",
-    long_description=desc,
+    long_description=open('README.rst').read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/olawaleibrahim/petroeval",
+    url="https://github.com/TolaAbiodun/pyavo",
     packages=setuptools.find_packages(),
     description='AVO Analysis in Python',
     classifiers=[
