@@ -228,18 +228,3 @@ def avo_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArra
     plt.tight_layout()
     plt.show()
     return {'Intercept': c, 'Gradient': m}
-
-
-near_data_array = read_segy('3d_nearstack.sgy', byte_il=41, byte_xl=21)
-far_data_array = read_segy('3d_farstack.sgy', byte_il=41, byte_xl=21)
-
-nfstack(horizon_data='Top_Heimdal_subset.txt', near_stack=near_data_array, far_stack=far_data_array,
-        inline=1376, well_XL=1776)
-
-nf_attributes(horizon_data='Top_Heimdal_subset.txt', near_stack=near_data_array, far_stack=far_data_array,
-              TWT_slice=(1900, 2200), XL_slice=(1700, 1850), inline=1376)
-
-avo_dict = avo_attributes('Top_Heimdal_subset.txt', near_stack=near_data_array, far_stack=far_data_array,
-                          theta_near=5, theta_far=25, TWT_slice=(1900, 2200), XL_slice=(1700, 1850), inline=1376)
-
-print(avo_dict)
