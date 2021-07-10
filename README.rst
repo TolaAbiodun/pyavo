@@ -43,7 +43,7 @@ Install with
 
     pip install pyavo
 
-**pyavo** requires Pandas, NumPy, Matplotlib xarray, segyio.
+**pyavo** requires Pandas, NumPy, Matplotlib, xarray, segyio.
 
 Links
 +++++
