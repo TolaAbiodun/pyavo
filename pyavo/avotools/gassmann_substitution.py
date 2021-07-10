@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 
 
 class GassmannSub(object):
-    '''
+    """
     Class to model Gassmann fluid substitution for brine sands, oil sands, and gas sands. it generates the P and S wave
     velocities and density after fluid substitution according to input parameters.
 
@@ -39,7 +39,7 @@ class GassmannSub(object):
     init_fluid = Fluid type of initial hydrocarbon (gas or oil)
     final_fluid = Fluid type of desired output where (gas or oil)
     GOR = Gas-Oil ration
-    '''
+    """
 
     def __init__(self, vp: Union[int, float], vs: Union[int, float], rho: Union[int, float], rho_o: Union[int, float],
                  rho_g: Union[int, float], vsh: float, phi: float, swi: float, swt: float, S: float,
@@ -150,18 +150,17 @@ class GassmannSub(object):
             for j in range(1, 5):
                 constant_key = 'w' + str(i) + str(j)
                 constant = constants_dict[constant_key]
-                # print(constant)
-            vw += (constant) * (self.T ** (i - 1)) * (P ** (j - 1))
+            vw += constant * (self.T ** (i - 1)) * (P ** (j - 1))
 
         v1 = 1170 - 9.6 * self.T + 0.055 * self.T * self.T - 8.5 * 10 ** (
-            -5) * self.T * self.T * self.T + 2.6 * P - (0.0029 * self.T * P) - (0.0476 * P**2)
+            -5) * self.T * self.T * self.T + 2.6 * P - (0.0029 * self.T * P) - (0.0476 * P ** 2)
         v_brine = vw + S * v1 + S ** 1.5 * (780 - 10 * P + 0.16 * P * P) - 1820 * S * S
         r1 = 489 * P - 2 * self.T * P + 0.016 * self.T * self.T * P - 1.3 * 10 ** (
             -5) * self.T * self.T * self.T * P - 0.333 * P * P - 0.002 * self.T * P * P
         rho_water = 1 + 10 ** (-6) * (-80 * self.T - 3.3 * self.T * self.T + 0.00175 * self.T * self.T * self.T + r1)
         r2 = 300 * P - 2400 * P * S + self.T * (80 + 3 * self.T - 3300 * S - 13 * P + 47 * P * S)
         rho_brine = rho_water + 0.668 * S + 0.44 * S * S + 10 ** (-6) * S * r2
-        k_brine = rho_brine * v_brine**2 * 1e-6
+        k_brine = rho_brine * v_brine ** 2 * 1e-6
 
         return k_brine, rho_brine
 
@@ -185,7 +184,6 @@ class GassmannSub(object):
             rho_hyc += r / (0.972 + 3.81 * 0.0001 * (self.T + 17.78) ** 1.175)
             y = math.sqrt(18.33 / rho_p - 16.97)
             vel = 2096 * math.sqrt(rho_p / (2.6 - rho_p)) - 3.7 * self.T + 4.64 * P + 0.0115 * (y - 1) * self.T * P
-            # vel = 2096 * math.sqrt(rho_p / (2.6 - rho_p)) - 3.7 * self.T + 4.64 * self.P + 0.0115 * (math.sqrt(18.33 / rho_p - 16.97) - 1) * self.T * self.P
             k_hyc += rho_hyc * vel * vel * div_mill
             # print('Bulk modulus(Gpa) and Density(g/cc) of initial fluid (oil)')
         elif self.init_fluid == 'gas':
@@ -219,11 +217,11 @@ class GassmannSub(object):
         k_hyc, rho_hyc = self.init_hyc()
         k_br, rho_br = self.k_rho_brine()
         shi = 1 - self.swi
-        k_fl = (k_br/self.swi + k_hyc/shi)
+        k_fl = (k_br / self.swi + k_hyc / shi)
         rho_fl = self.swi * rho_br + shi * rho_hyc
         return k_fl, rho_fl
 
-    def insitu_moduli(self, rho_fluid: float, rho_matrix: float, d_phi:bool) -> tuple:
+    def insitu_moduli(self, rho_fluid: float, rho_matrix: float, d_phi: bool) -> tuple:
         """
         Estimate the initial original moduli for saturated insitu rock.
         Density of the insitu saturated rock is calculated from the porosity log using the mass balance equation.
@@ -235,14 +233,14 @@ class GassmannSub(object):
         """
         # Use porosity to estimate initial saturated rock density
         factor = 0.000305
-        vp = self.vp*factor
-        vs = self.vs*factor
+        vp = self.vp * factor
+        vs = self.vs * factor
 
         init_rho = self.phi * rho_fluid + (1 - self.phi) * rho_matrix
-        if d_phi: #Use density from log
+        if d_phi:  # Use density from log
             k_sat_init = self.rho * (vp ** 2 - (vs ** 2 * 4 / 3))
             mu_sat_init = self.rho * vs * vs
-        else: #use calculated density from porosity
+        else:  # use calculated density from porosity
             k_sat_init = init_rho * (vp ** 2 - (vs ** 2 * 4 / 3))
             mu_sat_init = init_rho * vs * vs
 
@@ -309,7 +307,7 @@ class GassmannSub(object):
             F = -1.2 * Ppr ** 0.2 / Tpr * (0.45 + 8 * (0.56 - 1 / Tpr)) * E1
             dz_dp = Z1 + 0.109 * (3.85 - Tpr) ** 2 * F
             yo = 0.85 + 5.6 / (Ppr + 2) + 27.1 / (Ppr + 3.5) ** 2 - (8.7 * math.exp(-0.65 * (Ppr + 1)))
-            k_hyc += P/(1-(Ppr/Z*dz_dp))*yo/1000
+            k_hyc += P / (1 - (Ppr / Z * dz_dp)) * yo / 1000
             # print('Bulk modulus(Gpa) and Density(g/cc) of desired fluid (gas)')
         return k_hyc, rho_hyc
 
@@ -333,8 +331,8 @@ class GassmannSub(object):
         # print('Saturated rock density(g/cc)')
 
         # Calculate Gassmann saturated bulk modulus
-        k1 = self.phi/k_fld+(1-self.phi)/k_mat-k_frame/(k_mat*k_mat)
-        k_sat_new = k_frame + ((1-k_frame/k_mat)**2)/k1
+        k1 = self.phi / k_fld + (1 - self.phi) / k_mat - k_frame / (k_mat * k_mat)
+        k_sat_new = k_frame + ((1 - k_frame / k_mat) ** 2) / k1
 
         return k_sat_new, rho_sat_new
 
@@ -351,35 +349,35 @@ class GassmannSub(object):
         return round(vp_new, 2), round(vs_new, 2)
 
 
-#Create Model object from the GassmannSub class
+# Create Model object from the GassmannSub class
 model = GassmannSub(vp=11000, vs=6500, rho=2.2, rho_g=0.9, rho_o=42, vsh=0.2, phi=0.2, swi=0.4, swt=1, S=3800, T=150,
                     P=3200, init_fluid='oil', final_fluid='brine', GOR=160.0)
 
-#Estimate the bulk modulus and density of matrix
+# Estimate the bulk modulus and density of matrix
 k_mat, rho_mat = model.k_rho_matrix(v_cly=0.14, k_cly=20.9, k_qtz=36.6, rho_cly=2.58, rho_qtz=2.65)
 
-#Estimate bulk modulus and density of brine
+# Estimate bulk modulus and density of brine
 k_brine, rho_brine = model.k_rho_brine()
 
-#Estimate the bulk modulus and density of initial hydrocarbon
+# Estimate the bulk modulus and density of initial hydrocarbon
 k_hyc_init, rho_hyc_init = model.init_hyc()
 
-#Estimate bulk modulus and density of initial fluid
+# Estimate bulk modulus and density of initial fluid
 k_fl, rho_fl = model.k_rho_fluid()
 
-#Estimate initial saturated bulk modulus and shear modulus
+# Estimate initial saturated bulk modulus and shear modulus
 k_sat_init, mu_sat_init = model.insitu_moduli(rho_fluid=rho_fl, rho_matrix=rho_mat, d_phi=True)
 
-#Estimate frame bulk modulus
+# Estimate frame bulk modulus
 k_frame = model.k_frame(k_mat=k_mat, k_fld=k_fl, k_sat=k_sat_init)
 
-#Estimate bulk modulus and density of the desired hydrocarbon
+# Estimate bulk modulus and density of the desired hydrocarbon
 k_hyc, rho_hyc = model.final_hc()
 
-#Estimate the bulk modulus and density of saturated rock after fluid sub
+# Estimate the bulk modulus and density of saturated rock after fluid sub
 k_sat_new, rho_sat_new = model.k_rho_sat(k_mat=k_mat, rho_mat=rho_mat, k_frame=k_frame)
 
-#Esimate the seismic velocities
+# Esimate the seismic velocities
 vp_new, vs_new = model.vel_sat(k_sat=k_sat_new, rho_sat=rho_sat_new, mu=mu_sat_init)
 print(f'Density of Saturated rock: {rho_sat_new}')
 print(f'P-wave velocity after fluid substitution {vp_new}')
@@ -388,4 +386,3 @@ print(f'S-wave velocity after fluid substitution {vs_new}')
 # print(k_sat_init, k_sat_new)
 # print(rho_hyc_init, rho_hyc)
 # print(k_hyc_init, k_hyc)
-
