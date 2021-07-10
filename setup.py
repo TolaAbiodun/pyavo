@@ -13,7 +13,7 @@ with open(VERSIONFILE, "r") as f:
     mo = pattern.search(verstrline)
 if mo:
     verstr = mo.group(1)
-    print("Version "+verstr)
+    print("Version " + verstr)
 else:
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 
@@ -27,8 +27,10 @@ setuptools.setup(
     author_email="tola.abiodun@fluxgateng.com",
     long_description=open('README.rst').read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/TolaAbiodun/pyavo",
-    packages=setuptools.find_packages(),
+    url="#",
+    packages=['pyavo',
+              'pyavo.avotools',
+              'pyavo.seismodel'],
     description='AVO Analysis in Python',
     classifiers=[
         "Programming Language :: Python :: 3.6",
