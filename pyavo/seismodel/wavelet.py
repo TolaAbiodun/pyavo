@@ -63,6 +63,3 @@ def ricker(sample_rate=0.001, length=0.512, c_freq=25):
     wv_amp = (1. - 2. * (np.pi ** 2) * (c_freq ** 2) * (wv_time ** 2)) * np.exp(-(np.pi ** 2) * (c_freq ** 2) * (wv_time ** 2))
 
     return wv_time, wv_amp
-
-print(ricker())
-plot_ricker()
