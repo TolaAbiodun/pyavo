@@ -104,7 +104,7 @@ def crossplot(vp, vs, vpvs, rho, phi, GR, AI, NEI, lambda_rho, mu_rho):
     cbar.set_label('GR', labelpad=-19, y=-0.04, rotation=0)
 
     ax = plt.subplot(2, 4, 4)
-    plt.scatter(w5vp, w5vs, 20, c=w5gr, cmap='Spectral')
+    plt.scatter(vp, vs, 20, c=GR, cmap='Spectral')
     ax.set_xlabel('Vp (m/s)')
     ax.set_ylabel('Vs (m/s)')
     plt.grid()
