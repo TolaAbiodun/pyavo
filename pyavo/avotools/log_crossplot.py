@@ -1,9 +1,5 @@
 import impedance as imp
-import numpy as np
 import matplotlib.pyplot as plt
-from typing import Union
-from pandas import Series
-from numpy import ndarray
 from approx import *
 import las
 
@@ -193,30 +189,3 @@ def avo_plot(angle: ndarray, shuey: float, intercept: float, gradient: float, li
 
     plt.tight_layout()
     plt.show()
-
-#Data
-well_5 = las.LASReader('well_5.las', null_subs=np.nan)
-w5z = well_5.data['DEPT']
-w5vp = well_5.data['Vp'] / 100
-w5vs = well_5.data['Vs'] / 100
-w5vpvs = well_5.data['Vp'] / well_5.data['Vs']
-w5rho = well_5.data['RHOB']
-w5gr = well_5.data['GR']
-
-rho_mineral = 2.65
-rho_fluid = 1.05
-w5phi = (rho_mineral - w5rho) / (rho_mineral - rho_fluid)
-#
-# im = plot_imp(vpvs=w5vpvs, vp=w5vp, vs=w5vs, rho=w5rho, angle=30, h_well=w5z, h_ref=2170)
-#
-# crossplot(vp=w5vp, vs=w5vs, vpvs=w5vpvs, rho=w5rho, phi=w5phi, GR=w5gr,
-#           AI=im['AI'], NEI=im['NEI'], lambda_rho=im['lambda_rho'], mu_rho=im['mu_rho'])
-
-angle = np.arange(0, 31, 1)
-#get the closest location of the top on the depth array as reference to NEI
-index = (np.abs(w5z - 2170)).argmin()
-intercept, gradient, shuey, _ = shuey(w5vp[index], w5vs[index], w5rho[index],
-                                       w5vp[index+1], w5vs[index+1],
-                                       w5rho[index+1], angle)
-
-avo_plot(angle, shuey, intercept, gradient)
