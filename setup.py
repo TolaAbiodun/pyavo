@@ -17,12 +17,9 @@ if mo:
 else:
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 
-with open("README.rst", "r") as f:
-    desc = f.read()
-
 setuptools.setup(
     name="pyavo",
-    version="verstr",
+    version=verstr,
     author="Tola Abiodun",
     author_email="tola.abiodun@fluxgateng.com",
     long_description=open('README.rst').read(),
