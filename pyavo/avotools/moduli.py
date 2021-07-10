@@ -369,6 +369,3 @@ def elastic_mod(vp, vs, rho):
     mod['Youngs Modulus (GPa)'] = round(youngs(vp=vp, vs=vs, rho=rho)/1e6, 2)
 
     return mod
-
-print(elastic_mod(2500,1800,2.2))
-print(youngs(2500,1800,2.2))
