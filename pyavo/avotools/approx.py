@@ -20,7 +20,7 @@ def ref_coeff(imp: Union[ndarray, Series]):
     rc = (imp[1:] - imp[:-1]) / (imp[1:] + imp[:-1])
     rc = np.append(rc, rc[-1])
 
-    return (rc)
+    return rc
 
 
 def snell(vp1: ndarray, vp2: ndarray, theta1: float):
@@ -40,7 +40,7 @@ def snell(vp1: ndarray, vp2: ndarray, theta1: float):
     p = np.sin(theta1) / vp1
     theta2 = np.arcsin(p * vp2)
 
-    return (theta2, p)
+    return theta2, p
 
 
 def shueyrc(vp0: Union[ndarray, Series, float], vs0: Union[ndarray, Series, float],
@@ -88,7 +88,7 @@ def shueyrc(vp0: Union[ndarray, Series, float], vs0: Union[ndarray, Series, floa
     t2 = np.outer(m, np.sin(theta1) ** 2)
 
     RC = t1 + t2
-    return (RC, c, m)
+    return RC, c, m
 
 
 def aki_richards(vp1: ndarray, vs1: ndarray, rho1: Union[ndarray, float], vp2: ndarray,
@@ -122,7 +122,7 @@ def aki_richards(vp1: ndarray, vs1: ndarray, rho1: Union[ndarray, float], vp2: n
 
     rc = r1 + r2 - r3
 
-    return (rc)
+    return rc
 
 
 def shuey(vp1: ndarray, vs1: ndarray, rho1: ndarray,
@@ -167,4 +167,4 @@ def shuey(vp1: ndarray, vs1: ndarray, rho1: ndarray,
     rc2 = c + m * np.sin(theta1) ** 2
     rc3 = c + m * np.sin(theta1) ** 2 + F * (np.tan(theta1) ** 2 - np.sin(theta1) ** 2)
 
-    return (c, m, rc2, rc3)
+    return c, m, rc2, rc3
