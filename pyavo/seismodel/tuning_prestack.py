@@ -335,9 +335,3 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
 
     #   Display the plot
     plt.show()
-
-
-syn_angle_gather(min_time=min_plot_time, max_time=max_plot_time, lyr_times=lyr_times, thickness=10,
-                 vp_dig=vp_dig, vs_dig=vs_dig,
-                 rho_dig=rho_dig, syn_zoep=syn_zoep_pp,
-                 rc_zoep=rc_zoep_pp, t=t, excursion=excursion )
