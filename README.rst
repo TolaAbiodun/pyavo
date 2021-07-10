@@ -1,5 +1,5 @@
 ===========
-PyAvo
+PyAVO
 ===========
 
 A python library for AVO analysis.
