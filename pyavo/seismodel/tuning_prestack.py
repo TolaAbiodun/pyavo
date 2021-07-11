@@ -95,7 +95,7 @@ def n_angles(theta1_min=float, theta1_max=float, theta1_step=1):
     return n_trace
 
 
-def calc_theta_rc(theta1_min: float, theta1_step: float, vp: list, vs: list, rho: list):
+def calc_theta_rc(angle, theta1_min: float, theta1_step: float, vp: list, vs: list, rho: list):
     theta1_samp = theta1_min + theta1_step * angle
     rc_1 = rc_zoep(vp[0], vs[0], vp[1], vs[1], rho[0], rho[1], theta1_samp)
     rc_2 = rc_zoep(vp[1], vs[1], vp[2], vs[2], rho[1], rho[2], theta1_samp)
@@ -214,14 +214,16 @@ def plot_vawig(axhdl, data, t, excursion):
 
 
 #   Create the plot figure
-def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: float, vp_dig, vs_dig, rho_dig, syn_zoep,
-                     rc_zoep, t, excursion: int):
+def syn_angle_gather(min_time: float, max_time: float, lyr_times, rc_top: list, rc_bottom: list,
+                     thickness: float, vp_dig, vs_dig, rho_dig, syn_zoep, rc_zoep, t, excursion: int):
     """
     Plot synthetic angle gather for three layer model displayed in normal polarity and amplitudes extracted along the upper and lower interfaces.
 
-    :param min_time: Minimum plot time (s)
-    :param max_time: Maximum plot time (s)
+    :param min_time: Minimum plot time
+    :param max_time: Maximum plot time
     :param lyr_times: interface times
+    :param rc_bottom: convolved top reflectivity values for traces
+    :param rc_top: convolved base reflectivity values for traces
     :param thickness: apparent thickness of second layer
     :param vp_dig: P-wave velocity in digital time domain
     :param vs_dig: S-wave velocity in digital time domain
@@ -252,7 +254,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
 
     ax0b = fig.add_subplot(262)
     l_vs_dig, = ax0b.plot(vs_dig / 1000, t, 'k', lw=2)
-    ax0b.set_ylim((min_plot_time, max_plot_time))
+    ax0b.set_ylim((min_time, max_time))
     ax0b.set_xlim((0.8, 2.0))
     ax0b.invert_yaxis()
     ax0b.xaxis.tick_top()
@@ -265,7 +267,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
 
     ax0c = fig.add_subplot(263)
     l_rho_dig, = ax0c.plot(rho_dig, t, 'k', lw=2)
-    ax0c.set_ylim((min_plot_time, max_plot_time))
+    ax0c.set_ylim((min_time, max_time))
     ax0c.set_xlim((1.6, 2.6))
     ax0c.invert_yaxis()
     ax0c.xaxis.tick_top()
@@ -277,7 +279,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
     ax0c.grid()
 
     plt.text(2.55,
-             min_plot_time + (lyr_times[0, 0] - min_plot_time) / 2.,
+             min_time + (lyr_times[0, 0] - min_time) / 2.,
              'Layer 1',
              fontsize=14,
              horizontalalignment='right')
@@ -287,7 +289,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
              fontsize=14,
              horizontalalignment='right')
     plt.text(2.55,
-             lyr_times[0, 0] + (max_plot_time - lyr_times[0, 0]) / 2.,
+             lyr_times[0, 0] + (max_time - lyr_times[0, 0]) / 2.,
              'Layer 3',
              fontsize=14,
              horizontalalignment='right')
@@ -295,7 +297,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
     #   Plot synthetic gather and model top & base interfaces in two-way time
     ax1 = fig.add_subplot(222)
     plot_vawig(ax1, syn_zoep, t, excursion)
-    ax1.set_ylim((min_plot_time, max_plot_time))
+    ax1.set_ylim((min_time, max_time))
     l_int1, = ax1.plot(lyr_times[:, 0], color='blue', lw=2)
     l_int2, = ax1.plot(lyr_times[:, 1], color='red', lw=2)
 
@@ -308,7 +310,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
     #   Plot Zoeppritz and convolved reflectivity curves
     ax2 = fig.add_subplot(2, 2, 3)
 
-    l_syn1, = ax2.plot(line1, color='blue', linewidth=2)
+    l_syn1, = ax2.plot(rc_top, color='blue', linewidth=2)
     l_rc1, = ax2.plot(rc_zoep[:, 0], '--', color='blue', lw=2)
 
     ax2.set_xlim((-excursion, ntrc + excursion))
@@ -319,7 +321,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
     plt.legend([l_syn1, l_rc1], ['Convolved', 'Zoepprtiz'], loc=0)
 
     ax3 = fig.add_subplot(2, 2, 4)
-    l_syn2, = ax3.plot(line2, color='red', linewidth=2)
+    l_syn2, = ax3.plot(rc_bottom, color='red', linewidth=2)
     l_rc2, = ax3.plot(rc_zoep[:, 1], '--', color='red', lw=2)
     ax3.set_xlim((-excursion, ntrc + excursion))
     ax3.grid()
@@ -328,8 +330,4 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, thickness: flo
     ax3.set_title('Lower interface reflectivity')
     plt.legend([l_syn2, l_rc2], ['Convolved', 'Zoepprtiz'], loc=0)
 
-    # #   Save the plot
-    # plt.savefig('figure_2.png')
-
-    #   Display the plot
     plt.show()
