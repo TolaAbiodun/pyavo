@@ -6,8 +6,6 @@ to examine pre-stack tuning effects.
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-from wavelet import ricker
-from tuning_wedge import time_samples
 
 
 def int_depth(h_int: list, thickness: float):
