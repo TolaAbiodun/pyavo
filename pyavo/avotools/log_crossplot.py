@@ -1,4 +1,4 @@
-import impedance as imp
+import pyavo.avotools.impedance as imp
 import matplotlib.pyplot as plt
 from approx import *
 import las
