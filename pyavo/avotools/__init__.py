@@ -4,7 +4,7 @@ from .approx import ref_coeff, snell
 
 from .approx import shuey, shueyrc, aki_richards
 
-from .gassmann_substitution import GassmannSub
+from .gassmann import GassmannSub
 
 from .impedance import ai, ei, norm_ei, lame
 
