@@ -1,6 +1,6 @@
 import pyavo.avotools.impedance as imp
 import matplotlib.pyplot as plt
-from approx import *
+from pyavo.avotools.approx import *
 import las
 
 
