@@ -74,7 +74,7 @@ def nfstack(horizon_data: str, near_stack: DataArray, far_stack: DataArray,
         aa.xaxis.tick_top()
         if well_XL is not None and well_display:
             aa.axvline(well_XL, color='k', ls='--', lw=1.5)
-            aa.text(well_XL, near_data_array['TWT'][-1], 'Well', fontsize=13, fontweight='bold', color='white',
+            aa.text(well_XL, near_stack['TWT'][-1], 'Well', fontsize=13, fontweight='bold', color='white',
                        bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 3})
     plt.tight_layout()
     plt.show()
