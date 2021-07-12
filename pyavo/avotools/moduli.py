@@ -16,9 +16,8 @@ import numpy as np
 def youngs(vp=None, vs=None, rho=None, mu=None, lam=None, bulk=None, pr=None,
            pmod=None):
     """
-      Computes Young's modulus given either P-wave Velocity, S-wave velocity, and Density, or
-    any two elastic moduli (e.g. lambda and mu, or bulk and P moduli).
-    SI units only.
+    Computes Young's modulus given either P-wave Velocity, S-wave velocity, and Density, or
+    any two elastic moduli (e.g. lambda and mu, or bulk and P moduli). SI units only.
 
     Args:
         vp, vs, and rho
@@ -64,7 +63,7 @@ def bulk(vp=None, vs=None, rho=None, mu=None, lam=None, youngs=None, pr=None,
         vp, vs, and rho
         or any 2 from lam, mu, youngs, pr, and pmod
 
-    Returns:
+    :returns:
         Bulk modulus in pascals, Pa
     """
     if (vp is not None) and (vs is not None) and (rho is not None):
@@ -111,7 +110,7 @@ def poisson(vp=None, vs=None, rho=None, mu=None, lam=None, youngs=None, bulk=Non
         vp, vs, and rho
         or any 2 from lam, mu, youngs, bulk, and pmod
 
-    Returns:
+    :returns:
         Poisson's ratio, dimensionless
     """
 
@@ -159,7 +158,7 @@ def mu(vp=None, vs=None, rho=None, pr=None, lam=None, youngs=None, bulk=None,
         vp, vs, and rho
         or any 2 from lam, bulk, youngs, pr, and pmod
 
-    Returns:
+    :returns:
         Shear modulus in pascals, Pa
     """
 
@@ -205,7 +204,7 @@ def lame_param(vp=None, vs=None, rho=None, pr=None,  mu=None, youngs=None, bulk=
         vp, vs, and rho
         or any 2 from bulk, mu, youngs, pr, and pmod
 
-    Returns:
+    :returns:
         Lambda in pascals, Pa
     """
     if (vp is not None) and (vs is not None) and (rho is not None):
@@ -243,7 +242,7 @@ def p_mod(vp=None, vs=None, rho=None, pr=None, mu=None, lam=None, youngs=None,
         vp, vs, and rho
         or any 2 from lam, mu, youngs, pr, and bulk
 
-    Returns:
+    :returns:
         P-wave modulus in pascals, Pa
     """
 
@@ -300,7 +299,7 @@ def comp_vel(youngs=None, vs=None, rho=None, mu=None, lam=None, bulk=None, pr=No
     Args:
         Any 2 from lam, mu, youngs, pr, pmod, bulk and Rho
 
-    Returns:
+    :returns:
         Vp in m/s
     """
 
@@ -335,7 +334,7 @@ def shear_vel(youngs=None, vp=None, rho=None, mu=None, lam=None, bulk=None, pr=N
         Mu
         Rho
 
-    Returns:
+    :returns:
         Vs in m/s
     """
 
@@ -353,19 +352,14 @@ def elastic_mod(vp, vs, rho):
     Args:
         Vp, Vs, and rho
 
-    Returns:
+    :returns:
         A dict of elastic moduli, plus P-wave impedance.
     """
 
-    mod = {}
-
-    mod['Impedance (rayl)'] = vp * rho
-
-    mod['Shear Modulus (Gpa)'] = round(mu(vs=vs, rho=rho)/1e6, 2)
-    mod['Poisson'] = round(poisson(vp=vp, vs=vs, rho=rho), 2)
-    mod['Lambda'] = round(lame_param(vp=vp, vs=vs, rho=rho), 2)
-    mod['Bulk Modulus (GPa)'] = round(bulk(vp=vp, vs=vs, rho=rho)/1e6, 2)
-    mod['P-wave Moduli (GPa)'] = round(p_mod(vp=vp, rho=rho)/1e6, 2)
-    mod['Youngs Modulus (GPa)'] = round(youngs(vp=vp, vs=vs, rho=rho)/1e6, 2)
+    mod = {'Impedance (rayl)': vp * rho, 'Shear Modulus (Gpa)': round(mu(vs=vs, rho=rho) / 1e6, 2),
+           'Poisson': round(poisson(vp=vp, vs=vs, rho=rho), 2), 'Lambda': round(lame_param(vp=vp, vs=vs, rho=rho), 2),
+           'Bulk Modulus (GPa)': round(bulk(vp=vp, vs=vs, rho=rho) / 1e6, 2),
+           'P-wave Moduli (GPa)': round(p_mod(vp=vp, rho=rho) / 1e6, 2),
+           'Youngs Modulus (GPa)': round(youngs(vp=vp, vs=vs, rho=rho) / 1e6, 2)}
 
     return mod
