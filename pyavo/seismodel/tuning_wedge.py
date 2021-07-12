@@ -279,14 +279,14 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     ax0.plot(layer_times[:, 1], color='red', lw=1.5)
     ax0.set_ylim((t_min, t_max))
     ax0.invert_yaxis()
-    ax0.set_title('Three-layer wedge model', pad=20, fontsize=15)
+    ax0.set_title('Three-layer wedge model', pad=20, fontsize=13)
     ax0.set_xlabel('Thickness (m)')
     ax0.set_ylabel('Time (s)')
-    plt.text(2, t_min + (layer_times[0, 0] - t_min) / 2., 'Layer A', fontsize=16)
+    plt.text(2, t_min + (layer_times[0, 0] - t_min) / 2., 'Layer A', fontsize=13)
     plt.text(h_max / h_step - 2, layer_times[-1, 0] + (layer_times[-1, 1] - layer_times[-1, 0]) / 2., 'Layer B',
-             fontsize=16,
+             fontsize=13,
              horizontalalignment='right')
-    plt.text(2, layer_times[0, 0] + (t_max - layer_times[0, 0]) / 2., 'Layer C', fontsize=16)
+    plt.text(2, layer_times[0, 0] + (t_max - layer_times[0, 0]) / 2., 'Layer C', fontsize=13)
     plt.gca().xaxis.tick_top()
     plt.gca().xaxis.set_label_position('top')
     ax0.set_xlim((-excursion, n_trace + excursion))
@@ -295,7 +295,7 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     _plot_misc(ax_line=ax1, data=syn_zo, t=t, excursion=excursion, highlight=t_trace)
     ax1.plot(layer_times[:, 0], color='blue', lw=1.5)
     ax1.plot(layer_times[:, 1], color='red', lw=1.5)
-    ax1.set_title('Normal polarity zero-offset synthetic seismogram', pad=20, fontsize=15)
+    ax1.set_title('Normal polarity zero-offset synthetic seismogram', pad=20, fontsize=13)
     ax1.set_ylim((t_min, t_max))
     ax1.invert_yaxis()
     ax1.set_xlabel('Thickness (m)')
@@ -306,11 +306,11 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     ax2.plot(syn_zo[:, layer_index[:, 0]], color='blue')
     ax2.set_xlim((-excursion, n_trace + excursion))
     ax2.axvline(t_trace, color='k', lw=2)
-    ax2.set_title('Amplitude of synthetic at upper interface', pad=20, fontsize=15)
+    ax2.set_title('Amplitude of synthetic at upper interface', pad=20, fontsize=13)
     ax2.set_xlabel('Thickness (m)')
     ax2.set_ylabel('Amplitude')
     plt.text(t_trace + 2, plt.ylim()[0] * 1.1,
              'tuning thickness = {0} m'.format(str(t_thick)),
-             fontsize=16)
+             fontsize=12)
     plt.tight_layout()
     plt.show()
