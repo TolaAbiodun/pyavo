@@ -6,32 +6,22 @@ Refactored by Tola Abiodun, 2021.
 """
 
 import numpy as np
+from numpy import ndarray
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
 
+
 def get_rc(Vp, rho):
     """
-    Calculates the Reflection Coefficient at the interface separating two layers.
-
-    The ratio of amplitude of the reflected wave to the incident wave, or how much energy is reflected.
-
-    If the wave has normal incidence, then its reflection coefficient can be expressed as:
-
-    R = (ρ2V2 − ρ1V1) / (ρ2V2 + ρ1V1), where:
-
-    R = reflection coefficient, whose values range from −1 to +1
-    ρ1 = density of medium 1
-    ρ2 = density of medium 2
-    V1 = velocity of medium 1
-    V2 = velocity of medium 2.
-
-    Typical values of R are approximately −1 from water to air, meaning that nearly 100% of the energy is reflected and none is transmitted; ~0.5 from water to rock; and ~0.2 for shale to sand.
-
-    At non-normal incidence, the reflection coefficient defined as a ratio of amplitudes depends on other parameters, such as the shear velocities, and is described as a function of incident angle by the Zoeppritz equations.
+    Calculates the Reflection Coefficient at the interface separating two layers. The ratio of amplitude
+    of the reflected wave to the incident wave, or how much energy is reflected. Typical values of R
+    are approximately −1 from water to air, meaning that nearly 100% of the energy is reflected and
+    none is transmitted; ~0.5 from water to rock; and ~0.2 for shale to sand.
 
     :param Vp: P-wave velocity (m/s)
-    :param rho: layer density(g/cc)
-    :return: List
+    :param rho: Layer density (g/cc)
+    :return:
+        rc_int: Reflection Coefficient
     """
     rc_int = []
     n_int = len(Vp) - 1
@@ -51,11 +41,11 @@ def calc_times(z_int: list, vp: list) -> list:
 
     :param z_int: Depth to a reflector
     :param vp: P-Wave Velocity
-    :return: List
+    :return:
+        t_int: Interface times
 
     Usage
-    ---------------
-    t_int = calc_times(z_int, vp)
+        t_int = calc_times(z_int, vp)
     """
     nlayers = len(vp)
     nint = nlayers - 1
@@ -75,11 +65,12 @@ def calc_times(z_int: list, vp: list) -> list:
 
 def time_samples(t_min: float, t_max: float, dt=0.0001) -> list:
     """
-    Create regularly sampled time series defining model sampling
+    Create regularly sampled time series defining model sampling.
+
     :param t_min: Minimum time duration
     :param t_max: Maximum time duration
     :param dt: Change in time, default = 0.0001
-    :return: List
+    :return: time
     """
     n_samp = int((t_max - t_min) / dt) + 1
     time = []
@@ -90,16 +81,16 @@ def time_samples(t_min: float, t_max: float, dt=0.0001) -> list:
 
 def mod_digitize(rc_int: list, t_int: list, t: list) -> list:
     """
-    Digitize a 3 layer model using reflection coefficients and interface times
-
-    Usage
-    ----------------------
-    rc = digitize_model(rc_int, t_int, t)
+    Digitize a 3 layer model using reflection coefficients and interface times.
 
     :param rc_int: reflection coefficients corresponding to interface times
     :param t_int: interface times
     :param t: regularly sampled time series defining model sampling
-    :return: list
+    :return:
+        rc: Reflection Coefficient
+
+    Usage
+        rc = digitize_model(rc_int, t_int, t)
     """
 
     import numpy as np
@@ -118,36 +109,69 @@ def mod_digitize(rc_int: list, t_int: list, t: list) -> list:
             break
     return rc
 
-def syn_seis(ref_coef:list, wav_amp):
+
+def syn_seis(ref_coef: list, wav_amp):
+    """
+    Generate synthetic seismogram from convolved reflectivities and wavelet.
+
+    :param ref_coef: Reflection coefficient
+    :param wav_amp: wavelet amplitude
+    :return:
+        smg: array
+            Synthetic seismogram
+    """
     smg = np.convolve(ref_coef, wav_amp, mode='same')
     smg = list(smg)
     return smg
 
-def int_depth(h_int:list, dh_min:float, dh_step:float):
+
+def int_depth(h_int: list, dh_min: float, dh_step: float):
+    """
+    Computes the depth to an interface.
+
+    :param h_int: depth to first interface
+    :param dh_min: minimum thickness of layer 2
+    :param dh_step: Thickness step from trace-to-trace (usually 1.0m)
+    :return:
+        d_inteface: depth to interface
+    """
     d_interface = h_int
-    d_interface.append(d_interface[0]+dh_min+dh_step*model)
+    d_interface.append(d_interface[0] + dh_min + dh_step * model)
     return d_interface
 
+
 def n_model(h_min=float, h_max=float, h_step=1):
+    """
+    Computes number of traces for given angles on incidence.
+
+    :param h_min: minimum thickness
+    :param h_max: maximum thickness
+    :param h_step: thickness steps, default is 1
+    :return:
+        n_trace: number of traces
+    """
     n_trace = int((h_max - h_min) / h_step + 1)
     return n_trace
 
-def ricker(sample_rate, length, c_freq):
+
+def ricker(sample_rate: float, length: float, c_freq: float):
     """
-    Generate time and amplitude values for a zero-phase wavelet.
-
-    The second derivative of the Gaussian function or the third derivative of the normal-probability density function.
-
-    A Ricker wavelet is often used as a zero-phase embedded wavelet in modeling and synthetic seismogram manufacture. Norman H. Ricker (1896–1980), American geophysicist.
+    Generate time and amplitude values for a zero-phase wavelet. The second derivative of the Gaussian
+    function or the third derivative of the normal-probability density function.
 
     :param sample_rate: sample rate in seconds
     :param length: length of time (dt) in seconds
     :param c_freq: central frequency of wavelet (cycles/seconds or Hz).
-    :return: ndarray
+    :return:
+        wv_time: zero-phase wavelet time
+        wv_amp: zero-phase wavelet amplitude
 
-    Example:
-    -------
-    time, wavelet = (sample_rate,duration,c_freq)
+    Usage:
+        time, wavelet = (sample_rate,duration,c_freq)
+
+    Reference:
+        A Ricker wavelet is often used as a zero-phase embedded wavelet in modeling and synthetic
+        seismogram manufacture. Norman H. Ricker (1896–1980), American geophysicist.
     """
 
     t_min = -length / 2
@@ -160,16 +184,31 @@ def ricker(sample_rate, length, c_freq):
 
 
 # Calculate the tuning trace and tuning thickness
-def tuning_trace(syn_zo):
+def tuning_trace(syn_zo, step):
+    """
+    Computes the tuning trace and thickness in a synthetic trace gather.
+
+    :param syn_zo: Synthetic seismogram
+    :param step: Trace steps
+    :return:
+        t_trace: tuning trace
+        t_thick: tuning thickness
+    """
     t_trace = np.argmax(np.abs(syn_zo.T)) % syn_zo.T.shape[1]
-    return t_trace
-
-
-def tuning_thickness(syn_zo, step):
     t_thick = tuning_trace(syn_zo) * step
-    return t_thick
+    return t_trace, t_thick
 
-def plot_misc(ax_line, data, t, excursion, highlight):
+
+def plot_misc(ax_line, data: ndarray, t: ndarray, excursion: int, highlight: int):
+    """
+    Format the display of synthetic angle gather.
+
+    :param ax_line: Plot axes
+    :param data: Synthetic traces generated from convolved zoeppritz.
+    :param t: Regularly spaced ime samples
+    :param excursion: Adjust plot width
+    :param highlight:
+    """
     import numpy as np
     import matplotlib.pyplot as plt
 
@@ -191,32 +230,30 @@ def plot_misc(ax_line, data, t, excursion, highlight):
         plt.fill_betweenx(t, _t, i, where=_t > i, facecolor=[0.6, 0.6, 1.0], linewidth=0)
         plt.fill_betweenx(t, _t, i, where=_t < i, facecolor=[1.0, 0.6, 0.6], linewidth=0)
 
-    ax_line.set_xlim((-excursion, n_trace+excursion))
+    ax_line.set_xlim((-excursion, n_trace + excursion))
     ax_line.xaxis.tick_top()
     ax_line.xaxis.set_label_position('top')
     ax_line.invert_yaxis()
 
 
-def wedge_model(syn_zo, layer_times, t, t_min, t_max, h_min, h_max, h_step, excursion, dt=0.0001):
+def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
+                t_max: float, h_min: float, h_max: float, h_step: float, excursion: int, dt=0.0001):
     """
     Plot a three layer wedge model amplitudes and zero offset seismogram.
 
     :param syn_zo: Synthetic Seismogram
     :param layer_times: travel time to reflectors
     :param t: regularly sampled time series defining model sampling
-    :param t_min:minimum time duration
+    :param t_min: minimum time duration
     :param t_max: maximum time duration
-    :param h_min:
-    :param h_max:
-    :param h_step:
-    :param excursion:
-    :param dt:
-    :return:
-
+    :param h_min: minumum depth
+    :param h_max: maximum depth
+    :param h_step: depth steps, default is 1
+    :param excursion: adjust plot width
+    :param dt: trace parameter, changing this from 0.0001 can affect the display quality.
     """
     [n_trace, n_sample] = syn_zo.shape
-    t_trace = tuning_trace(syn_zo=syn_zo)
-    t_thick = tuning_thickness(syn_zo=syn_zo, step=1)
+    t_trace, t_thick = tuning_trace(syn_zo=syn_zo, step=1)
     layer_index = np.array(np.round(layer_times / dt), dtype='int16')
 
     fig = plt.figure(figsize=(10, 12))
@@ -229,7 +266,7 @@ def wedge_model(syn_zo, layer_times, t, t_min, t_max, h_min, h_max, h_step, excu
     ax0.plot(layer_times[:, 1], color='red', lw=1.5)
     ax0.set_ylim((t_min, t_max))
     ax0.invert_yaxis()
-    ax0.set_title('Three-layer wedgde model', pad=20, fontsize=15)
+    ax0.set_title('Three-layer wedge model', pad=20, fontsize=15)
     ax0.set_xlabel('Thickness (m)')
     ax0.set_ylabel('Time (s)')
     plt.text(2, t_min + (layer_times[0, 0] - t_min) / 2., 'Layer A', fontsize=16)
