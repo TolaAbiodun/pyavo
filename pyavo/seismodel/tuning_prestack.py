@@ -1,22 +1,20 @@
 """
 Functions to generate a synthetic angle gather from a 3-layer property model
 to examine pre-stack tuning effects.
-
-Reference: Wes Hamlyn 2014
 """
 
 import math
-import numpy as np
-import matplotlib.pyplot as plt
+from numpy import ndarray
+from tuning_wedge import *
 
 
 def int_depth(h_int: list, thickness: float):
     """
-    Compute interface depths
-    :param h_int: initial depth
+    Computes depth to the interface for a three layer model.
+    :param h_int: depth to to first interface
     :param thickness: thickness
     :return:
-        d_interface: depth to interface
+        d_interface: interface depths
     """
     d_interface = h_int
     d_interface.append(d_interface[0] + thickness)
@@ -28,9 +26,9 @@ def ray_param(v_int: float, theta: float) -> float:
     Calculates the ray parameter P.
 
     :param v_int: Interval velocity
-    :param theta: Angle of incidence
+    :param theta: Angle of incidence (deg)
     :return:
-        P: ray parameter
+        p: Ray parameter
     """
 
     # Cast inputs to floats
@@ -46,18 +44,18 @@ def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: f
     """
     Calculate the Reflection & Transmission coefficients using Zoeppritz equations.
 
-    :param vp1: P-wave velocity in Layer 1
-    :param vs1: S-wave velocity in Layer 1
-    :param vp2: P-wave velocity in Layer 2
-    :param vs2: S-wave velocity in Layer 2
-    :param rho1: Density of layer 1
-    :param rho2: Density of layer 2
-    :param theta1: Angle of incidence of ray (deg)
+    :param vp1: P-wave velocity in upper layer
+    :param vs1: S-wave velocity in upper layer
+    :param vp2: P-wave velocity in lower layer
+    :param vs2: S-wave velocity in lower layer
+    :param rho1: Density of upper layer
+    :param rho2: Density of lower layer
+    :param theta1: Angle of incidence of ray
     :return:
-        R: Refelection coefficients
+        R: Reflection coefficients
 
     Reference:
-        The Rock Physics Handbook, Dvorkin et al.
+    The Rock Physics Handbook, Dvorkin et al.
     """
     # Cast inputs to floats
     vp1 = float(vp1)
@@ -102,32 +100,32 @@ def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: f
 
 def n_angles(theta1_min=float, theta1_max=float, theta1_step=1):
     """
-    Compute angles of incidence for a given number of traces.
+    Computes number of traces for given angles on incidence.
 
     :param theta1_min: minimum incidence angle
     :param theta1_max: maximum incidence angle
-    :param theta1_step: angle of incidence
+    :param theta1_step: angle of incidence steps, default is 1
     :return:
-        n_trace: incidence angles for n-trace
+        n_trace: number of traces
     """
     n_trace = int((theta1_max - theta1_min) / theta1_step + 1)
     return n_trace
 
 
-def calc_theta_rc(angle, theta1_min: float, theta1_step: float, vp: list, vs: list, rho: list):
+def calc_theta_rc(theta1_min: float, theta1_step: float, vp: list, vs: list, rho: list):
     """
-    Computes incidence angles of plane wave and reflection coefficients for a three-layer model.
+    Computes the reflection coefficients for given incidence angles in a three layer model.
 
-    :param angle:
     :param theta1_min: minimum incidence angle
-    :param theta1_step:
-    :param vp: P-wave velocity
-    :param vs: S-wave velocity
-    :param rho: Density
+    :param theta1_step: maximum incidence angle
+    :param vp: Layer P-wave velocities
+    :param vs: Layer S-wave velocities
+    :param rho: Density of layers
     :return:
-        theta1_samp: n-samples of incidence angle
-        rc_1: Reflection coefficient at bottom of upper layer
-        rc_2: Reflection coefficient at top of bottom layer
+        theta1_samp : n-samples of incidence angles
+        rc_1: Reflection coefficient at layer1 / layer2
+        rc_2: Reflection coefficient at layer2 / layer3
+
     """
     theta1_samp = theta1_min + theta1_step * angle
     rc_1 = rc_zoep(vp[0], vs[0], vp[1], vs[1], rho[0], rho[1], theta1_samp)
@@ -137,9 +135,14 @@ def calc_theta_rc(angle, theta1_min: float, theta1_step: float, vp: list, vs: li
 
 def layer_index(lyr_times: list, dt=0.0001) -> tuple:
     """
-    Calculate array indices corresponding to top/base interfaces
+    Calculate array indices corresponding to top/base interfaces.
+
     :param lyr_times: Interface times
-    :return: tuple
+    :return:
+        lyr1_indx: array
+            Layer 1
+        lyr2_indx: array
+            Layer 2
     """
     lyr_t = np.array(lyr_times)
     lyr_indx = np.array(np.round(lyr_t / dt), dtype='int16')
@@ -148,15 +151,15 @@ def layer_index(lyr_times: list, dt=0.0001) -> tuple:
     return lyr1_indx, lyr2_indx
 
 
-def avo_inv(rc_zoep, ntrc: int, top: list) -> tuple:
+def avo_inv(rc_zoep, ntrc: int, top: list):
     """
-    AVO inversion for NI and GRAD from analytic and convolved reflectivity
-    values. Linear least squares method is used for estimating NI and GRAD coefficients.
+    AVO inversion for INTERCEPT and GRADIENT from analytic and convolved reflectivity
+    values. Linear least squares method is used for estimating INTERCEPT and GRADIENT coefficients.
 
-    :param rc_zoep: zoeppritz reflection coefficient values
-    :param ntrc: no of traces
-    :param top: convolved top reflectivity values
-    :return: tuple
+    :param rc_zoep: Zoeppritz reflection coefficient values
+    :param ntrc: Number of traces
+    :param top: Convolved top reflectivity values
+    :return: Zoeppritz and Convolved reflectivities
     """
     Yzoep = np.array(rc_zoep[:, 0])
     Yzoep = Yzoep.reshape((ntrc, 1))
@@ -176,33 +179,25 @@ def avo_inv(rc_zoep, ntrc: int, top: list) -> tuple:
     Azoep = np.dot(np.dot(np.linalg.inv(np.dot(X.T, X)), X.T), Yzoep)
     Aconv = np.dot(np.dot(np.linalg.inv(np.dot(X.T, X)), X.T), Yconv)
 
-    print('\n\n')
-    print(
-        '  Method       NI         GRAD'
-    )
-    print(
-        '---------------------------------'
-    )
-    print(
-        ' Zoeppritz%11.5f%12.5f' % (Azoep[0], Azoep[1])
-    )
-    print(
-        ' Convolved%10.5f%12.5f' % (Aconv[0], Aconv[1])
-    )
+    return {'Zoeppritz': (Azoep[0], Azoep[1]),
+            'Convolved': (Aconv[0], Aconv[1])
+            }
 
 
 def t_domain(t, vp: list, vs: list, rho: list, lyr1_index: list, lyr2_index: list):
     """
-    Create a "digital" time domain version of the input property model for
-    easy plotting and comparison with the time synthetic traces
+    Create a "digital" time domain version of an input property model.
 
     :param t: array of regularly spaced time samples
     :param vp: P-wave velocity
     :param vs: S-wave velocity
     :param rho: Density of layers
-    :param lyr1_index: array indices of top interface
-    :param lyr2_index: array indices of base interface
-    :return: list
+    :param lyr1_index: Array indices of top interface
+    :param lyr2_index: Array indices of base interface
+    :return:
+        vp_dig: P-wave velocity in digital t-domain
+        vs_dig: S-wave velocity in digital t-domain
+        rho_dig: Density in digital t-domain
     """
     vp_dig = np.zeros(t.shape)
     vs_dig = np.zeros(t.shape)
@@ -226,6 +221,13 @@ def t_domain(t, vp: list, vs: list, rho: list, lyr1_index: list, lyr2_index: lis
 
 
 def plot_vawig(axhdl, data, t, excursion):
+    """
+    Format the display of synthetic angle gather.
+    :param axhdl: Plot axes
+    :param data: Synthetic traces generated from convolved zoeppritz.
+    :param t: Regularly spaced ime samples
+    :param excursion: Adjust plot width
+    """
 
     [ntrc, nsamp] = data.shape
 
@@ -247,16 +249,18 @@ def plot_vawig(axhdl, data, t, excursion):
 
 
 #   Create the plot figure
-def syn_angle_gather(min_time: float, max_time: float, lyr_times, rc_top: list, rc_bottom: list,
-                     thickness: float, vp_dig, vs_dig, rho_dig, syn_zoep, rc_zoep, t, excursion: int):
+def syn_angle_gather(min_time: float, max_time: float, lyr_times: ndarray, thickness: float,
+                     top_ref: list, base_ref: list, vp_dig: ndarray, vs_dig: ndarray, rho_dig: ndarray,
+                     syn_zoep: ndarray, rc_zoep: ndarray, t: ndarray, excursion: int):
     """
-    Plot synthetic angle gather for three layer model displayed in normal polarity and amplitudes extracted along the upper and lower interfaces.
+    Plot synthetic angle gather for three layer model displayed in normal polarity and amplitudes extracted
+    along the upper and lower interfaces.
 
-    :param min_time: Minimum plot time
-    :param max_time: Maximum plot time
+    :param top_ref: convolved top reflectivity values
+    :param base_ref: convolved base reflectivity values
+    :param min_time: Minimum plot time (s)
+    :param max_time: Maximum plot time (s)
     :param lyr_times: interface times
-    :param rc_bottom: convolved top reflectivity values for traces
-    :param rc_top: convolved base reflectivity values for traces
     :param thickness: apparent thickness of second layer
     :param vp_dig: P-wave velocity in digital time domain
     :param vs_dig: S-wave velocity in digital time domain
@@ -264,7 +268,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, rc_top: list, 
     :param syn_zoep: Synthetic seismogram
     :param rc_zoep: Zoeppritz reflectivies
     :param t: regularly spaced time samples
-    :param excursion:
+    :param excursion: Adjust plot width
     :return:
     """
     fig = plt.figure(figsize=(16, 12))
@@ -343,7 +347,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, rc_top: list, 
     #   Plot Zoeppritz and convolved reflectivity curves
     ax2 = fig.add_subplot(2, 2, 3)
 
-    l_syn1, = ax2.plot(rc_top, color='blue', linewidth=2)
+    l_syn1, = ax2.plot(top_ref, color='blue', linewidth=2)
     l_rc1, = ax2.plot(rc_zoep[:, 0], '--', color='blue', lw=2)
 
     ax2.set_xlim((-excursion, ntrc + excursion))
@@ -354,7 +358,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, rc_top: list, 
     plt.legend([l_syn1, l_rc1], ['Convolved', 'Zoepprtiz'], loc=0)
 
     ax3 = fig.add_subplot(2, 2, 4)
-    l_syn2, = ax3.plot(rc_bottom, color='red', linewidth=2)
+    l_syn2, = ax3.plot(base_ref, color='red', linewidth=2)
     l_rc2, = ax3.plot(rc_zoep[:, 1], '--', color='red', lw=2)
     ax3.set_xlim((-excursion, ntrc + excursion))
     ax3.grid()
@@ -362,5 +366,5 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times, rc_top: list, 
     ax3.set_ylabel('Reflection coefficient')
     ax3.set_title('Lower interface reflectivity')
     plt.legend([l_syn2, l_rc2], ['Convolved', 'Zoepprtiz'], loc=0)
-
+    #   Display the plot
     plt.show()
