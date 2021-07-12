@@ -9,7 +9,7 @@ import numpy as np
 import scipy.signal as signal
 
 
-def plot_ricker(sample_rate=0.001, length=0.512, c_freq=25):
+def plot_ricker(sample_rate=0.001, length=0.128, c_freq=25):
     """
     Generate a zero-phase wavelet plot.
 
@@ -43,7 +43,7 @@ def plot_ricker(sample_rate=0.001, length=0.512, c_freq=25):
     plt.show()
 
 
-def ricker(sample_rate=0.001, length=0.512, c_freq=25):
+def ricker(sample_rate=0.001, length=0.128, c_freq=25):
     """
     Generate time and amplitude values for a zero-phase wavelet.
 
