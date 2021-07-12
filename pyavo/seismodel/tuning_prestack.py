@@ -308,7 +308,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times: ndarray, thick
     ax0c.invert_yaxis()
     ax0c.xaxis.tick_top()
     ax0c.xaxis.set_label_position('top')
-    ax0c.set_xlabel('Den')
+    ax0c.set_xlabel('Density')
     ax0c.set_yticklabels('')
     ax0c.axhline(lyr_times[0, 0], color='blue', lw=2, alpha=0.5)
     ax0c.axhline(lyr_times[0, 1], color='red', lw=2, alpha=0.5)
@@ -317,17 +317,17 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times: ndarray, thick
     plt.text(2.55,
              min_time + (lyr_times[0, 0] - min_time) / 2.,
              'Layer 1',
-             fontsize=14,
+             fontsize=13,
              horizontalalignment='right')
     plt.text(2.55,
              lyr_times[0, 1] + (lyr_times[0, 0] - lyr_times[0, 1]) / 2. + 0.002,
              'Layer 2',
-             fontsize=14,
+             fontsize=13,
              horizontalalignment='right')
     plt.text(2.55,
              lyr_times[0, 0] + (max_time - lyr_times[0, 0]) / 2.,
              'Layer 3',
-             fontsize=14,
+             fontsize=13,
              horizontalalignment='right')
 
     #   Plot synthetic gather and model top & base interfaces in two-way time
@@ -340,7 +340,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times: ndarray, thick
     plt.legend([l_int1, l_int2], ['Interface 1', 'Interface 2'], loc=4)
     ax1.invert_yaxis()
     label_str = 'Synthetic angle gather\nLayer 2 thickness = %4.1fm' % thickness
-    ax1.set_xlabel(label_str, fontsize=14)
+    ax1.set_xlabel(label_str, fontsize=13)
     ax1.set_ylabel('TWT (sec)')
 
     #   Plot Zoeppritz and convolved reflectivity curves
