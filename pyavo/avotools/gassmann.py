@@ -328,7 +328,7 @@ class GassmannSub(object):
             yo = 0.85 + 5.6 / (Ppr + 2) + 27.1 / (Ppr + 3.5) ** 2 - (8.7 * math.exp(-0.65 * (Ppr + 1)))
             k_hyc += P / (1 - (Ppr / Z * dz_dp)) * yo / 1000
             # print('Bulk modulus(Gpa) and Density(g/cc) of desired fluid (gas)')
-        return k_hyc, rho_hyc, 3
+        return k_hyc, rho_hyc
 
     def k_rho_sat(self, k_mat: float, rho_mat: float, k_frame: float) -> tuple:
         """
