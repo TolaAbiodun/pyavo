@@ -249,12 +249,10 @@ def vel_sat(k_min: float, rho_min: float, k_fl: float, rho_fl: float,
     return k_sat, rho_sat, vp_sat, vs_sat
 
 
-def plot_RPM(df: DataFrame, k_qtz: float, mu_qtz: float, k_sh: float, mu_sh: float, rho_sh: float, rho_qtz: float,
-             k_br: float,
-             rho_br: float, phi: ndarray, NG: ndarray, vsh: Series, z_init: float, z_final: float, sand_cut: float,
-             shale_cut: float,
-             P: Union[int, float], cp_ssm: float, cn_ssm: float, cp_stm: float, cn_stm: float, eff_phi: Series,
-             vp: Series):
+def plot_rpm(df: DataFrame, k_qtz: float, mu_qtz: float, k_sh: float, mu_sh: float, rho_sh: float, rho_qtz: float,
+             k_br: float, rho_br: float, phi: ndarray, NG: ndarray, vsh: Series, z_init: float, z_final: float,
+             sand_cut: float, shale_cut: float, P: Union[int, float], cp_ssm: float, cn_ssm: float, cp_stm: float,
+             cn_stm: float, eff_phi: Series, vp: Series):
     """
     Plot soft sand and stiff sand rock physics models for different mineralogies.
 
