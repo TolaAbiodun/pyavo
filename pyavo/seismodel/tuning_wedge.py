@@ -199,7 +199,7 @@ def _tuning_trace(syn_zo):
     return t_trace
 
 
-def _tuning_thickness(syn_zo, step=1):
+def _tuning_thickness(syn_zo, step):
     """
     Computes the tuning thickness in a synthetic trace gather
 
@@ -266,7 +266,7 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     """
     [n_trace, _] = syn_zo.shape
     t_trace = _tuning_trace(syn_zo=syn_zo)
-    t_thick = _tuning_thickness(syn_zo=syn_zo)
+    t_thick = _tuning_thickness(syn_zo=syn_zo, step=1)
     layer_index = np.array(np.round(layer_times / dt), dtype='int16')
 
     fig = plt.figure(figsize=(10, 12))
