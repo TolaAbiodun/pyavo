@@ -5,7 +5,7 @@ Initialize the library.
 from pyavo import avotools
 from pyavo import seismodel
 from .avotools import impedance, gassmann, log_crossplot, moduli
-from .seismodel import angle_stack, tuning_wedge, tuning_prestack, RPTM, wavelet
+from .seismodel import angle_stack, tuning_wedge, tuning_prestack, rpm, wavelet
 
 from .pyavo import PyAvoError
 __version__ = "unknown"

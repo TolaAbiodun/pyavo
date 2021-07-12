@@ -1,7 +1,6 @@
 import pyavo.avotools.impedance as imp
 import matplotlib.pyplot as plt
 from pyavo.avotools.approx import *
-import las
 
 
 def plot_imp(vpvs: Union[ndarray, Series, float], vp: Union[ndarray, Series, float], vs: Union[ndarray, Series, float],
