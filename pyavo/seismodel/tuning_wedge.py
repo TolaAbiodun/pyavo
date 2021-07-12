@@ -140,9 +140,9 @@ def int_depth(h_int: list, dh_min: float, dh_step: float):
     return d_interface
 
 
-def n_model(h_min=float, h_max=float, h_step=1):
+def n_model(h_min: float, h_max: float, h_step=1):
     """
-    Computes number of traces for given angles on incidence.
+    Computes number of traces within a thickness interval.
 
     :param h_min: minimum thickness
     :param h_max: maximum thickness
