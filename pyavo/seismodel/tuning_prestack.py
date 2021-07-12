@@ -97,7 +97,7 @@ def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: f
     return R
 
 
-def n_angles(theta1_min=float, theta1_max=float, theta1_step=1):
+def n_angles(theta1_min: float, theta1_max: float, theta1_step=1):
     """
     Computes number of traces for given angles on incidence.
 
