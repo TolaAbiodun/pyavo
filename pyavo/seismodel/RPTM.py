@@ -10,25 +10,23 @@ from Mavko, G, T Mukerji and J Dvorkin (2003), The Rock Physics Handbook, Cambri
 """
 
 # import libraries
-import pandas as pd
 from pandas import DataFrame, Series
 import numpy as np
 from numpy import ndarray
 import matplotlib.pyplot as plt
 from typing import Union
-import math
 
 
-# Function to explore key input logs for Rock pyhsics modeling
+# Function to explore key input logs for Rock physics modeling
 def plot_log(data: DataFrame, vsh: Union[float, iter], vp: Series, vs: Series, imp: list, vp_vs: list,
              phi: list, rho: list, z_init: Union[int, float],
              z_final: Union[int, float], shale_cutoff: Union[int, float],
              sand_cutoff: Union[int, float]):
     """
-    Generates a log plot of the shale volume, acoustic impedance, Vp/Vs
-    and a cross plot of Porosity against P-wave velocity and acoustic impedance against Vp/VS.
+    Explore key input logs for Rock physics modeling. Generates a log plot of the shale volume, acoustic impedance,
+    Vp/Vs and a cross plot of Porosity against P-wave velocity and acoustic impedance against Vp/VS.
 
-    :param data: pandas DataFrame object
+    :param data: pandas DataFrame
     :param vsh: Shale volume as input from vshale log
     :param vp: Compressional wave velocity log
     :param vs: Shear wave velocity log
@@ -118,10 +116,9 @@ def plot_log(data: DataFrame, vsh: Union[float, iter], vp: Series, vs: Series, i
 
 
 # Function to create rock physics models
-
 def soft_sand(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
     """
-    Computes the bulk modulus and shear modulus of soft-sand (uncemented) rock physics model
+    Computes the bulk modulus and shear modulus of soft-sand (uncemented) rock physics model.
 
     :param k_min: bulk modulus of mineral (Gpa)
     :param mu_min: shear modulus of mineral (Gpa)
@@ -134,9 +131,9 @@ def soft_sand(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
               1 = dry pack with perfect adhesion
     :return: Bulk modulus and Shear modulus
 
-    Reference
-    -------------
-    The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko, Jack Dvorkin, and Tapan Mukerji
+    Reference:
+        The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko, Jack Dvorkin,
+        and Tapan Mukerji
     """
     k_hm, mu_hm = hz_mindlin(k_min, mu_min, phi, cd_num, cp, P, f)
     k_dry = -4 / 3 * mu_hm + (((phi / cp) / (k_hm + 4 / 3 * mu_hm)) + ((1 - phi / cp) / (k_min + 4 / 3 * mu_hm))) ** -1
@@ -160,9 +157,9 @@ def stiff_sand(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
               1 = dry pack with perfect adhesion
     :return: Bulk modulus and Shear modulus
 
-    Reference
-    -------------
-    The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko, Jack Dvorkin, and Tapan Mukerji
+    Reference:
+        The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko,
+        Jack Dvorkin, and Tapan Mukerji
     """
     k_hm, mu_hm = hz_mindlin(k_min, mu_min, phi, cd_num, cp, P, f)
     k_dry = -4 / 3 * mu_min + (
@@ -174,22 +171,22 @@ def stiff_sand(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
 
 def hz_mindlin(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
     """
-      Computes the bulk modulus and shear modulus of the Hertz-Mindlin rock physics model
+    Computes the bulk modulus and shear modulus of the Hertz-Mindlin rock physics model
 
-      :param k_min: bulk modulus of mineral (Gpa)
-      :param mu_min: shear modulus of mineral (Gpa)
-      :param phi: porosity (fraction) expressed as vector values
-      :param cd_num: coordination number
-      :param cp: critical porosity (random close pack of well-sorted rounded quartz grains)
-      :param P: Confining pressure/rock stress (Mpa)
-      :param f: shear modulus correction factor
-                0 =  dry frictionless packing
-                1 = dry pack with perfect adhesion
-      :return: Bulk modulus and Shear modulus
+    :param k_min: bulk modulus of mineral (Gpa)
+    :param mu_min: shear modulus of mineral (Gpa)
+    :param phi: porosity (fraction) expressed as vector values
+    :param cd_num: coordination number
+    :param cp: critical porosity (random close pack of well-sorted rounded quartz grains)
+    :param P: Confining pressure/rock stress (Mpa)
+    :param f: shear modulus correction factor
+        0 =  dry frictionless packing
+        1 = dry pack with perfect adhesion
+    :return: Bulk modulus and Shear modulus
 
     Reference
-      -------------
-      The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko, Jack Dvorkin, and Tapan Mukerji
+      The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko,
+      Jack Dvorkin, and Tapan Mukerji
       """
     # Convert pressure from MPa to Gpa
     P = P / 1e3
@@ -219,8 +216,7 @@ def voigt_reuss(mod1: float, mod2: float, vfrac: float) -> tuple:
     :return: upper bound, lower bound, Voigt-Ruess-Hill average
 
     Reference
-    -------------
-    Mavko, G, T. Mukerji and J. Dvorkin (2009), The Rock Physics Handbook: Cambridge University Press.
+        Mavko, G, T. Mukerji and J. Dvorkin (2009), The Rock Physics Handbook: Cambridge University Press.
     """
     voigt = vfrac * mod1 + (1 - vfrac) * mod2
     reuss = 1 / (vfrac / mod1 + (1 - vfrac) / mod2)
@@ -240,7 +236,11 @@ def vel_sat(k_min: float, rho_min: float, k_fl: float, rho_fl: float,
     :param k_frame: bulk modulus of rock frame/dry rock (Gpa)
     :param mu_frame: shear modulus of rock frame/dry rock (Gpa)
     :param phi: porosity expressed as vector values
-    :return: bulk modulus, density, p-wave velocity and s-wave velocity
+    :return:
+        k_sat: Bulk modulus
+        rho_sat: Density
+        vp_sat: P-wave velocity
+        vs_sat: S-wave velocity
     """
     k_sat = k_frame + (1 - k_frame / k_min) ** 2 / ((phi / k_fl) + ((1 - phi) / k_min) - (k_frame / k_min ** 2))
     rho_sat = rho_min * (1 - phi) + rho_fl * phi
@@ -329,8 +329,6 @@ def plot_rpt(model='soft', fluid='oil', display=True, vsh=0.0,
     """
     Plot RPTs showing variations in porosity, mineralogy and fluid content defined by water saturation.
 
-    Ref: Quantitative Seismic Interpretation: Applying Rock Physics Tools to Reduce Interpretation Risk (Per Avseth, T. Mukerji and G.mavko, 2015)
-
     :param model: type of rock physics model, 'soft' or 'stiff'. default = 'soft'
     :param fluid: desired fluid after Gassmann's fluid substitution, default = 'oil'
     :param display: show plot with calculated parameters, default = True
@@ -352,6 +350,11 @@ def plot_rpt(model='soft', fluid='oil', display=True, vsh=0.0,
     :param P: confining pressure(MPa), default = 10MPa
     :param f: shear modulus correction factor, default=1
     :return: plot of RPT with labels, Array of Acoustic impedance and Vp/Vs
+
+    Reference:
+        Quantitative Seismic Interpretation: Applying Rock Physics Tools to Reduce Interpretation Risk
+        (Per Avseth, T. Mukerji and G.mavko, 2015)
+
     """
     # Generate poro and sw values
     phi = np.linspace(0.01, cp, 10)
@@ -444,6 +447,7 @@ def well_rpt(df, z_init: float, z_final: float, sand_cut: float, vsh: Series, vp
 def cp_model(k_min, mu_min, phi, cp=0.4):
     """
     Build rock physics models using critical porosity concept.
+
     :param k_min: Bulk modulus of mineral (Gpa)
     :param mu_min: Shear modulus of mineral (Gpa)
     :param phi: Porosity (fraction)
@@ -451,9 +455,8 @@ def cp_model(k_min, mu_min, phi, cp=0.4):
     :return: Bulk and Shear modulus of rock frame
 
     Reference
-    ----------
-    Critical porosity, Nur et al. (1991, 1995)
-    Mavko, G, T. Mukerji and J. Dvorkin (2009), The Rock Physics Handbook: Cambridge University Press. p.353
+        Critical porosity, Nur et al. (1991, 1995)
+        Mavko, G, T. Mukerji and J. Dvorkin (2009), The Rock Physics Handbook: Cambridge University Press. p.353
     """
     k_frame = k_min * (1 - phi / cp)
     mu_frame = mu_min * (1 - phi / cp)
@@ -475,8 +478,7 @@ def twolayer(n_samples: int, vp1: Union[int, float], vs1: Union[int, float],
     :param rho2: Density of second layer
 
     Reference
-    ----------
-    Alessandro aadm (2015)
+        Alessandro aadm (2015)
     """
     from bruges.reflection import shuey2
     from bruges.filters import ricker
