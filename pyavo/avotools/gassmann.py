@@ -179,7 +179,7 @@ class GassmannSub(object):
         rho_brine = rho_water + 0.668 * S + 0.44 * S * S + 10 ** (-6) * S * r2
         k_brine = rho_brine * v_brine ** 2 * 1e-6
 
-        return round(k_brine, 2), round(rho_brine, 2)
+        return round(k_brine, 4), round(rho_brine, 3)
 
     # Function to estimate initial hydrocarbon properties
     def init_hyc(self) -> tuple:
@@ -223,7 +223,7 @@ class GassmannSub(object):
             yo = 0.85 + 5.6 / (Ppr + 2) + 27.1 / (Ppr + 3.5) ** 2 - (8.7 * math.exp(-0.65 * (Ppr + 1)))
             k_hyc += P / (1 - (Ppr / Z * dz_dp)) * yo / 1000
             # print('Bulk modulus(GPa) and Density(g/cc) of initial fluid (gas)')
-        return round(k_hyc, 2), round(rho_hyc, 2)
+        return round(k_hyc, 4), round(rho_hyc, 3)
 
     def k_rho_fluid(self) -> tuple:
         """
@@ -263,7 +263,7 @@ class GassmannSub(object):
             k_sat_init = init_rho * (vp ** 2 - (vs ** 2 * 4 / 3))
             mu_sat_init = init_rho * vs * vs
 
-        return round(k_sat_init, 2), round(mu_sat_init, 2)
+        return round(k_sat_init, 4), round(mu_sat_init, 4)
 
     def k_frame(self, k_mat: float, k_fld: float, k_sat: float) -> float:
         """
@@ -277,7 +277,7 @@ class GassmannSub(object):
         k0 = k_sat * (self.phi * k_mat / k_fld + 1 - self.phi) - k_mat
         k1 = (self.phi * k_mat / k_fld) + (k_sat / k_mat) - 1 - self.phi
         k_frame = k0 / k1
-        return round(k_frame, 2)
+        return round(k_frame, 4)
 
     def final_hc(self) -> tuple:
         """
@@ -327,7 +327,7 @@ class GassmannSub(object):
             yo = 0.85 + 5.6 / (Ppr + 2) + 27.1 / (Ppr + 3.5) ** 2 - (8.7 * math.exp(-0.65 * (Ppr + 1)))
             k_hyc += P / (1 - (Ppr / Z * dz_dp)) * yo / 1000
             # print('Bulk modulus(Gpa) and Density(g/cc) of desired fluid (gas)')
-        return round(k_hyc, 2), round(rho_hyc, 2)
+        return round(k_hyc, 4), round(rho_hyc, 3)
 
     def k_rho_sat(self, k_mat: float, rho_mat: float, k_frame: float) -> tuple:
         """
@@ -353,4 +353,4 @@ class GassmannSub(object):
         k1 = self.phi / k_fld + (1 - self.phi) / k_mat - k_frame / (k_mat * k_mat)
         k_sat_new = k_frame + ((1 - k_frame / k_mat) ** 2) / k1
 
-        return round(k_sat_new, 2),  round(rho_sat_new, 2)
+        return round(k_sat_new, 3),  round(rho_sat_new, 3)
