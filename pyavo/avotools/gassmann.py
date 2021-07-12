@@ -7,7 +7,6 @@ Fluxgate Technologies, NG
 References: Wang(2001), Batzle and Wang(1992), Geophysics
 
 Class for modelling fluid properties for gas, oil and brine saturated sands
-
 """
 
 import warnings
@@ -17,10 +16,52 @@ from typing import Union
 warnings.filterwarnings("ignore")
 
 
+def k_rho_matrix(v_cly: float, k_cly: float, k_qtz: float, rho_cly: float, rho_qtz: float) -> tuple:
+    """
+    Calculate the Bulk modulus and Density of rock matrix.
+
+    :param v_cly: Volume of clay assumed to be 70% of Shale volume
+    :param k_cly: Bulk modulus of clay (Gpa)
+    :param k_qtz: Bulk modulus of quartz (Gpa)
+    :param rho_cly: Density of clay (g/cc)
+    :param rho_qtz: Density of quartz (g/cc)
+    :returns:
+        k_mat : Bulk modulus of rock matrix
+        rho_mat : Density of rock matrix
+    """
+    if isinstance(v_cly, str):
+        raise NameError(f'{v_cly} is not a valid data type.\n use integer or float')
+
+    v_qtz = 1 - v_cly
+    k_voigt = v_cly * k_cly + v_qtz * k_qtz
+    k_reuss = 1 / (v_cly / k_cly + v_qtz / k_qtz)
+    k_mat = 0.5 * (k_voigt + k_reuss)
+    rho_mat = v_cly * rho_cly + v_qtz * rho_qtz
+    # print("The Bulk modulus(Gpa) and Density(g/cc) of the Matrix:")
+
+    return k_mat, rho_mat
+
+
+def vel_sat(k_sat: float, rho_sat: float, mu: float) -> tuple:
+    """
+    Estimate the seismic velocities after Gassmann fluid substituion using density and
+    elastic moduli of saturated rock.
+
+    :returns:
+        vp_new : P-wave velocity
+        vs_new : S-wave velocity
+    """
+    f = 3280.84
+    vp_new = math.sqrt((k_sat + (mu * 4 / 3)) / rho_sat) * f
+    vs_new = math.sqrt(mu / rho_sat) * f
+
+    return round(vp_new, 2), round(vs_new, 2)
+
+
 class GassmannSub(object):
     """
-    Class to model Gassmann fluid substitution for brine sands, oil sands, and gas sands. it generates the P and S wave
-    velocities and density after fluid substitution according to input parameters.
+    Class to model Gassmann fluid substitution for brine sands, oil sands, and gas sands.
+    it generates the P and S wave velocities and density after fluid substitution according to input parameters.
 
     Arguments
     -----------
@@ -34,11 +75,11 @@ class GassmannSub(object):
     swi = Initial water saturation from log
     swt =  Target water saturation
     S = Salinity (ppm)
-    T = Temperature (deg Celcius)
+    T = Temperature (deg)
     P = Pressure (psi)
     init_fluid = Fluid type of initial hydrocarbon (gas or oil)
     final_fluid = Fluid type of desired output where (gas or oil)
-    GOR = Gas-Oil ration
+    GOR = Gas-Oil ratio
     """
 
     def __init__(self, vp: Union[int, float], vs: Union[int, float], rho: Union[int, float], rho_o: Union[int, float],
@@ -67,35 +108,13 @@ class GassmannSub(object):
         except TypeError as err:
             print(f'Input right format {err}')
 
-    def k_rho_matrix(self, v_cly: float, k_cly: float, k_qtz: float, rho_cly: float, rho_qtz: float) -> tuple:
-        """
-        Calculate the Bulk modulus and Density of a rock matrix.
-        :param v_cly:Volume of clay assumed to be 70% of Shale volume
-        :param k_cly: Bulk modulus of clay (Gpa)
-        :param k_qtz: Bulk modulus of quartz (Gpa)
-        :param rho_cly: Density of clay (g/cc)
-        :param rho_qtz: Density of quartz (g/cc)
-        :return:
-        """
-        if isinstance(v_cly, str):
-            raise NameError(f'{v_cly} is not a valid data type.\n use integer or float')
-
-        v_qtz = 1 - v_cly
-        k_voigt = v_cly * k_cly + v_qtz * k_qtz
-        k_reuss = 1 / (v_cly / k_cly + v_qtz / k_qtz)
-        k_mat = 0.5 * (k_voigt + k_reuss)
-        rho_mat = v_cly * rho_cly + v_qtz * rho_qtz
-        # print("The Bulk modulus(Gpa) and Density(g/cc) of the Matrix:")
-
-        return k_mat, rho_mat
-
     def k_rho_brine(self) -> tuple:
         """
-        Estimate the bulk modulus(Gpa) and density(g/cc) of brine.
+        Estimate the bulk modulus and density of brine.
 
-        :return: (Bulk Modulus, Density)
+        :returns: k_brine, rho_brine
         """
-        # Coefficients for water velocity computation(Batzle and Wang, 1992)
+        # Coefficients for water velocity computation (Batzle and Wang, 1992)
         w11 = 1402.85
         w21 = 4.871
         w31 = -0.04783
@@ -167,9 +186,10 @@ class GassmannSub(object):
     # Function to estimate initial hydrocarbon properties
     def init_hyc(self) -> tuple:
         """
-        Estimate Bulk modulus and density of initial hydrocarbon (Oil)
-        :param self:
-        :return: (Bulk modulus, Density)
+        Estimate Bulk modulus and density of initial hydrocarbon.
+
+        :return: k_hyc: Bulk modulus
+                 rho_hyc: Density
         """
         rho_hyc = 0
         k_hyc = 0
@@ -211,8 +231,8 @@ class GassmannSub(object):
         """
         Estimate the Bulk modulus and density of the mixed pore fluid phase (Initial insitu model)
 
-        :return: Tuple
-        Bulk modulus (k_fld) and Density (rho_fld) of pore fluid
+        :return: k_fld: Bulk modulus of pore fluid
+                 rho_fld: Density of pore fluid
         """
         k_hyc, rho_hyc = self.init_hyc()
         k_br, rho_br = self.k_rho_brine()
@@ -221,15 +241,16 @@ class GassmannSub(object):
         rho_fl = self.swi * rho_br + shi * rho_hyc
         return k_fl, rho_fl
 
-    def insitu_moduli(self, rho_fluid: float, rho_matrix: float, d_phi: bool) -> tuple:
+    def insitu_moduli(self, rho_fluid: float, rho_matrix: float, d_phi=True) -> tuple:
         """
         Estimate the initial original moduli for saturated insitu rock.
         Density of the insitu saturated rock is calculated from the porosity log using the mass balance equation.
 
         :param rho_fluid: density of insitu pore fluid phase (g/cc)
         :param rho_matrix: density of rock matrix (g/cc)
-        :param d_phi: density derived from well logs.
-        :return: Tuple
+        :param d_phi: density derived from input RHOB log.
+        :return: k_sat_init: Bulk modulus
+                 mu_sat_init: Shear modulus
         """
         # Use porosity to estimate initial saturated rock density
         factor = 0.000305
@@ -237,7 +258,7 @@ class GassmannSub(object):
         vs = self.vs * factor
 
         init_rho = self.phi * rho_fluid + (1 - self.phi) * rho_matrix
-        if d_phi:  # Use density from log
+        if d_phi:  # Use density from RHOB log
             k_sat_init = self.rho * (vp ** 2 - (vs ** 2 * 4 / 3))
             mu_sat_init = self.rho * vs * vs
         else:  # use calculated density from porosity
@@ -253,7 +274,7 @@ class GassmannSub(object):
         :param k_mat: Bulk modulus of rock matrix
         :param k_fld: Bulk modulus of pore fluid phase
         :param k_sat: Bulk modulus of saturated insitu rock
-        :return: float
+        :return: k_frame: Bulk modulus
         """
         k0 = k_sat * (self.phi * k_mat / k_fld + 1 - self.phi) - k_mat
         k1 = (self.phi * k_mat / k_fld) + (k_sat / k_mat) - 1 - self.phi
@@ -262,9 +283,9 @@ class GassmannSub(object):
 
     def final_hc(self) -> tuple:
         """
-        Estimate the bulk modulus and density of the desired hydrocarbon(oil or gas)
+        Estimate the bulk modulus and density of the desired hydrocarbon (oil or gas)
 
-        :return: Tuple (Bulk modulus, Density)
+        :return: k_hyc: bulk modulus, rho_hyc: density
         """
         # Output fluid is brine
 
@@ -286,7 +307,6 @@ class GassmannSub(object):
             rho_hyc += r / (0.972 + 3.81 * 0.0001 * (self.T + 17.78) ** 1.175)
             y = math.sqrt(18.33 / rho_p - 16.97)
             vel = 2096 * math.sqrt(rho_p / (2.6 - rho_p)) - 3.7 * self.T + 4.64 * P + 0.0115 * (y - 1) * self.T * P
-            # vel = 2096 * math.sqrt(rho_p / (2.6 - rho_p)) - 3.7 * self.T + 4.64 * self.P + 0.0115 * (math.sqrt(18.33 / rho_p - 16.97) - 1) * self.T * self.P
             k_hyc += rho_hyc * vel * vel * factor
             # print('Bulk modulus(Gpa) and Density(g/cc) of desired fluid (oil)')
 
@@ -319,7 +339,8 @@ class GassmannSub(object):
         :param k_mat: Bulk modulus of rock matrix (GPa)
         :param rho_mat: Density of rock matrix (g/cc)
         :param k_frame: Bulk modulus of rock frame (Gpa)
-        :return: Tuple (Bulk modulus, Density)
+        :return: k_sat_new: Bulk modulus
+                 rho_sat_new: Density
         """
         # Calculate density of saturated rock
         k_brine, rho_brine = self.k_rho_brine()
@@ -335,15 +356,3 @@ class GassmannSub(object):
         k_sat_new = k_frame + ((1 - k_frame / k_mat) ** 2) / k1
 
         return k_sat_new, rho_sat_new
-
-    def vel_sat(self, k_sat, rho_sat, mu):
-        """
-        Estimate the seismic velocities after Gassmann fluid substituion using density and elastic modulli of saturated rock.
-
-        :return: tuple (P-wave velocity , S-wave velocity)
-        """
-        f = 3280.84
-        vp_new = math.sqrt((k_sat + (mu * 4 / 3)) / rho_sat) * f
-        vs_new = math.sqrt(mu / rho_sat) * f
-
-        return round(vp_new, 2), round(vs_new, 2)
