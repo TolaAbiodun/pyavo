@@ -25,7 +25,7 @@ def ref_coeff(imp: Union[ndarray, Series]):
 def snell(vp1: ndarray, vp2: ndarray, theta1: float) -> tuple:
     """
     Computes the angles of refraction for an incident P-wave in a two-layered
-    model. Reference: AVO - Chopra and Castagna, 2014, Page 6.
+    model.
 
     :param vp1: P-wave velocity in upper layer
     :param vp2: P-wave velocity in lower layer
@@ -33,6 +33,8 @@ def snell(vp1: ndarray, vp2: ndarray, theta1: float) -> tuple:
     :returns:
         theta2: Angle of Refraction
         p: Ray Parameter
+
+    Reference: AVO - Chopra and Castagna, 2014, Page 6.
     """
 
     p = np.sin(theta1) / vp1
@@ -46,7 +48,6 @@ def shueyrc(vp0: Union[ndarray, Series, float], vs0: Union[ndarray, Series, floa
     """
     Computes the P-wave reflectivity with Shuey (1985) 2 terms for a
     given well log.
-    Reference: Avseth et al., Quantitative seismic interpretation, 2006, Page 182.
 
     :param vp0: P-wave velocities from Vp log
     :param vs0: S-Wave velocities from Vs log
@@ -56,6 +57,8 @@ def shueyrc(vp0: Union[ndarray, Series, float], vs0: Union[ndarray, Series, floa
         RC: Reflection coefficient for the 2-term approximation.
         c: Intercept.
         m: Gradient.
+
+    Reference: Avseth et al., Quantitative seismic interpretation, 2006, Page 182.
     """
 
     theta1 = np.radians(theta1)
@@ -91,7 +94,6 @@ def aki_richards(vp1: ndarray, vs1: ndarray, rho1: Union[ndarray, float], vp2: n
     """
     Computes the Reflection Coefficient with Aki and Richard's (1980) equation for
     a two-layered model.
-    Reference: AVO - Chopra and Castagna, 2014, Page 62.
 
     :param vp1: P-wave velocity in upper layer
     :param vs1: S-wave velocity in upper layer
@@ -102,6 +104,8 @@ def aki_richards(vp1: ndarray, vs1: ndarray, rho1: Union[ndarray, float], vp2: n
     :param theta1: Angle of incidence
     :return:
         rc: Reflection coefficient
+
+    Reference: AVO - Chopra and Castagna, 2014, Page 62.
     """
 
     theta1 = np.radians(theta1)
@@ -126,7 +130,6 @@ def shuey(vp1: ndarray, vs1: ndarray, rho1: ndarray,
     """
     Computes the Reflectiviy parameters with Shuey (1985) 2 and 3 terms for a
     two-layered model.
-    Reference: Avseth et al., Quantitative seismic interpretation, 2006, Page 182.
 
     :param vp1: P-wave velocity in upper layer
     :param vs1: S-wave velocity in lower layer
@@ -140,6 +143,8 @@ def shuey(vp1: ndarray, vs1: ndarray, rho1: ndarray,
         m : Gradient.
         rc2 : Reflection coefficient for the 2-term approximation.
         rc3 : Reflection coefficient for the 3-term approximation.
+
+    Reference: Avseth et al., Quantitative seismic interpretation, 2006, Page 182.
     """
 
     theta1 = np.radians(theta1)
