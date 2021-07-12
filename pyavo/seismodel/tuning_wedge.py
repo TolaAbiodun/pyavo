@@ -185,7 +185,7 @@ def ricker(sample_rate: float, length: float, c_freq: float):
 
 
 # Calculate the tuning trace and tuning thickness
-def tuning_trace(syn_zo, step):
+def tuning_trace(syn_zo, step=1):
     """
     Computes the tuning trace and thickness in a synthetic trace gather.
 
@@ -253,7 +253,7 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     :param dt: trace parameter, changing this from 0.0001 can affect the display quality.
     """
     [n_trace, _] = syn_zo.shape
-    t_trace, t_thick = tuning_trace(syn_zo=syn_zo, step=1)
+    t_trace, t_thick = tuning_trace(syn_zo=syn_zo)
     layer_index = np.array(np.round(layer_times / dt), dtype='int16')
 
     fig = plt.figure(figsize=(10, 12))
@@ -299,7 +299,5 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     plt.text(t_trace + 2, plt.ylim()[0] * 1.1,
              'tuning thickness = {0} m'.format(str(t_thick)),
              fontsize=16)
-
-    plt.savefig('tuning_wedge_model.png')
     plt.tight_layout()
     plt.show()
