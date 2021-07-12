@@ -196,7 +196,7 @@ def tuning_trace(syn_zo, step=1):
         t_thick: tuning thickness
     """
     t_trace = np.argmax(np.abs(syn_zo.T)) % syn_zo.T.shape[1]
-    t_thick = tuning_trace(syn_zo) * step
+    t_thick = tuning_trace(syn_zo, step) * step
     return t_trace, t_thick
 
 
