@@ -1,5 +1,5 @@
 """
-Functions to compute Aki-Richards and Shuey 2-term approximations
+Functions to compute Aki-Richards and Shuey 2-term & 3-term approximations
 """
 
 import numpy as np
@@ -14,8 +14,7 @@ def ref_coeff(imp: Union[ndarray, Series]):
 
     :param imp: Acoustic Impedance
     :returns:
-        rc : array
-        The reflection coefficient
+        rc: reflection coefficient
     """
     rc = (imp[1:] - imp[:-1]) / (imp[1:] + imp[:-1])
     rc = np.append(rc, rc[-1])
@@ -23,18 +22,17 @@ def ref_coeff(imp: Union[ndarray, Series]):
     return rc
 
 
-def snell(vp1: ndarray, vp2: ndarray, theta1: float):
+def snell(vp1: ndarray, vp2: ndarray, theta1: float) -> tuple:
     """
     Computes the angles of refraction for an incident P-wave in a two-layered
-    model.
-
-    Reference:
-    AVO - Chopra and Castagna, 2014, Page 6.
+    model. Reference: AVO - Chopra and Castagna, 2014, Page 6.
 
     :param vp1: P-wave velocity in upper layer
     :param vp2: P-wave velocity in lower layer
     :param theta1: Angle of incidence
-    :returns: Angle of Refraction, Ray Parameter
+    :returns:
+        theta2: Angle of Refraction
+        p: Ray Parameter
     """
 
     p = np.sin(theta1) / vp1
@@ -55,12 +53,9 @@ def shueyrc(vp0: Union[ndarray, Series, float], vs0: Union[ndarray, Series, floa
     :param rho0: Density from RHOB log
     :param theta1: Angles of incidence
     :return:
-        RC : array
-            Reflection coefficient for the 2-term approximation.
-        c : array
-            Intercept.
-        m : array
-            Gradient.
+        RC: Reflection coefficient for the 2-term approximation.
+        c: Intercept.
+        m: Gradient.
     """
 
     theta1 = np.radians(theta1)
@@ -105,7 +100,8 @@ def aki_richards(vp1: ndarray, vs1: ndarray, rho1: Union[ndarray, float], vp2: n
     :param vs2: S-wave velocity in lower layer
     :param rho2: Density in lower layer
     :param theta1: Angle of incidence
-    :return: Reflection coefficient
+    :return:
+        rc: Reflection coefficient
     """
 
     theta1 = np.radians(theta1)
@@ -130,8 +126,7 @@ def shuey(vp1: ndarray, vs1: ndarray, rho1: ndarray,
     """
     Computes the Reflectiviy parameters with Shuey (1985) 2 and 3 terms for a
     two-layered model.
-    Reference:
-    Avseth et al., Quantitative seismic interpretation, 2006, Page 182.
+    Reference: Avseth et al., Quantitative seismic interpretation, 2006, Page 182.
 
     :param vp1: P-wave velocity in upper layer
     :param vs1: S-wave velocity in lower layer
@@ -141,14 +136,10 @@ def shuey(vp1: ndarray, vs1: ndarray, rho1: ndarray,
     :param rho2: Density in lower layer
     :param theta1: Angles of incidence
     :returns:
-        c : array
-            Intercept.
-        m : array
-            Gradient.
-        rc2 : array
-            Reflection coefficient for the 2-term approximation.
-        rc3 : array
-            Reflection coefficient for the 3-term approximation.
+        c : Intercept.
+        m : Gradient.
+        rc2 : Reflection coefficient for the 2-term approximation.
+        rc3 : Reflection coefficient for the 3-term approximation.
     """
 
     theta1 = np.radians(theta1)
