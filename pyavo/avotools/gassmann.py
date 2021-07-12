@@ -108,11 +108,11 @@ class GassmannSub(object):
 
     def k_rho_brine(self) -> tuple:
         """
-        Estimate the bulk modulus and density of brine.
+        Estimate the bulk modulus(Gpa) and density(g/cc) of brine.
 
-        :returns: k_brine, rho_brine
+        :return: (Bulk Modulus, Density)
         """
-        # Coefficients for water velocity computation (Batzle and Wang, 1992)
+        # Coefficients for water velocity computation(Batzle and Wang, 1992)
         w11 = 1402.85
         w21 = 4.871
         w31 = -0.04783
@@ -167,19 +167,20 @@ class GassmannSub(object):
             for j in range(1, 5):
                 constant_key = 'w' + str(i) + str(j)
                 constant = constants_dict[constant_key]
-            vw += constant * (self.T ** (i - 1)) * (P ** (j - 1))
+                # print(constant)
+            vw += (constant) * (self.T ** (i - 1)) * (P ** (j - 1))
 
         v1 = 1170 - 9.6 * self.T + 0.055 * self.T * self.T - 8.5 * 10 ** (
-            -5) * self.T * self.T * self.T + 2.6 * P - (0.0029 * self.T * P) - (0.0476 * P ** 2)
+            -5) * self.T * self.T * self.T + 2.6 * P - (0.0029 * self.T * P) - (0.0476 * P**2)
         v_brine = vw + S * v1 + S ** 1.5 * (780 - 10 * P + 0.16 * P * P) - 1820 * S * S
         r1 = 489 * P - 2 * self.T * P + 0.016 * self.T * self.T * P - 1.3 * 10 ** (
             -5) * self.T * self.T * self.T * P - 0.333 * P * P - 0.002 * self.T * P * P
         rho_water = 1 + 10 ** (-6) * (-80 * self.T - 3.3 * self.T * self.T + 0.00175 * self.T * self.T * self.T + r1)
         r2 = 300 * P - 2400 * P * S + self.T * (80 + 3 * self.T - 3300 * S - 13 * P + 47 * P * S)
         rho_brine = rho_water + 0.668 * S + 0.44 * S * S + 10 ** (-6) * S * r2
-        k_brine = rho_brine * v_brine ** 2 * 1e-6
+        k_brine = rho_brine * v_brine**2 * 1e-6
 
-        return k_brine, round(rho_brine, 3)
+        return k_brine, rho_brine
 
     # Function to estimate initial hydrocarbon properties
     def init_hyc(self) -> tuple:
