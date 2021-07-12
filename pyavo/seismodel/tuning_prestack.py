@@ -4,7 +4,6 @@ to examine pre-stack tuning effects.
 """
 
 import math
-from numpy import ndarray
 from pyavo.seismodel.tuning_wedge import *
 
 
