@@ -238,7 +238,7 @@ def plot_misc(ax_line, data: ndarray, t: ndarray, excursion: int, highlight: int
 
 
 def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
-                t_max: float, h_min: float, h_max: float, h_step: float, excursion: int, dt=0.0001):
+                t_max: float, h_max: float, h_step: float, excursion: int, dt=0.0001):
     """
     Plot a three layer wedge model amplitudes and zero offset seismogram.
 
@@ -247,13 +247,12 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     :param t: regularly sampled time series defining model sampling
     :param t_min: minimum time duration
     :param t_max: maximum time duration
-    :param h_min: minumum depth
     :param h_max: maximum depth
     :param h_step: depth steps, default is 1
     :param excursion: adjust plot width
     :param dt: trace parameter, changing this from 0.0001 can affect the display quality.
     """
-    [n_trace, n_sample] = syn_zo.shape
+    [n_trace, _] = syn_zo.shape
     t_trace, t_thick = tuning_trace(syn_zo=syn_zo, step=1)
     layer_index = np.array(np.round(layer_times / dt), dtype='int16')
 
