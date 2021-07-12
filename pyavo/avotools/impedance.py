@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Functions to calculate acoustic and elastic impedances
+# Functions to calculate acoustic and elastic impedance from well logs
 """
 Created on Thur 1 21:39:03 2021
 @author: Tola Abiodun
@@ -9,11 +9,12 @@ import numpy as np
 
 def ai(vp: float, rho: float):
     """
-    Calculates the acoustic impedance of a layer
+    Calculates the acoustic impedance of a layer given velocities and densities.
 
     :param vp: P-wave velocity (m/s)
     :param rho: Density (g/cc)
-    :returns: Acoustic Impedance : float
+    :returns:
+        z: Acoustic Impedance
     """
 
     z = vp * rho
@@ -22,12 +23,14 @@ def ai(vp: float, rho: float):
 
 def ei(vp, vs, rho, ang):
     """
-    Calculates the elastic impedance of a layer.
+    Computes the elastic impedance of a layer given velocities, densities and incidence angle.
+
     :param vp: P-wave velocity (m/s)
     :param vs: S-wave velocity (m/s)
     :param rho: Density (g/cc)
     :param ang: Angle of incidence (deg)
-    :returns: Elastic impedance
+    :returns:
+        ei: Elastic impedance
 
     Reference:
     Connolly, P., 1999, Elastic impedance: The Leading Edge, 18, 438–452.
@@ -45,7 +48,7 @@ def ei(vp, vs, rho, ang):
 
 def norm_ei(vp, vs, rho, vp_sh, vs_sh, rho_sh, ang):
     """
-    Calculates the normalized elastic impedance.
+    Computes the normalized elastic impedance.
 
     :param vp: P-wave velocity. (m/s)
     :param vs: S-wave velocity. (m/s)
@@ -54,7 +57,8 @@ def norm_ei(vp, vs, rho, vp_sh, vs_sh, rho_sh, ang):
     :param vs_sh: S-wave velocity in shale (m/s)
     :param rho_sh: Shale reference density.
     :param ang: Angle of incidence
-    :returns: Normalized elastic impedance.
+    :returns:
+        nei: Normalized elastic impedance.
 
     Reference:
     Whitcombe, D, 2002, Elastic impedance normalization, Geophysics, 67 (1), 60–62.
@@ -78,10 +82,11 @@ def lame(vp, vs, rho):
     :param vp: P-wave velocity (m/s)
     :param vs: S-wave velocity (m/s)
     :param rho: Density (g/cc)
-    :returns: Lamé constants - lambda_rho and mu_rho
+    :returns:
+        lambda_rho: Lamé first parameter
+        mu_rho: Lamé second parameter
 
-    Reference
-    ---------
+    Reference:
     Goodway, B., T. Chen, and J. Downton, 1997, Improved AVO fluid detection
     and lithology discrimination using Lamé petrophysical parameters; “λρ”,
     “μρ”, & “λ/μ fluid stack” from P and S inversions: 67th Annual
