@@ -11,11 +11,13 @@ from xarray import DataArray
 # Import segy data
 def read_segy(filepath: str, byte_il=14, byte_xl=21, ignore_geometry=False) -> DataArray:
     """
-    Read a segyfile into a Data array
+    Read a segyfile into a Data array.
+
     :param filepath: filepath, any valid string path is acceptable
     :param byte_il: inline byte
     :param byte_xl: crossline byte
-    :return: Data
+    :return:
+        data_array: xarray
     """
     with segyio.open(filepath, iline=byte_il, xline=byte_xl, ignore_geometry=ignore_geometry) as f:
         header = segyio.tools.wrap(f.text[0])
@@ -27,17 +29,19 @@ def read_segy(filepath: str, byte_il=14, byte_xl=21, ignore_geometry=False) -> D
         cube = segyio.tools.cube(f)
         twt = f.samples + crosslines.min()
     file_size = cube.nbytes / 1024 ** 2
+    # Show file stats
     print(f'number of traces: {n_traces}, samples: {n_samp}, sample rate: {samp_rate} s')
     print(f'first, last sample twt: {twt[0]}, {twt[-1]} s')
     print('file_size: {:.2f} Mb ({:.2f} Gb)'.format(file_size, file_size / 1024))
     print(f'inlines: {inlines.size}, min={inlines.min()}, max={inlines.max()}')
     print(f'crosslines: {crosslines.size}, min={crosslines.min()}, max={crosslines.max()}')
+
     data_array = xr.DataArray(cube, [('IL', inlines), ('XL', crosslines), ('TWT', twt)])
 
     return data_array
 
 
-# Helper method
+# Helper method to read horizon data
 def _read_horizon(filepath: str, labels=('inline', 'crossline', 'depth')):
     return np.recfromtxt(filepath, names=labels)
 
@@ -46,7 +50,7 @@ def nfstack(horizon_data: str, near_stack: DataArray, far_stack: DataArray,
             inline: int, robust=True, interpolation='spline16',
             cmap='RdBu', well_XL=None, well_display=True):
     """
-    Plot Near and Far angle stacks from X-DataArray
+    Display images of Near and Far angle stacks from DataArray.
 
     :param horizon_data: file path, any valid string path to a txt file is acceptable.
     :param near_stack: DataArray of Near angle stack
@@ -69,13 +73,14 @@ def nfstack(horizon_data: str, near_stack: DataArray, far_stack: DataArray,
     ax[1].set_title('Far Stack', fontsize=15, fontweight='bold', pad=10)
 
     for aa in ax:
-        aa.plot(hz[hz['inline'] == inline]['crossline'], hz[hz['inline'] == inline]['depth'], color='r', alpha=0.5, lw=4)
+        aa.plot(hz[hz['inline'] == inline]['crossline'], hz[hz['inline'] == inline]['depth'], color='r', alpha=0.5,
+                lw=4)
         aa.xaxis.set_label_position('top')
         aa.xaxis.tick_top()
         if well_XL is not None and well_display:
             aa.axvline(well_XL, color='k', ls='--', lw=1.5)
             aa.text(well_XL, near_stack['TWT'][-1], 'Well', fontsize=13, fontweight='bold', color='white',
-                       bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 3})
+                    bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 3})
     plt.tight_layout()
     plt.show()
 
@@ -84,10 +89,7 @@ def nf_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArray
                   XL_slice: tuple, inline: int, well_XL=None, well_display=True, robust=True,
                   interpolation='spline16', add_colorbar=True, cmap='jet_r'):
     """
-    Display near and far angle stack attributes.
-
-    Reference: Avseth, P., Mukerji, T., & Mavko, G., 2010.
-    Quantitative seismic interpretation: Applying rock physics tools to reduce interpretation risk.Cambridge university press.
+    Display images of near and far angle stack attributes.
 
     :param horizon_data: file path, any valid string path to a txt file is acceptable.
     :param near_stack: DataArray of Near angle stack
@@ -97,6 +99,10 @@ def nf_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArray
     :param inline: Inline number
     :param well_XL: Well crossline number to define well position
     :param well_display: Show well trajectory on plot, vertical
+
+    Reference:
+    Avseth, P., Mukerji, T., & Mavko, G., 2010. Quantitative seismic interpretation: Applying rock physics tools
+    to reduce interpretation risk.Cambridge university press.
     """
     hz = _read_horizon(horizon_data)
     near_il = near_stack.sel(IL=inline)
@@ -125,7 +131,8 @@ def nf_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArray
     ax[2].set_title('(Far - Near) x Far', fontweight='bold', fontsize=14, pad=10)
 
     for aa in ax:
-        aa.plot(hz[hz['inline'] == inline]['crossline'], hz[hz['inline'] == inline]['depth'], color='k', lw=3, alpha=0.5)
+        aa.plot(hz[hz['inline'] == inline]['crossline'], hz[hz['inline'] == inline]['depth'], color='k', lw=3,
+                alpha=0.5)
         aa.set_xlim(x0, x1)
         aa.set_ylim(t1, t0)
         aa.xaxis.set_label_position('top')
@@ -143,7 +150,7 @@ def avo_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArra
                    TWT_slice: tuple, XL_slice: tuple, inline: int, well_XL=None, well_display=True, robust=True,
                    interpolation='spline16', add_colorbar=True, cmap='jet_r') -> dict:
     """
-    Display AVO attributes and crossplot.
+    Computes intercept, gradient values and display images of AVO attributes & crossplot.
 
     :param horizon_data: file path, any valid string path to a txt file is acceptable.
     :param near_stack: DataArray of Near angle stack
@@ -154,7 +161,9 @@ def avo_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArra
     :param XL_slice: Crossline time slice
     :param inline: Inline number
     :param well_XL: Well crossline number to define well position
-    :returns: Dict - AVO intercept and gradient values
+    :returns:
+        c: Intercept
+        m: Gradient
     """
     hz = _read_horizon(horizon_data)
     near_il = near_stack.sel(IL=inline)
@@ -215,7 +224,8 @@ def avo_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArra
     ax5.grid()
 
     for aa in ax:
-        aa.plot(hz[hz['inline'] == inline]['crossline'], hz[hz['inline'] == inline]['depth'], color='k', lw=3, alpha=0.5)
+        aa.plot(hz[hz['inline'] == inline]['crossline'], hz[hz['inline'] == inline]['depth'], color='k', lw=3,
+                alpha=0.5)
         aa.set_xlim(x0, x1)
         aa.set_ylim(t1, t0)
         aa.xaxis.set_label_position('top')
