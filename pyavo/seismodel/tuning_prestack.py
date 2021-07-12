@@ -5,7 +5,7 @@ to examine pre-stack tuning effects.
 
 import math
 from numpy import ndarray
-from tuning_wedge import *
+from pyavo.seismodel.tuning_wedge import *
 
 
 def int_depth(h_int: list, thickness: float):
