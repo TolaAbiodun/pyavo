@@ -180,7 +180,7 @@ class GassmannSub(object):
         rho_brine = rho_water + 0.668 * S + 0.44 * S * S + 10 ** (-6) * S * r2
         k_brine = rho_brine * v_brine**2 * 1e-6
 
-        return k_brine, rho_brine
+        return k_brine, round(rho_brine, 3)
 
     # Function to estimate initial hydrocarbon properties
     def init_hyc(self) -> tuple:
