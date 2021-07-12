@@ -8,7 +8,8 @@ def plot_imp(vpvs: Union[ndarray, Series, float], vp: Union[ndarray, Series, flo
              rho: Union[ndarray, Series, float], angle: Union[float, int], h_well: Union[ndarray, Series],
              h_ref: Union[int, float]):
     """
-    Creates log plots of Poisson ratio, Acoustic impedance-Normalized Elastic Impedance(AI-NEI) and Lame's Parameters(lambda-rho & mu-rho)
+    Creates log plots of Poisson ratio, Acoustic impedance-Normalized Elastic Impedance(AI-NEI)
+    and Lame's Parameters (lambda-rho & mu-rho).
 
     :param vpvs: Vp/Vs values form VP/VS Log (m/s)
     :param vp: P-wave velocities form Vp log (m/s)
@@ -149,12 +150,12 @@ def crossplot(vp, vs, vpvs, rho, phi, GR, AI, NEI, lambda_rho, mu_rho):
 
 def avo_plot(angle: ndarray, shuey: float, intercept: float, gradient: float, lim=1.5):
     """
-    Generates crossplots of P-wave reflectivity vs angles, & gradient vs intercept.
+    Generates crossplots of P-wave reflectivity vs angles, and gradient vs intercept.
 
     :param angle: Angle of incidence
     :param shuey: Shuey 2-term approximation of reflectivity
-    :param gradient: Gradient from shuey approx
-    :param intercept: Intercept from shuey approx
+    :param gradient: Gradient from shuey approximation
+    :param intercept: Intercept from shuey approximation
     """
     #Create subplots
     f, ax = plt.subplots(1, 2, figsize=(10, 5))
