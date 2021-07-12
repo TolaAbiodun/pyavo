@@ -111,7 +111,7 @@ def n_angles(theta1_min=float, theta1_max=float, theta1_step=1):
     return n_trace
 
 
-def calc_theta_rc(theta1_min: float, theta1_step: float, vp: list, vs: list, rho: list):
+def calc_theta_rc(theta1_min: float, theta1_step: float, vp: list, vs: list, rho: list, ang):
     """
     Computes the reflection coefficients for given incidence angles in a three layer model.
 
@@ -120,13 +120,14 @@ def calc_theta_rc(theta1_min: float, theta1_step: float, vp: list, vs: list, rho
     :param vp: Layer P-wave velocities
     :param vs: Layer S-wave velocities
     :param rho: Density of layers
+    :param ang: Angle of incidence
     :return:
         theta1_samp : n-samples of incidence angles
         rc_1: Reflection coefficient at layer1 / layer2
         rc_2: Reflection coefficient at layer2 / layer3
 
     """
-    theta1_samp = theta1_min + theta1_step * angle
+    theta1_samp = theta1_min + theta1_step * ang
     rc_1 = rc_zoep(vp[0], vs[0], vp[1], vs[1], rho[0], rho[1], theta1_samp)
     rc_2 = rc_zoep(vp[1], vs[1], vp[2], vs[2], rho[1], rho[2], theta1_samp)
     return theta1_samp, rc_1, rc_2
