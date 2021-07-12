@@ -18,9 +18,8 @@ def plot_ricker(sample_rate=0.001, length=0.128, c_freq=25):
     :param c_freq: central frequency of wavelet (cycles/seconds or Hz). (float, int)
     :return: ndarray
 
-    Example:
-    -------
-    plot_ricker(sample_rate,duration,c_freq)
+    Usage:
+        plot_ricker(sample_rate,duration,c_freq)
     """
     import numpy as np
     import matplotlib.pyplot as plt
@@ -56,9 +55,8 @@ def ricker(sample_rate=0.001, length=0.128, c_freq=25):
     :param c_freq: central frequency of wavelet (cycles/seconds or Hz). (float, int)
     :return: ndarray
 
-    Example:
-    -------
-    time, wavelet = (sample_rate,duration,c_freq)
+    Usage:
+        time, wavelet = (sample_rate,duration,c_freq)
     """
     import numpy as np
 
