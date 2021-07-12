@@ -29,8 +29,6 @@ def k_rho_matrix(v_cly: float, k_cly: float, k_qtz: float, rho_cly: float, rho_q
         k_mat : Bulk modulus of rock matrix
         rho_mat : Density of rock matrix
     """
-    if isinstance(v_cly, str):
-        raise NameError(f'{v_cly} is not a valid data type.\n use integer or float')
 
     v_qtz = 1 - v_cly
     k_voigt = v_cly * k_cly + v_qtz * k_qtz
@@ -39,7 +37,7 @@ def k_rho_matrix(v_cly: float, k_cly: float, k_qtz: float, rho_cly: float, rho_q
     rho_mat = v_cly * rho_cly + v_qtz * rho_qtz
     # print("The Bulk modulus(Gpa) and Density(g/cc) of the Matrix:")
 
-    return k_mat, rho_mat
+    return round(k_mat, 2), round(rho_mat, 2)
 
 
 def vel_sat(k_sat: float, rho_sat: float, mu: float) -> tuple:
@@ -181,7 +179,7 @@ class GassmannSub(object):
         rho_brine = rho_water + 0.668 * S + 0.44 * S * S + 10 ** (-6) * S * r2
         k_brine = rho_brine * v_brine ** 2 * 1e-6
 
-        return k_brine, rho_brine
+        return round(k_brine, 2), round(rho_brine, 2)
 
     # Function to estimate initial hydrocarbon properties
     def init_hyc(self) -> tuple:
@@ -225,7 +223,7 @@ class GassmannSub(object):
             yo = 0.85 + 5.6 / (Ppr + 2) + 27.1 / (Ppr + 3.5) ** 2 - (8.7 * math.exp(-0.65 * (Ppr + 1)))
             k_hyc += P / (1 - (Ppr / Z * dz_dp)) * yo / 1000
             # print('Bulk modulus(GPa) and Density(g/cc) of initial fluid (gas)')
-        return k_hyc, rho_hyc
+        return round(k_hyc, 2), round(rho_hyc, 2)
 
     def k_rho_fluid(self) -> tuple:
         """
@@ -239,7 +237,7 @@ class GassmannSub(object):
         shi = 1 - self.swi
         k_fl = (k_br / self.swi + k_hyc / shi)
         rho_fl = self.swi * rho_br + shi * rho_hyc
-        return k_fl, rho_fl
+        return round(k_fl, 2), round(rho_fl, 2)
 
     def insitu_moduli(self, rho_fluid: float, rho_matrix: float, d_phi=True) -> tuple:
         """
@@ -265,7 +263,7 @@ class GassmannSub(object):
             k_sat_init = init_rho * (vp ** 2 - (vs ** 2 * 4 / 3))
             mu_sat_init = init_rho * vs * vs
 
-        return k_sat_init, mu_sat_init
+        return round(k_sat_init, 2), round(mu_sat_init, 2)
 
     def k_frame(self, k_mat: float, k_fld: float, k_sat: float) -> float:
         """
@@ -279,7 +277,7 @@ class GassmannSub(object):
         k0 = k_sat * (self.phi * k_mat / k_fld + 1 - self.phi) - k_mat
         k1 = (self.phi * k_mat / k_fld) + (k_sat / k_mat) - 1 - self.phi
         k_frame = k0 / k1
-        return k_frame
+        return round(k_frame, 2)
 
     def final_hc(self) -> tuple:
         """
@@ -329,7 +327,7 @@ class GassmannSub(object):
             yo = 0.85 + 5.6 / (Ppr + 2) + 27.1 / (Ppr + 3.5) ** 2 - (8.7 * math.exp(-0.65 * (Ppr + 1)))
             k_hyc += P / (1 - (Ppr / Z * dz_dp)) * yo / 1000
             # print('Bulk modulus(Gpa) and Density(g/cc) of desired fluid (gas)')
-        return k_hyc, rho_hyc
+        return round(k_hyc, 2), round(rho_hyc, 2)
 
     def k_rho_sat(self, k_mat: float, rho_mat: float, k_frame: float) -> tuple:
         """
@@ -355,4 +353,4 @@ class GassmannSub(object):
         k1 = self.phi / k_fld + (1 - self.phi) / k_mat - k_frame / (k_mat * k_mat)
         k_sat_new = k_frame + ((1 - k_frame / k_mat) ** 2) / k1
 
-        return k_sat_new, rho_sat_new
+        return round(k_sat_new, 2),  round(rho_sat_new, 2)
