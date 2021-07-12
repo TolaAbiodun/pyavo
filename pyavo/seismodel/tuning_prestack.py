@@ -1,6 +1,8 @@
 """
 Functions to generate a synthetic angle gather from a 3-layer property model
 to examine pre-stack tuning effects.
+
+Reference: Wes Hamlyn 2014
 """
 
 import math
@@ -9,6 +11,13 @@ import matplotlib.pyplot as plt
 
 
 def int_depth(h_int: list, thickness: float):
+    """
+    Compute interface depths
+    :param h_int: initial depth
+    :param thickness: thickness
+    :return:
+        d_interface: depth to interface
+    """
     d_interface = h_int
     d_interface.append(d_interface[0] + thickness)
     return d_interface
@@ -16,11 +25,12 @@ def int_depth(h_int: list, thickness: float):
 
 def ray_param(v_int: float, theta: float) -> float:
     """
-       Calculates the ray parameter P
+    Calculates the ray parameter P.
 
     :param v_int: Interval velocity
-    :param theta: Angle of incidence (deg)
+    :param theta: Angle of incidence
     :return:
+        P: ray parameter
     """
 
     # Cast inputs to floats
@@ -34,11 +44,7 @@ def ray_param(v_int: float, theta: float) -> float:
 
 def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: float, theta1: float):
     """
-    Calculate the Reflection & Transmission coefficients using full Zoeppritz equations.
-
-    Reference:
-    ----------
-    The Rock Physics Handbook, Dvorkin et al.
+    Calculate the Reflection & Transmission coefficients using Zoeppritz equations.
 
     :param vp1: P-wave velocity in Layer 1
     :param vs1: S-wave velocity in Layer 1
@@ -48,6 +54,10 @@ def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: f
     :param rho2: Density of layer 2
     :param theta1: Angle of incidence of ray (deg)
     :return:
+        R: Refelection coefficients
+
+    Reference:
+        The Rock Physics Handbook, Dvorkin et al.
     """
     # Cast inputs to floats
     vp1 = float(vp1)
@@ -91,11 +101,34 @@ def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: f
 
 
 def n_angles(theta1_min=float, theta1_max=float, theta1_step=1):
+    """
+    Compute angles of incidence for a given number of traces.
+
+    :param theta1_min: minimum incidence angle
+    :param theta1_max: maximum incidence angle
+    :param theta1_step: angle of incidence
+    :return:
+        n_trace: incidence angles for n-trace
+    """
     n_trace = int((theta1_max - theta1_min) / theta1_step + 1)
     return n_trace
 
 
 def calc_theta_rc(angle, theta1_min: float, theta1_step: float, vp: list, vs: list, rho: list):
+    """
+    Computes incidence angles of plane wave and reflection coefficients for a three-layer model.
+
+    :param angle:
+    :param theta1_min: minimum incidence angle
+    :param theta1_step:
+    :param vp: P-wave velocity
+    :param vs: S-wave velocity
+    :param rho: Density
+    :return:
+        theta1_samp: n-samples of incidence angle
+        rc_1: Reflection coefficient at bottom of upper layer
+        rc_2: Reflection coefficient at top of bottom layer
+    """
     theta1_samp = theta1_min + theta1_step * angle
     rc_1 = rc_zoep(vp[0], vs[0], vp[1], vs[1], rho[0], rho[1], theta1_samp)
     rc_2 = rc_zoep(vp[1], vs[1], vp[2], vs[2], rho[1], rho[2], theta1_samp)
