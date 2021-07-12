@@ -125,19 +125,19 @@ def syn_seis(ref_coef: list, wav_amp):
     return smg
 
 
-def int_depth(h_int: list, dh_min: float, dh_step: float, model):
+def int_depth(h_int: list, dh_min: float, dh_step: float, mod: int):
     """
     Computes the depth to an interface.
 
     :param h_int: depth to first interface
     :param dh_min: minimum thickness of layer 2
     :param dh_step: Thickness step from trace-to-trace (usually 1.0m)
-    :param model: model traces generated within a thickness or interval
+    :param mod: model traces generated within a thickness or interval
     :return:
         d_inteface: depth to interface
     """
     d_interface = h_int
-    d_interface.append(d_interface[0] + dh_min + dh_step * model)
+    d_interface.append(d_interface[0] + dh_min + dh_step * mod)
     return d_interface
 
 
