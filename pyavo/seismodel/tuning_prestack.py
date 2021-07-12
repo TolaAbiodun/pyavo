@@ -256,12 +256,12 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times: ndarray, thick
     Plot synthetic angle gather for three layer model displayed in normal polarity and amplitudes extracted
     along the upper and lower interfaces.
 
-    :param top_ref: convolved top reflectivity values
-    :param base_ref: convolved base reflectivity values
     :param min_time: Minimum plot time (s)
     :param max_time: Maximum plot time (s)
     :param lyr_times: interface times
     :param thickness: apparent thickness of second layer
+    :param top_ref: convolved top reflectivity values
+    :param base_ref: convolved base reflectivity values
     :param vp_dig: P-wave velocity in digital time domain
     :param vs_dig: S-wave velocity in digital time domain
     :param rho_dig: Density of layers in digital time domain
@@ -269,7 +269,6 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times: ndarray, thick
     :param rc_zoep: Zoeppritz reflectivies
     :param t: regularly spaced time samples
     :param excursion: Adjust plot width
-    :return:
     """
     fig = plt.figure(figsize=(16, 12))
     fig.set_facecolor('white')
