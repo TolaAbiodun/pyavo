@@ -185,7 +185,7 @@ def ricker(sample_rate: float, length: float, c_freq: float):
 
 
 # Calculate the tuning trace and tuning thickness
-def tuning_trace(syn_zo, step=1):
+def _tuning_trace(syn_zo):
     """
     Computes the tuning trace and thickness in a synthetic trace gather.
 
@@ -196,11 +196,23 @@ def tuning_trace(syn_zo, step=1):
         t_thick: tuning thickness
     """
     t_trace = np.argmax(np.abs(syn_zo.T)) % syn_zo.T.shape[1]
-    t_thick = tuning_trace(syn_zo, step) * step
-    return t_trace, t_thick
+    return t_trace
 
 
-def plot_misc(ax_line, data: ndarray, t: ndarray, excursion: int, highlight: int):
+def _tuning_thickness(syn_zo, step=1):
+    """
+    Computes the tuning thickness in a synthetic trace gather
+
+    :param syn_zo: Synthetic seismogram
+    :param step: Trace steps
+    :return:
+        t_thick: tuning thickness
+    """
+    t_thick = _tuning_trace(syn_zo) * step
+    return t_thick
+
+
+def _plot_misc(ax_line, data: ndarray, t: ndarray, excursion: int, highlight: int):
     """
     Format the display of synthetic angle gather.
 
@@ -213,7 +225,7 @@ def plot_misc(ax_line, data: ndarray, t: ndarray, excursion: int, highlight: int
     import numpy as np
     import matplotlib.pyplot as plt
 
-    [n_trace, n_samp] = data.shape
+    [n_trace, _] = data.shape
 
     t = np.hstack([0, t, t.max()])
 
@@ -253,7 +265,8 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     :param dt: trace parameter, changing this from 0.0001 can affect the display quality.
     """
     [n_trace, _] = syn_zo.shape
-    t_trace, t_thick = tuning_trace(syn_zo=syn_zo)
+    t_trace = _tuning_trace(syn_zo=syn_zo)
+    t_thick = _tuning_thickness(syn_zo=syn_zo)
     layer_index = np.array(np.round(layer_times / dt), dtype='int16')
 
     fig = plt.figure(figsize=(10, 12))
@@ -279,7 +292,7 @@ def wedge_model(syn_zo: ndarray, layer_times: ndarray, t: ndarray, t_min: float,
     ax0.set_xlim((-excursion, n_trace + excursion))
 
     ax1 = fig.add_subplot(gs[1])
-    plot_misc(ax_line=ax1, data=syn_zo, t=t, excursion=excursion, highlight=t_trace)
+    _plot_misc(ax_line=ax1, data=syn_zo, t=t, excursion=excursion, highlight=t_trace)
     ax1.plot(layer_times[:, 0], color='blue', lw=1.5)
     ax1.plot(layer_times[:, 1], color='red', lw=1.5)
     ax1.set_title('Normal polarity zero-offset synthetic seismogram', pad=20, fontsize=15)
