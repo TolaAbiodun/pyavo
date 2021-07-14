@@ -9,7 +9,8 @@ python:
 
 
 install:
-  - pip install tox
+  - pip install -r requirements.txt
+  - pip install .
 
 script:
-  - tox -v -e py
+  - python tests.py
