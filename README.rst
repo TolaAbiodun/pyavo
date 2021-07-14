@@ -32,7 +32,7 @@ Status
     :alt: License
 
 .. line-block::
-   The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, Model Synthetic tuning-wedge and perform Gassmann fluid substitution.
+   The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, model synthetic tuning-wedge & prestack, and perform Gassmann fluid substitution.
 
 
 Installation

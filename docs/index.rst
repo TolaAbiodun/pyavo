@@ -7,7 +7,6 @@ Welcome to pyavo's documentation!
 =================================
 .. toctree::
    :maxdepth: 4
-   :caption: Inroduction:
 
 A python library for AVO analysis.
 
@@ -58,7 +57,6 @@ Table of Contents
 =================
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
    
    modules
    
