@@ -25,9 +25,7 @@ setuptools.setup(
     long_description=open('README.rst').read(),
     long_description_content_type="text/markdown",
     url="#",
-    packages=['pyavo',
-              'pyavo.avotools',
-              'pyavo.seismodel'],
+    packages=setuptools.find_packages(),
     description='AVO Analysis in Python',
     classifiers=[
         "Programming Language :: Python :: 3.6",
