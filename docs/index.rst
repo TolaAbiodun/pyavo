@@ -14,24 +14,20 @@ A python library for AVO analysis.
 Status
 +++++++
 
-.. image:: https://img.shields.io/travis/agile-geoscience/bruges.svg
-	:target: https://travis-ci.org/agile-geoscience/bruges
-	:alt: Travis build status
-
-.. image:: https://readthedocs.org/projects/bruges/badge/?version=latest
+.. image:: https://readthedocs.org/projects/pyavo/badge/?version=latest
 	:target: https://bruges.readthedocs.io/?badge=latest
 	:alt: Documentation Status
 
-.. image:: https://img.shields.io/pypi/status/bruges.svg
-	:target: https://pypi.python.org/pypi/bruges/
+.. image:: https://img.shields.io/pypi/status/pyavo.svg
+	:target: https://pypi.python.org/pypi/pyavo/
 	:alt: Development status
 
-.. image:: https://img.shields.io/pypi/v/bruges.svg
-	:target: https://pypi.python.org/pypi/bruges/
+.. image:: https://img.shields.io/pypi/v/pyavo.svg
+	:target: https://pypi.python.org/pypi/pyavo/
 	:alt: Latest version
 
-.. image:: https://img.shields.io/pypi/pyversions/bruges.svg
-	:target: https://pypi.python.org/pypi/bruges/
+.. image:: https://img.shields.io/pypi/pyversions/pyavo.svg
+	:target: https://pypi.python.org/pypi/pyavo/
 	:alt: Python version
 
 
