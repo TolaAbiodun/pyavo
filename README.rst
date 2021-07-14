@@ -3,6 +3,29 @@ pyavo
 
 A python library for AVO analysis.
 
+Status
++++++++
+
+.. image:: https://readthedocs.org/projects/pyavo/badge/?version=latest
+    :target: https://bruges.readthedocs.io/?badge=latest
+    :alt: Documentation Status
+
+.. image:: https://img.shields.io/pypi/status/pyavo.svg
+    :target: https://pypi.python.org/pypi/pyavo/
+    :alt: Development status
+
+.. image:: https://img.shields.io/pypi/v/pyavo.svg
+    :target: https://pypi.python.org/pypi/pyavo/
+    :alt: Latest version
+
+.. image:: https://img.shields.io/pypi/pyversions/pyavo.svg
+    :target: https://pypi.python.org/pypi/pyavo/
+    :alt: Python version
+
+.. line-block::
+    The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, model tuning-wedge/tuning-prestack and perform Gassmann fluid substitution.
+
+
 Installation
 ++++++++++++
 Install with
