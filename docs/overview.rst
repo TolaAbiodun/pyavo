@@ -1,6 +1,9 @@
-===========
+
 PyAVO
-===========
+=====
+
+.. toctree::
+   :maxdepth: 4
 
 A python library for AVO analysis.
 
