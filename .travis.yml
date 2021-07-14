@@ -23,3 +23,6 @@ before_install:
 
 install:
   - python setup.py install
+
+script:
+  - python run_tests.py
