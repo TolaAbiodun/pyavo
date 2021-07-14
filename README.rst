@@ -22,6 +22,7 @@ Status
     :target: https://pypi.python.org/pypi/pyavo/
     :alt: Python version
 
+
 .. line-block::
     The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, model tuning-wedge/tuning-prestack and perform Gassmann fluid substitution.
 
@@ -35,6 +36,7 @@ Install with
     pip install pyavo
 
 **pyavo** requires Pandas, NumPy, Matplotlib, xarray, segyio.
+
 
 Links
 +++++
