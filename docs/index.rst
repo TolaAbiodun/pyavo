@@ -34,9 +34,6 @@ Status
 	:target: https://pypi.python.org/pypi/bruges/
 	:alt: Python version
 
-.. image:: https://img.shields.io/pypi/l/bruges.svg
-	:target: http://www.apache.org/licenses/LICENSE-2.0
-	:alt: License
 
 .. line-block::
    The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, model tuning-wedge/tuning-prestack and perform Gassmann fluid substitution.
@@ -55,7 +52,8 @@ Install with
 
 	
 Contents
-========
+++++++++
+
 .. toctree::
 	
 	modules
