@@ -1,11 +1,15 @@
+"""
+Functions to create well log plots & crossplots of P-wave reflectivity vs angles, and gradient vs intercept.
+"""
+
 import pyavo.avotools.impedance as imp
 import matplotlib.pyplot as plt
 from pyavo.avotools.approx import *
 
 
-def plot_imp(vpvs: Union[ndarray, Series, float], vp: Union[ndarray, Series, float], vs: Union[ndarray, Series, float],
-             rho: Union[ndarray, Series, float], angle: Union[float, int], h_well: Union[ndarray, Series],
-             h_ref: Union[int, float]):
+def plot_imp(vpvs: Union[ndarray, Series, float], vp: Union[ndarray, Series, float],
+             vs: Union[ndarray, Series, float], rho: Union[ndarray, Series, float],
+             angle: Union[float, int], h_well: Union[ndarray, Series], h_ref: Union[int, float]):
     """
     Creates log plots of Poisson ratio, Acoustic impedance-Normalized Elastic Impedance(AI-NEI)
     and Lame's Parameters (lambda-rho & mu-rho).
@@ -156,7 +160,7 @@ def avo_plot(angle: ndarray, shuey: float, intercept: float, gradient: float, li
     :param gradient: Gradient from shuey approximation
     :param intercept: Intercept from shuey approximation
     """
-    #Create subplots
+    # Create subplots
     f, ax = plt.subplots(1, 2, figsize=(10, 5))
 
     ax[0].plot(angle, shuey, '-', color='r', linewidth=3)

@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
-# Functions to calculate acoustic and elastic impedance from well logs
 """
-Created on Thur 1 21:39:03 2021
-@author: Tola Abiodun
+Functions to calculate acoustic and elastic impedance from well logs
 """
 import numpy as np
 
@@ -21,7 +18,7 @@ def ai(vp: float, rho: float):
     return z
 
 
-def ei(vp, vs, rho, ang):
+def ei(vp: float, vs: float, rho: float, ang: int):
     """
     Computes the elastic impedance of a layer given velocities, densities and incidence angle.
 
@@ -46,7 +43,8 @@ def ei(vp, vs, rho, ang):
     return ei
 
 
-def norm_ei(vp, vs, rho, vp_sh, vs_sh, rho_sh, ang):
+def norm_ei(vp: float, vs: float, rho: float, vp_sh: float,
+            vs_sh: float, rho_sh: float, ang: int):
     """
     Computes the normalized elastic impedance.
 
@@ -61,7 +59,7 @@ def norm_ei(vp, vs, rho, vp_sh, vs_sh, rho_sh, ang):
         nei: Normalized elastic impedance.
 
     Reference:
-    Whitcombe, D, 2002, Elastic impedance normalization, Geophysics, 67 (1), 60–62.
+        Whitcombe, D, 2002, Elastic impedance normalization, Geophysics, 67 (1), 60–62.
     """
 
     theta = np.radians(ang)
@@ -75,7 +73,7 @@ def norm_ei(vp, vs, rho, vp_sh, vs_sh, rho_sh, ang):
     return nei
 
 
-def lame(vp, vs, rho):
+def lame(vp: float, vs: float, rho: float):
     """
     Computes Lamé parameters - lambda_rho and mu_rho.
 
@@ -83,7 +81,7 @@ def lame(vp, vs, rho):
     :param vs: S-wave velocity (m/s)
     :param rho: Density (g/cc)
     :returns:
-        lambda_rho: Lamé first parameter
+        lambda_rho: Lamé first parameter,
         mu_rho: Lamé second parameter
 
     Reference:
