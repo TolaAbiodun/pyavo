@@ -1,6 +1,5 @@
 """
-Functions to generate a synthetic angle gather from a 3-layer property model
-to examine pre-stack tuning effects.
+Functions to generate a synthetic angle gather from a 3-layer property model to examine pre-stack tuning effects.
 """
 
 import math
@@ -10,6 +9,7 @@ from pyavo.seismodel.tuning_wedge import *
 def int_depth(h_int: list, thickness: float):
     """
     Computes depth to the interface for a three layer model.
+
     :param h_int: depth to to first interface
     :param thickness: thickness
     :return:
@@ -39,7 +39,8 @@ def ray_param(v_int: float, theta: float) -> float:
     return p
 
 
-def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: float, theta1: float):
+def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float,
+            rho1: float, rho2: float, theta1: float) -> ndarray:
     """
     Calculate the Reflection & Transmission coefficients using Zoeppritz equations.
 
@@ -54,7 +55,7 @@ def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: f
         R: Reflection coefficients
 
     Reference:
-    The Rock Physics Handbook, Dvorkin et al.
+        The Rock Physics Handbook, Dvorkin et al.
     """
     # Cast inputs to floats
     vp1 = float(vp1)
@@ -97,7 +98,7 @@ def rc_zoep(vp1: float, vs1: float, vp2: float, vs2: float, rho1: float, rho2: f
     return R
 
 
-def n_angles(theta1_min: float, theta1_max: float, theta1_step=1):
+def n_angles(theta1_min: float, theta1_max: float, theta1_step=1) -> int:
     """
     Computes number of traces for given angles on incidence.
 
@@ -111,7 +112,8 @@ def n_angles(theta1_min: float, theta1_max: float, theta1_step=1):
     return n_trace
 
 
-def calc_theta_rc(theta1_min: float, theta1_step: float, vp: list, vs: list, rho: list, ang):
+def calc_theta_rc(theta1_min: float, theta1_step: float, vp: list,
+                  vs: list, rho: list, ang) -> tuple:
     """
     Computes the reflection coefficients for given incidence angles in a three layer model.
 
@@ -122,9 +124,9 @@ def calc_theta_rc(theta1_min: float, theta1_step: float, vp: list, vs: list, rho
     :param rho: Density of layers
     :param ang: Angle of incidence
     :return:
-        theta1_samp : n-samples of incidence angles
-        rc_1: Reflection coefficient at layer1 / layer2
-        rc_2: Reflection coefficient at layer2 / layer3
+        theta1_samp : n-samples of incidence angles,
+        rc_1: Reflection coefficient at layer1 / layer2,
+        rc_2: Reflection coefficient at layer2 / layer3.
 
     """
     theta1_samp = theta1_min + theta1_step * ang
@@ -138,6 +140,8 @@ def layer_index(lyr_times: list, dt=0.0001) -> tuple:
     Calculate array indices corresponding to top/base interfaces.
 
     :param lyr_times: Interface times
+    :param dt: change in time, default is 0.0001. Changing this from 0.00005 can affect the display quality.
+
     :return:
         lyr1_indx: array
             Layer 1
@@ -151,10 +155,10 @@ def layer_index(lyr_times: list, dt=0.0001) -> tuple:
     return lyr1_indx, lyr2_indx
 
 
-def avo_inv(rc_zoep, ntrc: int, top: list):
+def avo_inv(rc_zoep, ntrc: int, top: list) -> dict:
     """
-    AVO inversion for INTERCEPT and GRADIENT from analytic and convolved reflectivity
-    values. Linear least squares method is used for estimating INTERCEPT and GRADIENT coefficients.
+    AVO inversion for INTERCEPT and GRADIENT from analytic and convolved reflectivity values.
+    Linear least squares method is used for estimating INTERCEPT and GRADIENT coefficients.
 
     :param rc_zoep: Zoeppritz reflection coefficient values
     :param ntrc: Number of traces
@@ -184,7 +188,7 @@ def avo_inv(rc_zoep, ntrc: int, top: list):
             }
 
 
-def t_domain(t, vp: list, vs: list, rho: list, lyr1_index: list, lyr2_index: list):
+def t_domain(t, vp: list, vs: list, rho: list, lyr1_index: list, lyr2_index: list) -> tuple:
     """
     Create a "digital" time domain version of an input property model.
 
@@ -195,9 +199,9 @@ def t_domain(t, vp: list, vs: list, rho: list, lyr1_index: list, lyr2_index: lis
     :param lyr1_index: Array indices of top interface
     :param lyr2_index: Array indices of base interface
     :return:
-        vp_dig: P-wave velocity in digital t-domain
-        vs_dig: S-wave velocity in digital t-domain
-        rho_dig: Density in digital t-domain
+        vp_dig: P-wave velocity in digital t-domain,
+        vs_dig: S-wave velocity in digital t-domain,
+        rho_dig: Density in digital t-domain.
     """
     vp_dig = np.zeros(t.shape)
     vs_dig = np.zeros(t.shape)
@@ -223,6 +227,7 @@ def t_domain(t, vp: list, vs: list, rho: list, lyr1_index: list, lyr2_index: lis
 def plot_vawig(axhdl, data, t, excursion):
     """
     Format the display of synthetic angle gather.
+
     :param axhdl: Plot axes
     :param data: Synthetic traces generated from convolved zoeppritz.
     :param t: Regularly spaced ime samples
@@ -266,7 +271,7 @@ def syn_angle_gather(min_time: float, max_time: float, lyr_times: ndarray, thick
     :param vs_dig: S-wave velocity in digital time domain
     :param rho_dig: Density of layers in digital time domain
     :param syn_zoep: Synthetic seismogram
-    :param rc_zoep: Zoeppritz reflectivies
+    :param rc_zoep: Zoeppritz reflectivities
     :param t: regularly spaced time samples
     :param excursion: Adjust plot width
     """

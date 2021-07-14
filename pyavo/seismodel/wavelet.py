@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Functions to generate a ricker and bandpass wavelet
-created by: Tola Abiodun
-create date: 01/06/2021
+Functions to generate a ricker and trapezoidal bandpass wavelet.
+
+Reference:
+    https://wiki.seg.org/wiki/Practical_aspects_of_frequency_filtering
 """
 
 import numpy as np
@@ -11,12 +11,11 @@ import scipy.signal as signal
 
 def plot_ricker(sample_rate=0.001, length=0.128, c_freq=25):
     """
-    Generate a zero-phase wavelet plot.
+    Computes and display a zero-phase wavelet.
 
-    :param sample_rate: sample rate in seconds (float, int)
-    :param length: length of time (dt) in seconds (float, int)
-    :param c_freq: central frequency of wavelet (cycles/seconds or Hz). (float, int)
-    :return: ndarray
+    :param sample_rate: sample rate in seconds.
+    :param length: length of time (dt) in seconds.
+    :param c_freq: central frequency of wavelet (cycles/seconds or Hz)
 
     Usage:
         plot_ricker(sample_rate,duration,c_freq)
@@ -42,13 +41,14 @@ def plot_ricker(sample_rate=0.001, length=0.128, c_freq=25):
     plt.show()
 
 
-def ricker(sample_rate=0.001, length=0.128, c_freq=25):
+def ricker(sample_rate=0.001, length=0.128, c_freq=25) -> tuple:
     """
-    Generate time and amplitude values for a zero-phase wavelet.
+    Generate time and amplitude values for a zero-phase wavelet. The second derivative of the Gaussian function
+    or the third derivative of the normal-probability density function. A Ricker wavelet is often used as a zero-phase
+    embedded wavelet in modeling and synthetic seismogram manufacture.
 
-    The second derivative of the Gaussian function or the third derivative of the normal-probability density function.
-
-    A Ricker wavelet is often used as a zero-phase embedded wavelet in modeling and synthetic seismogram manufacture. Norman H. Ricker (1896–1980), American geophysicist.
+    Reference:
+        Norman H. Ricker (1896–1980), American geophysicist.
 
     :param sample_rate: sample rate in seconds (float, int)
     :param length: length of time (dt) in seconds (float, int)
@@ -69,9 +69,9 @@ def ricker(sample_rate=0.001, length=0.128, c_freq=25):
     return wv_time, wv_amp
 
 
-def bandpass(f1, f2, f3, f4, phase, dt, wvlt_length):
+def bandpass(f1: float, f2: float, f3: float, f4: float, phase: float, dt: float, wvlt_length: float) -> tuple:
     """
-    Calculate a trapezoidal bandpass wavelet
+    Calculate a trapezoidal bandpass wavelet.
 
     f1: Low truncation frequency of wavelet in Hz
     f2: Low cut frequency of wavelet in Hz

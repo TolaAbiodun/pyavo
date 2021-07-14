@@ -1,8 +1,15 @@
-# -*- coding: utf-8 -*-
 """
 Functions to generate a three layer wedge model using the reflection coefficients and travel times
-Original Script by Wes Hamlyn, 2014
-Refactored by Tola Abiodun, 2021.
+
+Reference:
+
+    Mavko, G., T. Mukerji, and J. Dvorkin, 2009, The rock physics handbook: Tools for seismic analysis of porous media, 2nd ed.: Cambridge University Press. CrossRef
+
+    Shuey, R. T., 1985, A simplification of the Zoeppritz equations: Geophysics, 50, no. 4, 609–614, http://dx.doi.org/10.1190/1.1441936.
+
+    Widess, M., 1973, How thin is a thin bed?: Geophysics, 38, no. 6, 1176–1180, http://dx.doi.org/10.1190/1.1440403.
+
+    https://wiki.seg.org/wiki/Thin_beds,_tuning,_and_AVO
 """
 
 import numpy as np
@@ -11,7 +18,7 @@ import matplotlib.pyplot as plt
 from matplotlib import gridspec
 
 
-def get_rc(Vp, rho):
+def get_rc(Vp: list, rho: list) -> list:
     """
     Calculates the Reflection Coefficient at the interface separating two layers. The ratio of amplitude
     of the reflected wave to the incident wave, or how much energy is reflected. Typical values of R
@@ -110,7 +117,7 @@ def mod_digitize(rc_int: list, t_int: list, t: list) -> list:
     return rc
 
 
-def syn_seis(ref_coef: list, wav_amp):
+def syn_seis(ref_coef: list, wav_amp: ndarray) -> list:
     """
     Generate synthetic seismogram from convolved reflectivities and wavelet.
 
@@ -125,7 +132,7 @@ def syn_seis(ref_coef: list, wav_amp):
     return smg
 
 
-def int_depth(h_int: list, dh_min: float, dh_step: float, mod: int):
+def int_depth(h_int: list, dh_min: float, dh_step: float, mod: int) -> list:
     """
     Computes the depth to an interface.
 
@@ -141,7 +148,7 @@ def int_depth(h_int: list, dh_min: float, dh_step: float, mod: int):
     return d_interface
 
 
-def n_model(h_min: float, h_max: float, h_step=1):
+def n_model(h_min: float, h_max: float, h_step=1) -> int:
     """
     Computes number of traces within an interval or thickness.
 
@@ -164,8 +171,8 @@ def ricker(sample_rate: float, length: float, c_freq: float):
     :param length: length of time (dt) in seconds
     :param c_freq: central frequency of wavelet (cycles/seconds or Hz).
     :return:
-        wv_time: zero-phase wavelet time
-        wv_amp: zero-phase wavelet amplitude
+        wv_time: zero-phase wavelet time,
+        wv_amp: zero-phase wavelet amplitude.
 
     Usage:
         time, wavelet = (sample_rate,duration,c_freq)

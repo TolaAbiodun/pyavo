@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Functions to create rock physics models and apply them to well log analysis to quantify seismic responses.
 

@@ -1,5 +1,5 @@
 """
-Functions to import segy data and compute AVO attributes from Near and Far Stacks
+Functions to import segy data and compute AVO attributes from Near and Far Stacks.
 """
 import segyio
 import matplotlib.pyplot as plt
@@ -16,6 +16,8 @@ def read_segy(filepath: str, byte_il=14, byte_xl=21, ignore_geometry=False) -> D
     :param filepath: filepath, any valid string path is acceptable
     :param byte_il: inline byte
     :param byte_xl: crossline byte
+    :param ignore_geometry: Opt out on building geometry information, useful for e.g. shot organised files. Defaults to False.
+
     :return:
         data_array: xarray
     """
@@ -50,7 +52,8 @@ def nfstack(horizon_data: str, near_stack: DataArray, far_stack: DataArray,
             inline: int, robust=True, interpolation='spline16',
             cmap='RdBu', well_XL=None, well_display=True):
     """
-    Display images of Near and Far angle stacks from DataArray.
+    Display images of Near and Far angle stacks from DataArray. Allowed file extension for horizon_data is .txt.
+    Both near and far stack data are read as DataArray to enhance computation speed.
 
     :param horizon_data: file path, any valid string path to a txt file is acceptable.
     :param near_stack: DataArray of Near angle stack
@@ -89,7 +92,8 @@ def nf_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArray
                   XL_slice: tuple, inline: int, well_XL=None, well_display=True, robust=True,
                   interpolation='spline16', add_colorbar=True, cmap='jet_r'):
     """
-    Display images of near and far angle stack attributes.
+    Display images of near and far angle stack attributes. Allowed file extension for horizon_data is .txt.
+    Both near and far stack data are read as DataArray to enhance computation speed.
 
     :param horizon_data: file path, any valid string path to a txt file is acceptable.
     :param near_stack: DataArray of Near angle stack
@@ -101,8 +105,8 @@ def nf_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArray
     :param well_display: Show well trajectory on plot, vertical
 
     Reference:
-    Avseth, P., Mukerji, T., & Mavko, G., 2010. Quantitative seismic interpretation: Applying rock physics tools
-    to reduce interpretation risk.Cambridge university press.
+        Avseth, P., Mukerji, T., & Mavko, G., 2010. Quantitative seismic interpretation: Applying rock physics tools
+        to reduce interpretation risk.Cambridge university press.
     """
     hz = _read_horizon(horizon_data)
     near_il = near_stack.sel(IL=inline)
@@ -146,9 +150,10 @@ def nf_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArray
     plt.show()
 
 
-def avo_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArray, theta_near: int, theta_far: int,
-                   TWT_slice: tuple, XL_slice: tuple, inline: int, well_XL=None, well_display=True, robust=True,
-                   interpolation='spline16', add_colorbar=True, cmap='jet_r') -> dict:
+def avo_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArray, theta_near: int,
+                   theta_far: int, TWT_slice: tuple, XL_slice: tuple, inline: int, well_XL=None,
+                   well_display=True, robust=True, interpolation='spline16', add_colorbar=True,
+                   cmap='jet_r') -> dict:
     """
     Computes intercept, gradient values and display images of AVO attributes & crossplot.
 
@@ -162,7 +167,7 @@ def avo_attributes(horizon_data: str, near_stack: DataArray, far_stack: DataArra
     :param inline: Inline number
     :param well_XL: Well crossline number to define well position
     :returns:
-        c: Intercept
+        c: Intercept,
         m: Gradient
     """
     hz = _read_horizon(horizon_data)
