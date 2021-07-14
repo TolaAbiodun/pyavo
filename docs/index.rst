@@ -55,7 +55,7 @@ Install with
 
 	
 Contents
-=================
+========
 .. toctree::
 	
 	modules
