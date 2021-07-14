@@ -18,10 +18,9 @@ from typing import Union
 
 
 # Function to explore key input logs for Rock physics modeling
-def plot_log(data: DataFrame, vsh: Union[float, iter], vp: Series, vs: Series, imp: list, vp_vs: list,
-             phi: list, rho: list, z_init: Union[int, float],
-             z_final: Union[int, float], shale_cutoff: Union[int, float],
-             sand_cutoff: Union[int, float]):
+def plot_log(data: DataFrame, vsh: Series, vp: Series, vs: Series, imp: Series, vp_vs: Series,
+             phi: list, rho: list, z_init: Union[int, float], z_final: Union[int, float],
+             shale_cutoff: Union[int, float], sand_cutoff: Union[int, float]):
     """
     Explore key input logs for Rock physics modeling. Generates a log plot of the shale volume, acoustic impedance,
     Vp/Vs and a cross plot of Porosity against P-wave velocity and acoustic impedance against Vp/VS.
