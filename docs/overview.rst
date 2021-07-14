@@ -3,6 +3,7 @@ PyAVO
 
 .. toctree::
    :maxdepth: 4
+   :caption: Inroduction:
 
 A python library for AVO analysis.
 
