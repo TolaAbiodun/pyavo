@@ -3,48 +3,48 @@ PyAVO
 =====
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
-A python library for AVO analysis.
+	A python library for AVO analysis.
 
-Status
-+++++++
+	Status
+	+++++++
 
-.. image:: https://img.shields.io/travis/agile-geoscience/bruges.svg
-    :target: https://travis-ci.org/agile-geoscience/bruges
-    :alt: Travis build status
+	.. image:: https://img.shields.io/travis/agile-geoscience/bruges.svg
+		:target: https://travis-ci.org/agile-geoscience/bruges
+		:alt: Travis build status
 
-.. image:: https://readthedocs.org/projects/bruges/badge/?version=latest
-    :target: https://bruges.readthedocs.io/?badge=latest
-    :alt: Documentation Status
+	.. image:: https://readthedocs.org/projects/bruges/badge/?version=latest
+		:target: https://bruges.readthedocs.io/?badge=latest
+		:alt: Documentation Status
 
-.. image:: https://img.shields.io/pypi/status/bruges.svg
-    :target: https://pypi.python.org/pypi/bruges/
-    :alt: Development status
+	.. image:: https://img.shields.io/pypi/status/bruges.svg
+		:target: https://pypi.python.org/pypi/bruges/
+		:alt: Development status
 
-.. image:: https://img.shields.io/pypi/v/bruges.svg
-    :target: https://pypi.python.org/pypi/bruges/
-    :alt: Latest version
+	.. image:: https://img.shields.io/pypi/v/bruges.svg
+		:target: https://pypi.python.org/pypi/bruges/
+		:alt: Latest version
 
-.. image:: https://img.shields.io/pypi/pyversions/bruges.svg
-    :target: https://pypi.python.org/pypi/bruges/
-    :alt: Python version
+	.. image:: https://img.shields.io/pypi/pyversions/bruges.svg
+		:target: https://pypi.python.org/pypi/bruges/
+		:alt: Python version
 
-.. image:: https://img.shields.io/pypi/l/bruges.svg
-    :target: http://www.apache.org/licenses/LICENSE-2.0
-    :alt: License
+	.. image:: https://img.shields.io/pypi/l/bruges.svg
+		:target: http://www.apache.org/licenses/LICENSE-2.0
+		:alt: License
 
-.. line-block::
-   The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, Model Synthetic tuning-wedge and perform Gassmann fluid substitution.
+	.. line-block::
+	   The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, Model Synthetic tuning-wedge and perform Gassmann fluid substitution.
 
 
-Installation
-++++++++++++
-Install with
+	Installation
+	++++++++++++
+	Install with
 
-.. code-block:: shell
+	.. code-block:: shell
 
-    pip install pyavo
+		pip install pyavo
 
-**pyavo** requires Pandas, NumPy, Matplotlib, xarray, segyio.
+	**pyavo** requires Pandas, NumPy, Matplotlib, xarray, segyio.
 
