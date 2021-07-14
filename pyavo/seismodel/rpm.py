@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Functions to create rock physics models and apply them to
-well log analysis to quantify seismic responses
-
-Created by: Tola Abiodun, 2021
+Functions to create rock physics models and apply them to well log analysis to quantify seismic responses.
 
 Using equations http://www.subsurfwiki.org/wiki/Elastic_modulus
 from Mavko, G, T Mukerji and J Dvorkin (2003), The Rock Physics Handbook, Cambridge University Press
@@ -19,8 +16,8 @@ from typing import Union
 
 # Function to explore key input logs for Rock physics modeling
 def plot_log(data: DataFrame, vsh: Series, vp: Series, vs: Series, imp: Series, vp_vs: Series,
-             phi: list, rho: list, z_init: Union[int, float], z_final: Union[int, float],
-             shale_cutoff: Union[int, float], sand_cutoff: Union[int, float]):
+             phi: Series, rho: Series, z_init: float, z_final: float,
+             shale_cutoff: float, sand_cutoff: float):
     """
     Explore key input logs for Rock physics modeling. Generates a log plot of the shale volume, acoustic impedance,
     Vp/Vs and a cross plot of Porosity against P-wave velocity and acoustic impedance against Vp/VS.
@@ -115,7 +112,7 @@ def plot_log(data: DataFrame, vsh: Series, vp: Series, vs: Series, imp: Series, 
 
 
 # Function to create rock physics models
-def soft_sand(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
+def soft_sand(k_min: float, mu_min: float, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
     """
     Computes the bulk modulus and shear modulus of soft-sand (uncemented) rock physics model.
 
@@ -141,9 +138,9 @@ def soft_sand(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
     return k_dry, mu_dry
 
 
-def stiff_sand(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
+def stiff_sand(k_min: float, mu_min: float, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
     """
-    Computes the bulk modulus and shear modulus of stiff-sand (uncemented) rock physics model
+    Computes the bulk modulus and shear modulus of stiff-sand(uncemented) rock physics model.
 
     :param k_min: bulk modulus of mineral (Gpa)
     :param mu_min: shear modulus of mineral (Gpa)
@@ -168,9 +165,9 @@ def stiff_sand(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
     return k_dry, mu_dry
 
 
-def hz_mindlin(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1):
+def hz_mindlin(k_min, mu_min, phi: ndarray, cd_num=8.6, cp=0.4, P=10, f=1) -> tuple:
     """
-    Computes the bulk modulus and shear modulus of the Hertz-Mindlin rock physics model
+    Computes the bulk modulus and shear modulus of the Hertz-Mindlin rock physics model.
 
     :param k_min: bulk modulus of mineral (Gpa)
     :param mu_min: shear modulus of mineral (Gpa)
@@ -210,7 +207,7 @@ def voigt_reuss(mod1: float, mod2: float, vfrac: float) -> tuple:
     throughout the material in an arbitrary average strain field.
 
     :param mod1: elastic modulus of first mineral
-    :param mod2: elastic modlus of second mineral
+    :param mod2: elastic modulus of second mineral
     :param vfrac: volumetric fraction of first mineral (net-to-gross)
     :return: upper bound, lower bound, Voigt-Ruess-Hill average
 
@@ -248,10 +245,11 @@ def vel_sat(k_min: float, rho_min: float, k_fl: float, rho_fl: float,
     return k_sat, rho_sat, vp_sat, vs_sat
 
 
-def plot_rpm(df: DataFrame, k_qtz: float, mu_qtz: float, k_sh: float, mu_sh: float, rho_sh: float, rho_qtz: float,
-             k_br: float, rho_br: float, phi: ndarray, NG: ndarray, vsh: Series, z_init: float, z_final: float,
-             sand_cut: float, shale_cut: float, P: Union[int, float], cp_ssm: float, cn_ssm: float, cp_stm: float,
-             cn_stm: float, eff_phi: Series, vp: Series):
+def plot_rpm(df: DataFrame, k_qtz: float, mu_qtz: float, k_sh: float, mu_sh: float,
+             rho_sh: float, rho_qtz: float, k_br: float, rho_br: float, phi: ndarray,
+             NG: ndarray, vsh: Series, z_init: float, z_final: float, sand_cut: float,
+             shale_cut: float, P: Union[int, float], cp_ssm: float, cn_ssm: float,
+             cp_stm: float, cn_stm: float, eff_phi: Series, vp: Series):
     """
     Plot soft sand and stiff sand rock physics models for different mineralogies.
 
@@ -353,7 +351,7 @@ def plot_rpt(model='soft', fluid='oil', display=True, vsh=0.0,
         (Per Avseth, T. Mukerji and G.mavko, 2015)
 
     """
-    # Generate poro and sw values
+    # Generate porosity and sw values
     phi = np.linspace(0.01, cp, 10)
     sw = np.linspace(0, 1, 10)
 
@@ -441,14 +439,14 @@ def well_rpt(df, z_init: float, z_final: float, sand_cut: float, vsh: Series, vp
     plt.show()
 
 
-def cp_model(k_min, mu_min, phi, cp=0.4):
+def cp_model(k_min: float, mu_min: float, phi: float, cp=0.4) -> tuple:
     """
     Build rock physics models using critical porosity concept.
 
     :param k_min: Bulk modulus of mineral (Gpa)
     :param mu_min: Shear modulus of mineral (Gpa)
     :param phi: Porosity (fraction)
-    :param cp: critical porosity, default = 40%
+    :param cp: critical porosity, default is 40%
     :return: Bulk and Shear modulus of rock frame
 
     Reference
@@ -460,11 +458,10 @@ def cp_model(k_min, mu_min, phi, cp=0.4):
     return k_frame, mu_frame
 
 
-def twolayer(n_samples: int, vp1: Union[int, float], vs1: Union[int, float],
-             rho1: float, vp2: Union[int, float], vs2: Union[int, float],
-             rho2: float):
+def twolayer(n_samples: int, vp1: float, vs1: float,
+             rho1: float, vp2: float, vs2: float, rho2: float):
     """
-    Display seismic signatures at Near and Far offset traces and AVO curve for a two layer model
+    Display seismic signatures at Near and Far offset traces and AVO curve for a two layer model.
 
     :param n_samples: Number of samples
     :param vp1: P-wave velocity in top layer
