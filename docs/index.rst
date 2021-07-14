@@ -7,6 +7,7 @@ Welcome to pyavo's documentation!
 =================================
 .. toctree::
    :maxdepth: 4
+ 
 
 A python library for AVO analysis.
 
@@ -38,7 +39,7 @@ Status
 	:alt: License
 
 .. line-block::
-   The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, Model Synthetic tuning-wedge and perform Gassmann fluid substitution.
+   The pyavo module contains geophysics functions used to generate AVO attributes from Pre-Stack Data, model tuning-wedge/tuning-prestack and perform Gassmann fluid substitution.
 
 
 Installation
@@ -53,13 +54,12 @@ Install with
 
 
 	
-Table of Contents
+Contents
 =================
 .. toctree::
-   :maxdepth: 2
-   
-   modules
-   
+	
+	modules
+	    
 Links
 +++++
 * `Documentation <https://pyavo.readthedocs.org>`_

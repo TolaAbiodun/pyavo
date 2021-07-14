@@ -1,6 +1,5 @@
 """
 Initialize the library.
-:license: MIT
 """
 from pyavo import avotools
 from pyavo import seismodel
