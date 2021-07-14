@@ -22,7 +22,7 @@ def k_rho_matrix(v_cly: float, k_cly: float, k_qtz: float, rho_cly: float, rho_q
     :param rho_cly: Density of clay (g/cc)
     :param rho_qtz: Density of quartz (g/cc)
     :returns:
-        k_mat : Bulk modulus of rock matrix
+        k_mat : Bulk modulus of rock matrix,
         rho_mat : Density of rock matrix
     """
 
@@ -42,7 +42,7 @@ def vel_sat(k_sat: float, rho_sat: float, mu: float) -> tuple:
     elastic moduli of saturated rock.
 
     :returns:
-        vp_new : P-wave velocity
+        vp_new : P-wave velocity,
         vs_new : S-wave velocity
     """
     f = 3280.84
@@ -119,7 +119,7 @@ class GassmannSub(object):
         """
         Computes the bulk modulus(Gpa) and density(g/cc) of brine.
 
-        :return: (Bulk Modulus, Density)
+        :return: Bulk Modulus, Density
         """
         # Coefficients for water velocity computation(Batzle and Wang, 1992)
         w11 = 1402.85
@@ -196,7 +196,7 @@ class GassmannSub(object):
         """
         Computes Bulk modulus and density of initial hydrocarbon.
 
-        :return: k_hyc: Bulk modulus
+        :return: k_hyc: Bulk modulus,
                  rho_hyc: Density
         """
         rho_hyc = 0
@@ -239,7 +239,7 @@ class GassmannSub(object):
         """
         Computes the Bulk modulus and density of the mixed pore fluid phase (Initial insitu model)
 
-        :return: k_fld: Bulk modulus of pore fluid
+        :return: k_fld: Bulk modulus of pore fluid,
                  rho_fld: Density of pore fluid
         """
         k_hyc, rho_hyc = self.init_hyc()
@@ -257,7 +257,7 @@ class GassmannSub(object):
         :param rho_fluid: density of insitu pore fluid phase (g/cc)
         :param rho_matrix: density of rock matrix (g/cc)
         :param d_phi: density derived from input RHOB log.
-        :return: k_sat_init: Bulk modulus
+        :return: k_sat_init: Bulk modulus,
                  mu_sat_init: Shear modulus
         """
         # Use porosity to estimate initial saturated rock density
@@ -347,7 +347,7 @@ class GassmannSub(object):
         :param k_mat: Bulk modulus of rock matrix (GPa)
         :param rho_mat: Density of rock matrix (g/cc)
         :param k_frame: Bulk modulus of rock frame (Gpa)
-        :return: k_sat_new: Bulk modulus
+        :return: k_sat_new: Bulk modulus,
                  rho_sat_new: Density
         """
         # Calculate density of saturated rock
