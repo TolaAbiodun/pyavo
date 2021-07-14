@@ -23,7 +23,6 @@ setuptools.setup(
     author="Tola Abiodun",
     author_email="tola.abiodun@fluxgateng.com",
     long_description=open('README.rst').read(),
-    long_description_content_type="text/markdown",
     url="https://github.com/TolaAbiodun/pyavo",
     packages=setuptools.find_packages(),
     description='AVO Analysis in Python',
@@ -33,6 +32,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    licence='MIT',
     include_package_data=True,
     python_requires='>=3.6',
     install_requires=[
