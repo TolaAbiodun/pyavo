@@ -5,13 +5,24 @@
 
 Welcome to pyavo's documentation!
 =================================
+	overview
+	
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
    
+   Table of Contents
+   =================
+   
    modules
-
+   
+Links
++++++
+* `Documentation <https://pyavo.readthedocs.org>`_
+* `Project page <https://github.com/TolaAbiodun/pyavo>`_
+* `Issue Tracker <https://github.com/TolaAbiodun/pyavo/issues/>`_
+* `PyPi <http://pypi.python.org/pypi/pyavo/>`_
 
 
 Indices and tables
