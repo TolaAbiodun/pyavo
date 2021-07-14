@@ -34,8 +34,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     include_package_data=True,
-    python_requires='>=3.6'
-    # install_requires=[
-    #     'matplotlib', 'pandas', 'numpy', 'las',
-    #     'xarray', 'segyio', 'bruges']
+    python_requires='>=3.6',
+    install_requires=[
+        'matplotlib', 'pandas', 'numpy', 'las',
+        'xarray', 'segyio', 'bruges']
 )
