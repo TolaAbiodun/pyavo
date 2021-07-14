@@ -24,7 +24,7 @@ setuptools.setup(
     author_email="tola.abiodun@fluxgateng.com",
     long_description=open('README.rst').read(),
     long_description_content_type="text/markdown",
-    url="#",
+    url="https://github.com/TolaAbiodun/pyavo",
     packages=setuptools.find_packages(),
     description='AVO Analysis in Python',
     classifiers=[
