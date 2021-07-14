@@ -5,15 +5,17 @@
 
 Welcome to pyavo's documentation!
 =================================
-	overview
-	
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   
-   Table of Contents
-   =================
+	
+	overview
+	
+Table of Contents
+=================
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
    
    modules
    
