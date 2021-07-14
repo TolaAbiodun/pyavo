@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jun  7 21:51:37 2021
+Class for modelling fluid properties for gas, oil and brine saturated sands.
 
-@author: Tola Abiodun
-Fluxgate Technologies, NG
-References: Wang(2001), Batzle and Wang(1992), Geophysics
-
-Class for modelling fluid properties for gas, oil and brine saturated sands
+References: Wang(2001), Batzle and Wang(1992), Geophysics.
 """
 
 import warnings
@@ -42,7 +38,7 @@ def k_rho_matrix(v_cly: float, k_cly: float, k_qtz: float, rho_cly: float, rho_q
 
 def vel_sat(k_sat: float, rho_sat: float, mu: float) -> tuple:
     """
-    Estimate the seismic velocities after Gassmann fluid substituion using density and
+    Estimate the seismic velocities after Gassmann fluid substitution using density and
     elastic moduli of saturated rock.
 
     :returns:
@@ -59,25 +55,38 @@ def vel_sat(k_sat: float, rho_sat: float, mu: float) -> tuple:
 class GassmannSub(object):
     """
     Class to model Gassmann fluid substitution for brine sands, oil sands, and gas sands.
-    it generates the P and S wave velocities and density after fluid substitution according to input parameters.
+    It generates the P and S wave velocities and density after fluid substitution according to input parameters.
 
-    Arguments
-    -----------
-    vp = P-wave velocity from log (ft/s)
-    vs = S-wave velocity from log (ft/s)
-    rho = Bulk density form log (g/cc)
-    rho_o = Oil gravity (deg API)
-    rho_g = Gas gravity (API)
-    vsh = Shale volume from log
-    phi = Porosity
-    swi = Initial water saturation from log
-    swt =  Target water saturation
-    S = Salinity (ppm)
-    T = Temperature (deg)
-    P = Pressure (psi)
-    init_fluid = Fluid type of initial hydrocarbon (gas or oil)
-    final_fluid = Fluid type of desired output where (gas or oil)
-    GOR = Gas-Oil ratio
+    Arguments:
+        vp = P-wave velocity from log (ft/s)
+
+        vs = S-wave velocity from log (ft/s)
+
+        rho = Bulk density form log (g/cc)
+
+        rho_o = Oil gravity (deg API)
+
+        rho_g = Gas gravity (API)
+
+        vsh = Shale volume from log
+
+        phi = Porosity
+
+        swi = Initial water saturation from log
+
+        swt =  Target water saturation
+
+        S = Salinity (ppm)
+
+        T = Temperature (deg)
+
+        P = Pressure (psi)
+
+        init_fluid = Fluid type of initial hydrocarbon (gas or oil)
+
+        final_fluid = Fluid type of desired output where (gas or oil)
+
+        GOR = Gas-Oil ratio
     """
 
     def __init__(self, vp: Union[int, float], vs: Union[int, float], rho: Union[int, float], rho_o: Union[int, float],
@@ -108,7 +117,7 @@ class GassmannSub(object):
 
     def k_rho_brine(self) -> tuple:
         """
-        Estimate the bulk modulus(Gpa) and density(g/cc) of brine.
+        Computes the bulk modulus(Gpa) and density(g/cc) of brine.
 
         :return: (Bulk Modulus, Density)
         """
@@ -185,7 +194,7 @@ class GassmannSub(object):
     # Function to estimate initial hydrocarbon properties
     def init_hyc(self) -> tuple:
         """
-        Estimate Bulk modulus and density of initial hydrocarbon.
+        Computes Bulk modulus and density of initial hydrocarbon.
 
         :return: k_hyc: Bulk modulus
                  rho_hyc: Density
@@ -228,7 +237,7 @@ class GassmannSub(object):
 
     def k_rho_fluid(self) -> tuple:
         """
-        Estimate the Bulk modulus and density of the mixed pore fluid phase (Initial insitu model)
+        Computes the Bulk modulus and density of the mixed pore fluid phase (Initial insitu model)
 
         :return: k_fld: Bulk modulus of pore fluid
                  rho_fld: Density of pore fluid
@@ -242,8 +251,8 @@ class GassmannSub(object):
 
     def insitu_moduli(self, rho_fluid: float, rho_matrix: float, d_phi=True) -> tuple:
         """
-        Estimate the initial original moduli for saturated insitu rock.
-        Density of the insitu saturated rock is calculated from the porosity log using the mass balance equation.
+        Computes the initial original moduli for saturated insitu rock. Density of the insitu
+        saturated rock is calculated from the porosity log using the mass balance equation.
 
         :param rho_fluid: density of insitu pore fluid phase (g/cc)
         :param rho_matrix: density of rock matrix (g/cc)
@@ -268,7 +277,7 @@ class GassmannSub(object):
 
     def k_frame(self, k_mat: float, k_fld: float, k_sat: float) -> float:
         """
-        Estimate the bulk modulus of porous rock frame.
+        Computes the bulk modulus of porous rock frame.
 
         :param k_mat: Bulk modulus of rock matrix
         :param k_fld: Bulk modulus of pore fluid phase
@@ -282,7 +291,7 @@ class GassmannSub(object):
 
     def final_hc(self) -> tuple:
         """
-        Estimate the bulk modulus and density of the desired hydrocarbon (oil or gas)
+        Computes the bulk modulus and density of the desired hydrocarbon (oil or gas).
 
         :return: k_hyc: bulk modulus, rho_hyc: density
         """
@@ -332,7 +341,7 @@ class GassmannSub(object):
 
     def k_rho_sat(self, k_mat: float, rho_mat: float, k_frame: float) -> tuple:
         """
-        Estimate the Gassmann bulk modulus and density of saturated rock after fluid substitution.
+        Computes the Gassmann bulk modulus and density of saturated rock after fluid substitution.
         The desired fluid is defined by the target water saturation and type of hydrocarbon.
 
         :param k_mat: Bulk modulus of rock matrix (GPa)

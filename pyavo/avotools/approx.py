@@ -1,5 +1,5 @@
 """
-Functions to compute Aki-Richards and Shuey 2-term & 3-term approximations
+Functions to compute Aki-Richards and Shuey 2-term & 3-term approximations.
 """
 
 import numpy as np
@@ -44,10 +44,9 @@ def snell(vp1: ndarray, vp2: ndarray, theta1: float) -> tuple:
 
 
 def shueyrc(vp0: Union[ndarray, Series, float], vs0: Union[ndarray, Series, float],
-            rho0: Union[ndarray, Series, float], theta1: Union[ndarray, Series, float]):
+            rho0: Union[ndarray, Series, float], theta1: Union[ndarray, Series, float]) -> tuple:
     """
-    Computes the P-wave reflectivity with Shuey (1985) 2 terms for a
-    given well log.
+    Computes the P-wave reflectivity with Shuey (1985) 2 terms for a given well log.
 
     :param vp0: P-wave velocities from Vp log
     :param vs0: S-Wave velocities from Vs log
@@ -89,8 +88,8 @@ def shueyrc(vp0: Union[ndarray, Series, float], vs0: Union[ndarray, Series, floa
     return RC, c, m
 
 
-def aki_richards(vp1: ndarray, vs1: ndarray, rho1: Union[ndarray, float], vp2: ndarray,
-                 vs2: ndarray, rho2: Union[ndarray, float], theta1: ndarray) -> ndarray:
+def aki_richards(vp1: ndarray, vs1: ndarray, rho1: ndarray, vp2: ndarray,
+                 vs2: ndarray, rho2: ndarray, theta1: ndarray) -> ndarray:
     """
     Computes the Reflection Coefficient with Aki and Richard's (1980) equation for
     a two-layered model.
@@ -126,7 +125,8 @@ def aki_richards(vp1: ndarray, vs1: ndarray, rho1: Union[ndarray, float], vp2: n
 
 
 def shuey(vp1: ndarray, vs1: ndarray, rho1: ndarray,
-          vp2: ndarray, vs2: ndarray, rho2: ndarray, theta1: ndarray):
+          vp2: ndarray, vs2: ndarray, rho2: ndarray,
+          theta1: ndarray) -> tuple:
     """
     Computes the Reflectiviy parameters with Shuey (1985) 2 and 3 terms for a
     two-layered model.
