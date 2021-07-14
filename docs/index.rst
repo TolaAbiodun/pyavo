@@ -7,7 +7,7 @@ Welcome to pyavo's documentation!
 =================================
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Introduction:
 	
 	overview
 	
