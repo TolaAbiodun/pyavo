@@ -36,3 +36,4 @@ Links
 * `Project page <https://github.com/TolaAbiodun/pyavo>`_
 * `Issue Tracker <https://github.com/TolaAbiodun/pyavo/issues/>`_
 * `PyPi <http://pypi.python.org/pypi/pyavo/>`_
+* `Tutorials <https://github.com/TolaAbiodun/beta-tests>`_
