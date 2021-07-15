@@ -1,0 +1,829 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pyavo.avotools package &mdash; pyavo 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyavo.seismodel package" href="pyavo.seismodel.html" />
+    <link rel="prev" title="pyavo package" href="pyavo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pyavo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyavo</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyavo.html">pyavo package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyavo.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pyavo.avotools package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyavo.seismodel.html">pyavo.seismodel package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyavo.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyavo.html#module-pyavo.pyavo">pyavo.pyavo module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyavo.html#module-pyavo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyavo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">pyavo</a> &raquo;</li>
+        
+          <li><a href="pyavo.html">pyavo package</a> &raquo;</li>
+        
+      <li>pyavo.avotools package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/pyavo.avotools.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pyavo-avotools-package">
+<h1>pyavo.avotools package<a class="headerlink" href="#pyavo-avotools-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyavo.avotools.approx">
+<span id="pyavo-avotools-approx-module"></span><h2>pyavo.avotools.approx module<a class="headerlink" href="#module-pyavo.avotools.approx" title="Permalink to this headline">¶</a></h2>
+<p>Functions to compute Aki-Richards and Shuey 2-term &amp; 3-term approximations.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.approx.aki_richards">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.approx.</span></span><span class="sig-name descname"><span class="pre">aki_richards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#pyavo.avotools.approx.aki_richards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Reflection Coefficient with Aki and Richard’s (1980) equation for
+a two-layered model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp1</strong> – P-wave velocity in upper layer</p></li>
+<li><p><strong>vs1</strong> – S-wave velocity in upper layer</p></li>
+<li><p><strong>rho1</strong> – Density of upper layer</p></li>
+<li><p><strong>vp2</strong> – P-wave velocity in lower layer</p></li>
+<li><p><strong>vs2</strong> – S-wave velocity in lower layer</p></li>
+<li><p><strong>rho2</strong> – Density in lower layer</p></li>
+<li><p><strong>theta1</strong> – Angle of incidence</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rc: Reflection coefficient</p>
+</dd>
+</dl>
+<p>Reference: AVO - Chopra and Castagna, 2014, Page 62.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.approx.ref_coeff">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.approx.</span></span><span class="sig-name descname"><span class="pre">ref_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.approx.ref_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the reflection coefficient for a plane incident P-wave.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imp</strong> – Acoustic Impedance</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rc: reflection coefficient</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.approx.shuey">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.approx.</span></span><span class="sig-name descname"><span class="pre">shuey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.approx.shuey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Reflectiviy parameters with Shuey (1985) 2 and 3 terms for a
+two-layered model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp1</strong> – P-wave velocity in upper layer</p></li>
+<li><p><strong>vs1</strong> – S-wave velocity in lower layer</p></li>
+<li><p><strong>rho1</strong> – Density in upper later</p></li>
+<li><p><strong>vp2</strong> – P-wave velocity in lower layer</p></li>
+<li><p><strong>vs2</strong> – S-wave velocity in lower layer</p></li>
+<li><p><strong>rho2</strong> – Density in lower layer</p></li>
+<li><p><strong>theta1</strong> – Angles of incidence</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>c : Intercept.
+m : Gradient.
+rc2 : Reflection coefficient for the 2-term approximation.
+rc3 : Reflection coefficient for the 3-term approximation.</p>
+</dd>
+</dl>
+<p>Reference: Avseth et al., Quantitative seismic interpretation, 2006, Page 182.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.approx.shueyrc">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.approx.</span></span><span class="sig-name descname"><span class="pre">shueyrc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.approx.shueyrc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the P-wave reflectivity with Shuey (1985) 2 terms for a given well log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp0</strong> – P-wave velocities from Vp log</p></li>
+<li><p><strong>vs0</strong> – S-Wave velocities from Vs log</p></li>
+<li><p><strong>rho0</strong> – Density from RHOB log</p></li>
+<li><p><strong>theta1</strong> – Angles of incidence</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RC: Reflection coefficient for the 2-term approximation.
+c: Intercept.
+m: Gradient.</p>
+</dd>
+</dl>
+<p>Reference: Avseth et al., Quantitative seismic interpretation, 2006, Page 182.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.approx.snell">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.approx.</span></span><span class="sig-name descname"><span class="pre">snell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.approx.snell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the angles of refraction for an incident P-wave in a two-layered
+model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp1</strong> – P-wave velocity in upper layer</p></li>
+<li><p><strong>vp2</strong> – P-wave velocity in lower layer</p></li>
+<li><p><strong>theta1</strong> – Angle of incidence</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>theta2: Angle of Refraction
+p: Ray Parameter</p>
+</dd>
+</dl>
+<p>Reference: AVO - Chopra and Castagna, 2014, Page 6.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.avotools.gassmann">
+<span id="pyavo-avotools-gassmann-module"></span><h2>pyavo.avotools.gassmann module<a class="headerlink" href="#module-pyavo.avotools.gassmann" title="Permalink to this headline">¶</a></h2>
+<p>Class for modelling fluid properties for gas, oil and brine saturated sands.</p>
+<p>References: Wang(2001), Batzle and Wang(1992), Geophysics.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.GassmannSub">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyavo.avotools.gassmann.</span></span><span class="sig-name descname"><span class="pre">GassmannSub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_o</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_g</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">swt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_fluid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_fluid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GOR</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.gassmann.GassmannSub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to model Gassmann fluid substitution for brine sands, oil sands, and gas sands.
+It generates the P and S wave velocities and density after fluid substitution according to input parameters.</p>
+<dl>
+<dt>Arguments:</dt><dd><p>vp = P-wave velocity from log (ft/s)</p>
+<p>vs = S-wave velocity from log (ft/s)</p>
+<p>rho = Bulk density form log (g/cc)</p>
+<p>rho_o = Oil gravity (deg API)</p>
+<p>rho_g = Gas gravity (API)</p>
+<p>vsh = Shale volume from log</p>
+<p>phi = Porosity</p>
+<p>swi = Initial water saturation from log</p>
+<p>swt =  Target water saturation</p>
+<p>S = Salinity (ppm)</p>
+<p>T = Temperature (deg)</p>
+<p>P = Pressure (psi)</p>
+<p>init_fluid = Fluid type of initial hydrocarbon (gas or oil)</p>
+<p>final_fluid = Fluid type of desired output where (gas or oil)</p>
+<p>GOR = Gas-Oil ratio</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.GassmannSub.final_hc">
+<span class="sig-name descname"><span class="pre">final_hc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.gassmann.GassmannSub.final_hc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the bulk modulus and density of the desired hydrocarbon (oil or gas).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>k_hyc: bulk modulus, rho_hyc: density</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.GassmannSub.init_hyc">
+<span class="sig-name descname"><span class="pre">init_hyc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.gassmann.GassmannSub.init_hyc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Bulk modulus and density of initial hydrocarbon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>k_hyc: Bulk modulus,
+rho_hyc: Density</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.GassmannSub.insitu_moduli">
+<span class="sig-name descname"><span class="pre">insitu_moduli</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho_fluid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_matrix</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_phi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.gassmann.GassmannSub.insitu_moduli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the initial original moduli for saturated insitu rock. Density of the insitu
+saturated rock is calculated from the porosity log using the mass balance equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rho_fluid</strong> – density of insitu pore fluid phase (g/cc)</p></li>
+<li><p><strong>rho_matrix</strong> – density of rock matrix (g/cc)</p></li>
+<li><p><strong>d_phi</strong> – density derived from input RHOB log.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>k_sat_init: Bulk modulus,
+mu_sat_init: Shear modulus</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.GassmannSub.k_frame">
+<span class="sig-name descname"><span class="pre">k_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_mat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_fld</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_sat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#pyavo.avotools.gassmann.GassmannSub.k_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the bulk modulus of porous rock frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_mat</strong> – Bulk modulus of rock matrix</p></li>
+<li><p><strong>k_fld</strong> – Bulk modulus of pore fluid phase</p></li>
+<li><p><strong>k_sat</strong> – Bulk modulus of saturated insitu rock</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>k_frame: Bulk modulus</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.GassmannSub.k_rho_brine">
+<span class="sig-name descname"><span class="pre">k_rho_brine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.gassmann.GassmannSub.k_rho_brine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the bulk modulus(Gpa) and density(g/cc) of brine.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Bulk Modulus, Density</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.GassmannSub.k_rho_fluid">
+<span class="sig-name descname"><span class="pre">k_rho_fluid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.gassmann.GassmannSub.k_rho_fluid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Bulk modulus and density of the mixed pore fluid phase (Initial insitu model)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>k_fld: Bulk modulus of pore fluid,
+rho_fld: Density of pore fluid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.GassmannSub.k_rho_sat">
+<span class="sig-name descname"><span class="pre">k_rho_sat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_mat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_mat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.gassmann.GassmannSub.k_rho_sat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Gassmann bulk modulus and density of saturated rock after fluid substitution.
+The desired fluid is defined by the target water saturation and type of hydrocarbon.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_mat</strong> – Bulk modulus of rock matrix (GPa)</p></li>
+<li><p><strong>rho_mat</strong> – Density of rock matrix (g/cc)</p></li>
+<li><p><strong>k_frame</strong> – Bulk modulus of rock frame (Gpa)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>k_sat_new: Bulk modulus,
+rho_sat_new: Density</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.k_rho_matrix">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.gassmann.</span></span><span class="sig-name descname"><span class="pre">k_rho_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_cly</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_cly</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_qtz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_cly</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_qtz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.gassmann.k_rho_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Bulk modulus and Density of rock matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v_cly</strong> – Volume of clay assumed to be 70% of Shale volume</p></li>
+<li><p><strong>k_cly</strong> – Bulk modulus of clay (Gpa)</p></li>
+<li><p><strong>k_qtz</strong> – Bulk modulus of quartz (Gpa)</p></li>
+<li><p><strong>rho_cly</strong> – Density of clay (g/cc)</p></li>
+<li><p><strong>rho_qtz</strong> – Density of quartz (g/cc)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>k_mat : Bulk modulus of rock matrix,
+rho_mat : Density of rock matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.gassmann.vel_sat">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.gassmann.</span></span><span class="sig-name descname"><span class="pre">vel_sat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_sat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_sat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.avotools.gassmann.vel_sat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate the seismic velocities after Gassmann fluid substitution using density and
+elastic moduli of saturated rock.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>vp_new : P-wave velocity,
+vs_new : S-wave velocity</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.avotools.impedance">
+<span id="pyavo-avotools-impedance-module"></span><h2>pyavo.avotools.impedance module<a class="headerlink" href="#module-pyavo.avotools.impedance" title="Permalink to this headline">¶</a></h2>
+<p>Functions to calculate acoustic and elastic impedance from well logs</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.impedance.ai">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.impedance.</span></span><span class="sig-name descname"><span class="pre">ai</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.impedance.ai" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the acoustic impedance of a layer given velocities and densities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp</strong> – P-wave velocity (m/s)</p></li>
+<li><p><strong>rho</strong> – Density (g/cc)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>z: Acoustic Impedance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.impedance.ei">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.impedance.</span></span><span class="sig-name descname"><span class="pre">ei</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ang</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.impedance.ei" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the elastic impedance of a layer given velocities, densities and incidence angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp</strong> – P-wave velocity (m/s)</p></li>
+<li><p><strong>vs</strong> – S-wave velocity (m/s)</p></li>
+<li><p><strong>rho</strong> – Density (g/cc)</p></li>
+<li><p><strong>ang</strong> – Angle of incidence (deg)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ei: Elastic impedance</p>
+</dd>
+</dl>
+<p>Reference:
+Connolly, P., 1999, Elastic impedance: The Leading Edge, 18, 438–452.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.impedance.lame">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.impedance.</span></span><span class="sig-name descname"><span class="pre">lame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.impedance.lame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Lamé parameters - lambda_rho and mu_rho.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp</strong> – P-wave velocity (m/s)</p></li>
+<li><p><strong>vs</strong> – S-wave velocity (m/s)</p></li>
+<li><p><strong>rho</strong> – Density (g/cc)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>lambda_rho: Lamé first parameter,
+mu_rho: Lamé second parameter</p>
+</dd>
+</dl>
+<p>Reference:
+Goodway, B., T. Chen, and J. Downton, 1997, Improved AVO fluid detection
+and lithology discrimination using Lamé petrophysical parameters; “λρ”,
+“μρ”, &amp; “λ/μ fluid stack” from P and S inversions: 67th Annual
+International Meeting, SEG, Expanded Abstracts, 183-186.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.impedance.norm_ei">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.impedance.</span></span><span class="sig-name descname"><span class="pre">norm_ei</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp_sh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs_sh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_sh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ang</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.impedance.norm_ei" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the normalized elastic impedance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp</strong> – P-wave velocity. (m/s)</p></li>
+<li><p><strong>vs</strong> – S-wave velocity. (m/s)</p></li>
+<li><p><strong>rho</strong> – Density. (g/cc)</p></li>
+<li><p><strong>vp_sh</strong> – P-wave velocity in shale (m/s)</p></li>
+<li><p><strong>vs_sh</strong> – S-wave velocity in shale (m/s)</p></li>
+<li><p><strong>rho_sh</strong> – Shale reference density.</p></li>
+<li><p><strong>ang</strong> – Angle of incidence</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>nei: Normalized elastic impedance.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>Whitcombe, D, 2002, Elastic impedance normalization, Geophysics, 67 (1), 60–62.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.avotools.log_crossplot">
+<span id="pyavo-avotools-log-crossplot-module"></span><h2>pyavo.avotools.log_crossplot module<a class="headerlink" href="#module-pyavo.avotools.log_crossplot" title="Permalink to this headline">¶</a></h2>
+<p>Functions to create well log plots &amp; crossplots of P-wave reflectivity vs angles, and gradient vs intercept.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.log_crossplot.avo_plot">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.log_crossplot.</span></span><span class="sig-name descname"><span class="pre">avo_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuey</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intercept</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.log_crossplot.avo_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates crossplots of P-wave reflectivity vs angles, and gradient vs intercept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> – Angle of incidence</p></li>
+<li><p><strong>shuey</strong> – Shuey 2-term approximation of reflectivity</p></li>
+<li><p><strong>gradient</strong> – Gradient from shuey approximation</p></li>
+<li><p><strong>intercept</strong> – Intercept from shuey approximation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.log_crossplot.crossplot">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.log_crossplot.</span></span><span class="sig-name descname"><span class="pre">crossplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpvs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">GR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NEI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_rho</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.log_crossplot.crossplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates cross plots of elastic impedance, porosity, density and velocities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp</strong> – P-wave velocity from Vp log (m/s)</p></li>
+<li><p><strong>vs</strong> – S-wave velocity from Vs log (m/s)</p></li>
+<li><p><strong>vpvs</strong> – VpVS ratio from VP-VS log (m/s)</p></li>
+<li><p><strong>rho</strong> – Density from RHOB log (g/cc)</p></li>
+<li><p><strong>phi</strong> – Porosity from PHI log</p></li>
+<li><p><strong>GR</strong> – Gamma ray from GR log</p></li>
+<li><p><strong>AI</strong> – Acoustic impedance</p></li>
+<li><p><strong>NEI</strong> – Normalized acoustic impedance</p></li>
+<li><p><strong>lambda_rho</strong> – Lame’s first parameter</p></li>
+<li><p><strong>mu_rho</strong> – Lame’s second parameter</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.log_crossplot.plot_imp">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.log_crossplot.</span></span><span class="sig-name descname"><span class="pre">plot_imp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vpvs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_well</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.core.series.Series</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_ref</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.log_crossplot.plot_imp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates log plots of Poisson ratio, Acoustic impedance-Normalized Elastic Impedance(AI-NEI)
+and Lame’s Parameters (lambda-rho &amp; mu-rho).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vpvs</strong> – Vp/Vs values form VP/VS Log (m/s)</p></li>
+<li><p><strong>vp</strong> – P-wave velocities form Vp log (m/s)</p></li>
+<li><p><strong>vs</strong> – S-wave velocities from Vs Log (m/s)</p></li>
+<li><p><strong>rho</strong> – Density form RHOB log (g/cc)</p></li>
+<li><p><strong>angle</strong> – Angle of incidence (deg)</p></li>
+<li><p><strong>h_well</strong> – Depth of well from Depth log (m)</p></li>
+<li><p><strong>h_ref</strong> – closest location of the top on the depth array as reference to normal elastic impedance</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Poisson ratio, Acoustic impedance, lambda_rho, mu_rho, NEI</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.avotools.moduli">
+<span id="pyavo-avotools-moduli-module"></span><h2>pyavo.avotools.moduli module<a class="headerlink" href="#module-pyavo.avotools.moduli" title="Permalink to this headline">¶</a></h2>
+<p>Functions to convert between various acoustic/elastic parameters,
+and provides a way to calculate all the elastic moduli from Vp, Vs, and rho.</p>
+<p>Using equations <a class="reference external" href="http://www.subsurfwiki.org/wiki/Elastic_modulus">http://www.subsurfwiki.org/wiki/Elastic_modulus</a>
+from Mavko, G, T Mukerji and J Dvorkin (2003), The Rock Physics Handbook, Cambridge University Press</p>
+<p>Created by Matt Hall, 2014. Modified by Tola Abiodun, 2021.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.bulk">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">bulk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youngs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.moduli.bulk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Bulk modulus given either P-wave Velocity, S-wave velocity, and Density, or
+any two elastic moduli (e.g. lambda and mu, or bulk and P moduli).
+SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vp, vs, and rho
+or any 2 from lam, mu, youngs, pr, and pmod</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Bulk modulus in pascals, Pa</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.comp_vel">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">comp_vel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">youngs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.moduli.comp_vel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the P-wave velocity given bulk density and any two elastic moduli
+(e.g. lambda and mu, or Young’s and P moduli). SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Any 2 from lam, mu, youngs, pr, pmod, bulk and Rho</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Vp in m/s</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.elastic_mod">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">elastic_mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#pyavo.avotools.moduli.elastic_mod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes elastic moduli given P-wave velocity, S-wave velocity, and Density. SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Vp, Vs, and rho</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A dict of elastic moduli, plus P-wave impedance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.lame_param">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">lame_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youngs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.moduli.lame_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Lame’s first parameter given either P-wave velocity, S-wave velocity, and Density, or
+any two elastic moduli (e.g. bulk and mu, or Young’s and P moduli). SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vp, vs, and rho
+or any 2 from bulk, mu, youngs, pr, and pmod</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Lambda in pascals, Pa</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.mu">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">mu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youngs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.moduli.mu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes shear modulus given either Vp, Vs, and rho, or any two elastic moduli
+(e.g. lambda and bulk modulus, or Young’s and P moduli). SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vp, vs, and rho
+or any 2 from lam, bulk, youngs, pr, and pmod</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Shear modulus in pascals, Pa</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.p_mod">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">p_mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youngs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.moduli.p_mod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes P-wave modulus given either P-wave velocity, S-wave velocity, and Density, or
+any two elastic moduli (e.g. lambda and mu, or Young’s and bulk moduli). SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vp, vs, and rho
+or any 2 from lam, mu, youngs, pr, and bulk</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>P-wave modulus in pascals, Pa</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.poisson">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">poisson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youngs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.moduli.poisson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Poisson ratio given either P-wave Velocity, S-wave velocity, and Density, or
+any two elastic moduli (e.g. lambda and mu, or bulk and P moduli). SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vp, vs, and rho
+or any 2 from lam, mu, youngs, bulk, and pmod</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Poisson’s ratio, dimensionless</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.shear_vel">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">shear_vel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.moduli.shear_vel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Shear wave velocity given bulk density and shear modulus. SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>Mu, Rho</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Vs in m/s</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.avotools.moduli.youngs">
+<span class="sig-prename descclassname"><span class="pre">pyavo.avotools.moduli.</span></span><span class="sig-name descname"><span class="pre">youngs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pmod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.avotools.moduli.youngs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Young’s modulus given either P-wave Velocity, S-wave velocity, and Density, or
+any two elastic moduli (e.g. lambda and mu, or bulk and P moduli). SI units only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vp, vs, and rho
+or any 2 from lam, mu, bulk, pr, and pmod</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Young’s modulus in pascals, Pa</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.avotools">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyavo.avotools" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="pyavo.seismodel.html" class="btn btn-neutral float-right" title="pyavo.seismodel package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pyavo.html" class="btn btn-neutral float-left" title="pyavo package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tola Abiodun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

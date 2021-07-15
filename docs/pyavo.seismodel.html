@@ -1,0 +1,1130 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pyavo.seismodel package &mdash; pyavo 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pyavo.avotools package" href="pyavo.avotools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pyavo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyavo</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyavo.html">pyavo package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyavo.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pyavo.avotools.html">pyavo.avotools package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pyavo.seismodel package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyavo.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyavo.html#module-pyavo.pyavo">pyavo.pyavo module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyavo.html#module-pyavo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyavo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">pyavo</a> &raquo;</li>
+        
+          <li><a href="pyavo.html">pyavo package</a> &raquo;</li>
+        
+      <li>pyavo.seismodel package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/pyavo.seismodel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pyavo-seismodel-package">
+<h1>pyavo.seismodel package<a class="headerlink" href="#pyavo-seismodel-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyavo.seismodel.angle_stack">
+<span id="pyavo-seismodel-angle-stack-module"></span><h2>pyavo.seismodel.angle_stack module<a class="headerlink" href="#module-pyavo.seismodel.angle_stack" title="Permalink to this headline">¶</a></h2>
+<p>Functions to import segy data and compute AVO attributes from Near and Far Stacks.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.angle_stack.avo_attributes">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.angle_stack.</span></span><span class="sig-name descname"><span class="pre">avo_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">horizon_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near_stack</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xarray.core.dataarray.DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">far_stack</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xarray.core.dataarray.DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_near</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_far</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TWT_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">XL_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">well_XL</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">well_display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'spline16'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_colorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jet_r'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#pyavo.seismodel.angle_stack.avo_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes intercept, gradient values and display images of AVO attributes &amp; crossplot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>horizon_data</strong> – file path, any valid string path to a txt file is acceptable.</p></li>
+<li><p><strong>near_stack</strong> – DataArray of Near angle stack</p></li>
+<li><p><strong>far_stack</strong> – DataArray of Far angle stack</p></li>
+<li><p><strong>theta_near</strong> – Incidence angle of near stack</p></li>
+<li><p><strong>theta_far</strong> – Incidence angle of far stack</p></li>
+<li><p><strong>TWT_slice</strong> – Two-way time slice</p></li>
+<li><p><strong>XL_slice</strong> – Crossline time slice</p></li>
+<li><p><strong>inline</strong> – Inline number</p></li>
+<li><p><strong>well_XL</strong> – Well crossline number to define well position</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>c: Intercept,
+m: Gradient</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.angle_stack.nf_attributes">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.angle_stack.</span></span><span class="sig-name descname"><span class="pre">nf_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">horizon_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near_stack</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xarray.core.dataarray.DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">far_stack</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xarray.core.dataarray.DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TWT_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">XL_slice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">well_XL</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">well_display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'spline16'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_colorbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jet_r'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.angle_stack.nf_attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display images of near and far angle stack attributes. Allowed file extension for horizon_data is .txt.
+Both near and far stack data are read as DataArray to enhance computation speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>horizon_data</strong> – file path, any valid string path to a txt file is acceptable.</p></li>
+<li><p><strong>near_stack</strong> – DataArray of Near angle stack</p></li>
+<li><p><strong>far_stack</strong> – DataArray of Far angle stack</p></li>
+<li><p><strong>TWT_slice</strong> – Two-way time slice</p></li>
+<li><p><strong>XL_slice</strong> – Crossline time slice</p></li>
+<li><p><strong>inline</strong> – Inline number</p></li>
+<li><p><strong>well_XL</strong> – Well crossline number to define well position</p></li>
+<li><p><strong>well_display</strong> – Show well trajectory on plot, vertical</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>Avseth, P., Mukerji, T., &amp; Mavko, G., 2010. Quantitative seismic interpretation: Applying rock physics tools
+to reduce interpretation risk.Cambridge university press.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.angle_stack.nfstack">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.angle_stack.</span></span><span class="sig-name descname"><span class="pre">nfstack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">horizon_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near_stack</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xarray.core.dataarray.DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">far_stack</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">xarray.core.dataarray.DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'spline16'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RdBu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">well_XL</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">well_display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.angle_stack.nfstack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display images of Near and Far angle stacks from DataArray. Allowed file extension for horizon_data is .txt.
+Both near and far stack data are read as DataArray to enhance computation speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>horizon_data</strong> – file path, any valid string path to a txt file is acceptable.</p></li>
+<li><p><strong>near_stack</strong> – DataArray of Near angle stack</p></li>
+<li><p><strong>far_stack</strong> – DataArray of Far angle stack</p></li>
+<li><p><strong>inline</strong> – Inline number</p></li>
+<li><p><strong>well_XL</strong> – Well crossline number to define well position</p></li>
+<li><p><strong>well_display</strong> – Show well trajectory on plot, vertical</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.angle_stack.read_segy">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.angle_stack.</span></span><span class="sig-name descname"><span class="pre">read_segy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">byte_il</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">byte_xl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_geometry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">xarray.core.dataarray.DataArray</span><a class="headerlink" href="#pyavo.seismodel.angle_stack.read_segy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a segyfile into a Data array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> – filepath, any valid string path is acceptable</p></li>
+<li><p><strong>byte_il</strong> – inline byte</p></li>
+<li><p><strong>byte_xl</strong> – crossline byte</p></li>
+<li><p><strong>ignore_geometry</strong> – Opt out on building geometry information, useful for e.g. shot organised files. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data_array: xarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.seismodel.rpm">
+<span id="pyavo-seismodel-rpm-module"></span><h2>pyavo.seismodel.rpm module<a class="headerlink" href="#module-pyavo.seismodel.rpm" title="Permalink to this headline">¶</a></h2>
+<p>Functions to create rock physics models and apply them to well log analysis to quantify seismic responses.</p>
+<p>Using equations <a class="reference external" href="http://www.subsurfwiki.org/wiki/Elastic_modulus">http://www.subsurfwiki.org/wiki/Elastic_modulus</a>
+from Mavko, G, T Mukerji and J Dvorkin (2003), The Rock Physics Handbook, Cambridge University Press</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.cp_model">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">cp_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.rpm.cp_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build rock physics models using critical porosity concept.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_min</strong> – Bulk modulus of mineral (Gpa)</p></li>
+<li><p><strong>mu_min</strong> – Shear modulus of mineral (Gpa)</p></li>
+<li><p><strong>phi</strong> – Porosity (fraction)</p></li>
+<li><p><strong>cp</strong> – critical porosity, default is 40%</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bulk and Shear modulus of rock frame</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference</dt><dd><p>Critical porosity, Nur et al. (1991, 1995)
+Mavko, G, T. Mukerji and J. Dvorkin (2009), The Rock Physics Handbook: Cambridge University Press. p.353</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.hz_mindlin">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">hz_mindlin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cd_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.rpm.hz_mindlin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the bulk modulus and shear modulus of the Hertz-Mindlin rock physics model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_min</strong> – bulk modulus of mineral (Gpa)</p></li>
+<li><p><strong>mu_min</strong> – shear modulus of mineral (Gpa)</p></li>
+<li><p><strong>phi</strong> – porosity (fraction) expressed as vector values</p></li>
+<li><p><strong>cd_num</strong> – coordination number</p></li>
+<li><p><strong>cp</strong> – critical porosity (random close pack of well-sorted rounded quartz grains)</p></li>
+<li><p><strong>P</strong> – Confining pressure/rock stress (Mpa)</p></li>
+<li><p><strong>f</strong> – shear modulus correction factor
+0 =  dry frictionless packing
+1 = dry pack with perfect adhesion</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bulk modulus and Shear modulus</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference</dt><dd><p>The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko,
+Jack Dvorkin, and Tapan Mukerji</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.plot_log">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">plot_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp_vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_init</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_final</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shale_cutoff</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sand_cutoff</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.rpm.plot_log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Explore key input logs for Rock physics modeling. Generates a log plot of the shale volume, acoustic impedance,
+Vp/Vs and a cross plot of Porosity against P-wave velocity and acoustic impedance against Vp/VS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – pandas DataFrame</p></li>
+<li><p><strong>vsh</strong> – Shale volume as input from vshale log</p></li>
+<li><p><strong>vp</strong> – Compressional wave velocity log</p></li>
+<li><p><strong>vs</strong> – Shear wave velocity log</p></li>
+<li><p><strong>imp</strong> – Acoustic impedance from acoustic impedance log</p></li>
+<li><p><strong>vp_vs</strong> – Vp/Vs ratios</p></li>
+<li><p><strong>phi</strong> – porosity values form PHI log</p></li>
+<li><p><strong>rho</strong> – density values from RHOB log</p></li>
+<li><p><strong>z_init</strong> – minimum depth from depth log</p></li>
+<li><p><strong>z_final</strong> – maximum depth from depth log</p></li>
+<li><p><strong>shale_cutoff</strong> – Shale cutoff</p></li>
+<li><p><strong>sand_cutoff</strong> – Sand cutoff</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>log plots(Vp/Vs, AI, Vsh) and cross plots(AI,Vp/Vs &amp; PHI,Vp)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.plot_rpm">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">plot_rpm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_qtz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_qtz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_sh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_sh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_sh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_qtz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_br</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_br</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NG</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_init</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_final</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sand_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shale_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_ssm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cn_ssm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp_stm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cn_stm</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eff_phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.rpm.plot_rpm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot soft sand and stiff sand rock physics models for different mineralogies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – Pandas DataFrame</p></li>
+<li><p><strong>k_qtz</strong> – Bulk modulus of quartz (GPa)</p></li>
+<li><p><strong>mu_qtz</strong> – Shear modulus of quartz (GPa)</p></li>
+<li><p><strong>k_sh</strong> – Bulk modulus of shale (Gpa)</p></li>
+<li><p><strong>mu_sh</strong> – Shear modulus of shale (Gpa)</p></li>
+<li><p><strong>rho_sh</strong> – Density of shale (g/cc)</p></li>
+<li><p><strong>rho_qtz</strong> – Density of quartz (g/cc)</p></li>
+<li><p><strong>k_br</strong> – Bulk modulus of brine (GPa)</p></li>
+<li><p><strong>rho_br</strong> – Density of brine (g/cc)</p></li>
+<li><p><strong>phi</strong> – Porosity (fraction)</p></li>
+<li><p><strong>NG</strong> – Net-to-Gross</p></li>
+<li><p><strong>vsh</strong> – Volume of shale from VSH log</p></li>
+<li><p><strong>z_init</strong> – minimum depth withing range of input depth log (ft)</p></li>
+<li><p><strong>z_final</strong> – maximum depth withing range of input depth log (ft)</p></li>
+<li><p><strong>sand_cut</strong> – sand cutoff</p></li>
+<li><p><strong>shale_cut</strong> – shale cutoff</p></li>
+<li><p><strong>P</strong> – Confining pressure (Mpa)</p></li>
+<li><p><strong>cp_ssm</strong> – Critical porosity for soft sand model</p></li>
+<li><p><strong>cn_ssm</strong> – Coordination number for soft sand model</p></li>
+<li><p><strong>cp_stm</strong> – Critical porosity for stiff sand model</p></li>
+<li><p><strong>cn_stm</strong> – Coordination number for stiff sand model</p></li>
+<li><p><strong>eff_phi</strong> – effective porosity values from porosity log (fraction)</p></li>
+<li><p><strong>vp</strong> – P-wave velocity from VP log (m/s)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Plot of soft sand and stiff sand models with curves showing varying net-to-gross.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.plot_rpt">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">plot_rpt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'soft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'oil'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_sh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_qtz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">37</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_sh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_qtz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">44</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_sh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_qtz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_gas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_oil</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_br</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_gas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_oil</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_br</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cd_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.rpm.plot_rpt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot RPTs showing variations in porosity, mineralogy and fluid content defined by water saturation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – type of rock physics model, ‘soft’ or ‘stiff’. default = ‘soft’</p></li>
+<li><p><strong>fluid</strong> – desired fluid after Gassmann’s fluid substitution, default = ‘oil’</p></li>
+<li><p><strong>display</strong> – show plot with calculated parameters, default = True</p></li>
+<li><p><strong>vsh</strong> – volume of shale, default = 0</p></li>
+<li><p><strong>k_sh</strong> – bulk modulus of shale, default = 15GPa</p></li>
+<li><p><strong>k_qtz</strong> – bulk modulus of quartz, default = 37GPa</p></li>
+<li><p><strong>mu_sh</strong> – shear modulus of shale, default = 5GPa</p></li>
+<li><p><strong>mu_qtz</strong> – shear modulus of quartz, default = 44GPa</p></li>
+<li><p><strong>rho_sh</strong> – density of shale, default = 2.8g/cc</p></li>
+<li><p><strong>rho_qtz</strong> – density of quartz, default = 2.6g/cc</p></li>
+<li><p><strong>k_gas</strong> – bulk modulus of gas (GPa), default = 0.06GPa</p></li>
+<li><p><strong>k_oil</strong> – bulk modulus of oil (GPa), default = 0.9GPa</p></li>
+<li><p><strong>k_br</strong> – bulk modulus of brine (Gpa), default = 2.8GPa</p></li>
+<li><p><strong>rho_gas</strong> – density of gas (g/cc), default = 0.2g/cc</p></li>
+<li><p><strong>rho_oil</strong> – density of oil (g/cc), default = 0.8g/cc</p></li>
+<li><p><strong>rho_br</strong> – density of brine (g/cc) default = 1.1g/cc</p></li>
+<li><p><strong>cp</strong> – critical porosity, default = 0.4</p></li>
+<li><p><strong>cd_num</strong> – coordination number, default = 8.6</p></li>
+<li><p><strong>P</strong> – confining pressure(MPa), default = 10MPa</p></li>
+<li><p><strong>f</strong> – shear modulus correction factor, default=1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>plot of RPT with labels, Array of Acoustic impedance and Vp/Vs</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>Quantitative Seismic Interpretation: Applying Rock Physics Tools to Reduce Interpretation Risk
+(Per Avseth, T. Mukerji and G.mavko, 2015)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.soft_sand">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">soft_sand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cd_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.rpm.soft_sand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the bulk modulus and shear modulus of soft-sand (uncemented) rock physics model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_min</strong> – bulk modulus of mineral (Gpa)</p></li>
+<li><p><strong>mu_min</strong> – shear modulus of mineral (Gpa)</p></li>
+<li><p><strong>phi</strong> – porosity (fraction) expressed as vectors</p></li>
+<li><p><strong>cd_num</strong> – coordination number</p></li>
+<li><p><strong>cp</strong> – critical porosity (random close pack of well-sorted rounded quartz grains)</p></li>
+<li><p><strong>P</strong> – Confining pressure/rock stress (Gpa)</p></li>
+<li><p><strong>f</strong> – shear modulus correction factor
+0 =  dry frictionless packing
+1 = dry pack with perfect adhesion</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bulk modulus and Shear modulus</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko, Jack Dvorkin,
+and Tapan Mukerji</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.stiff_sand">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">stiff_sand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cd_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.rpm.stiff_sand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the bulk modulus and shear modulus of stiff-sand(uncemented) rock physics model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_min</strong> – bulk modulus of mineral (Gpa)</p></li>
+<li><p><strong>mu_min</strong> – shear modulus of mineral (Gpa)</p></li>
+<li><p><strong>phi</strong> – porosity (fraction) expressed as vectors</p></li>
+<li><p><strong>cd_num</strong> – coordination number</p></li>
+<li><p><strong>cp</strong> – critical porosity (random close pack of well-sorted rounded quartz grains)</p></li>
+<li><p><strong>P</strong> – Confining pressure/rock stress (Gpa)</p></li>
+<li><p><strong>f</strong> – shear modulus correction factor
+0 =  dry frictionless packing
+1 = dry pack with perfect adhesion</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Bulk modulus and Shear modulus</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>The Rock Physics Handbook: Tools for Seismic Analysis of Porous Media - Gary M. Mavko,
+Jack Dvorkin, and Tapan Mukerji</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.twolayer">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">twolayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_samples</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.rpm.twolayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display seismic signatures at Near and Far offset traces and AVO curve for a two layer model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_samples</strong> – Number of samples</p></li>
+<li><p><strong>vp1</strong> – P-wave velocity in top layer</p></li>
+<li><p><strong>vs1</strong> – S-Wave velocity in top layer</p></li>
+<li><p><strong>rho1</strong> – Density of top layer</p></li>
+<li><p><strong>vp2</strong> – P-wave velocity in bottom layer</p></li>
+<li><p><strong>vs2</strong> – S-wave velocity in bottom layer</p></li>
+<li><p><strong>rho2</strong> – Density of second layer</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference</dt><dd><p>Alessandro aadm (2015)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.vel_sat">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">vel_sat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_fl</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_fl</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.rpm.vel_sat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes velocities and densities of saturated rock using Gassmann’s fluid substitution equations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_min</strong> – bulk modulus of mineral (Gpa)</p></li>
+<li><p><strong>rho_min</strong> – density of mineral (g/cc)</p></li>
+<li><p><strong>k_fl</strong> – bulk modulus of fluid (Gpa)</p></li>
+<li><p><strong>rho_fl</strong> – density of fluid (g/cc)</p></li>
+<li><p><strong>k_frame</strong> – bulk modulus of rock frame/dry rock (Gpa)</p></li>
+<li><p><strong>mu_frame</strong> – shear modulus of rock frame/dry rock (Gpa)</p></li>
+<li><p><strong>phi</strong> – porosity expressed as vector values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>k_sat: Bulk modulus
+rho_sat: Density
+vp_sat: P-wave velocity
+vs_sat: S-wave velocity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.voigt_reuss">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">voigt_reuss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vfrac</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.rpm.voigt_reuss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Voigt-Reuss-Hill bounds and average for a 2-component mixture.
+The Voigt Bound is obtained by assuming the strain field remains constant
+throughout the material when subjected to an arbitrary average stress field.
+The Reuss Bound is obtained by assuming the stress field remains constant
+throughout the material in an arbitrary average strain field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mod1</strong> – elastic modulus of first mineral</p></li>
+<li><p><strong>mod2</strong> – elastic modulus of second mineral</p></li>
+<li><p><strong>vfrac</strong> – volumetric fraction of first mineral (net-to-gross)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>upper bound, lower bound, Voigt-Ruess-Hill average</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference</dt><dd><p>Mavko, G, T. Mukerji and J. Dvorkin (2009), The Rock Physics Handbook: Cambridge University Press.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.rpm.well_rpt">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.rpm.</span></span><span class="sig-name descname"><span class="pre">well_rpt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_init</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_final</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sand_cut</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsh</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_rpt0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpvs_rpt0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_rpt1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpvs_rpt1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.rpm.well_rpt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot Soft and Stiff Sand RPT models and superimpose on well data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – Pandas Dataframe</p></li>
+<li><p><strong>z_init</strong> – minimum depth values withing depth log range</p></li>
+<li><p><strong>z_final</strong> – maximum depth values within depth log range</p></li>
+<li><p><strong>sand_cut</strong> – cut off sand</p></li>
+<li><p><strong>vsh</strong> – volume of shale from VSH log</p></li>
+<li><p><strong>vp</strong> – P-wave velocity values from VP log</p></li>
+<li><p><strong>vs</strong> – S-wave velocity values from VS log</p></li>
+<li><p><strong>rho</strong> – density values from RHOB log</p></li>
+<li><p><strong>ip_rpt0</strong> – Acoustic impedance values of first RPT model</p></li>
+<li><p><strong>vpvs_rpt0</strong> – Vp/Vs values of first RPT model</p></li>
+<li><p><strong>ip_rpt1</strong> – Acoustic impedance values of second RPT model</p></li>
+<li><p><strong>vpvs_rpt1</strong> – Vp/Vs values of second RPT model</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.seismodel.tuning_prestack">
+<span id="pyavo-seismodel-tuning-prestack-module"></span><h2>pyavo.seismodel.tuning_prestack module<a class="headerlink" href="#module-pyavo.seismodel.tuning_prestack" title="Permalink to this headline">¶</a></h2>
+<p>Functions to generate a synthetic angle gather from a 3-layer property model to examine pre-stack tuning effects.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.avo_inv">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">avo_inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rc_zoep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntrc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.avo_inv" title="Permalink to this definition">¶</a></dt>
+<dd><p>AVO inversion for INTERCEPT and GRADIENT from analytic and convolved reflectivity values.
+Linear least squares method is used for estimating INTERCEPT and GRADIENT coefficients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rc_zoep</strong> – Zoeppritz reflection coefficient values</p></li>
+<li><p><strong>ntrc</strong> – Number of traces</p></li>
+<li><p><strong>top</strong> – Convolved top reflectivity values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Zoeppritz and Convolved reflectivities</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.calc_theta_rc">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">calc_theta_rc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta1_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta1_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ang</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.calc_theta_rc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the reflection coefficients for given incidence angles in a three layer model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta1_min</strong> – minimum incidence angle</p></li>
+<li><p><strong>theta1_step</strong> – maximum incidence angle</p></li>
+<li><p><strong>vp</strong> – Layer P-wave velocities</p></li>
+<li><p><strong>vs</strong> – Layer S-wave velocities</p></li>
+<li><p><strong>rho</strong> – Density of layers</p></li>
+<li><p><strong>ang</strong> – Angle of incidence</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>theta1_samp : n-samples of incidence angles,
+rc_1: Reflection coefficient at layer1 / layer2,
+rc_2: Reflection coefficient at layer2 / layer3.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.int_depth">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">int_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h_int</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.int_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes depth to the interface for a three layer model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h_int</strong> – depth to to first interface</p></li>
+<li><p><strong>thickness</strong> – thickness</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>d_interface: interface depths</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.layer_index">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">layer_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lyr_times</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.layer_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate array indices corresponding to top/base interfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lyr_times</strong> – Interface times</p></li>
+<li><p><strong>dt</strong> – change in time, default is 0.0001. Changing this from 0.00005 can affect the display quality.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>lyr1_indx: array</dt><dd><p>Layer 1</p>
+</dd>
+<dt>lyr2_indx: array</dt><dd><p>Layer 2</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.n_angles">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">n_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta1_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta1_max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta1_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.n_angles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes number of traces for given angles on incidence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta1_min</strong> – minimum incidence angle</p></li>
+<li><p><strong>theta1_max</strong> – maximum incidence angle</p></li>
+<li><p><strong>theta1_step</strong> – angle of incidence steps, default is 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>n_trace: number of traces</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.plot_vawig">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">plot_vawig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axhdl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excursion</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.plot_vawig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the display of synthetic angle gather.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axhdl</strong> – Plot axes</p></li>
+<li><p><strong>data</strong> – Synthetic traces generated from convolved zoeppritz.</p></li>
+<li><p><strong>t</strong> – Regularly spaced ime samples</p></li>
+<li><p><strong>excursion</strong> – Adjust plot width</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.ray_param">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">ray_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v_int</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.ray_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the ray parameter P.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v_int</strong> – Interval velocity</p></li>
+<li><p><strong>theta</strong> – Angle of incidence (deg)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>p: Ray parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.rc_zoep">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">rc_zoep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vp1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.rc_zoep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the Reflection &amp; Transmission coefficients using Zoeppritz equations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vp1</strong> – P-wave velocity in upper layer</p></li>
+<li><p><strong>vs1</strong> – S-wave velocity in upper layer</p></li>
+<li><p><strong>vp2</strong> – P-wave velocity in lower layer</p></li>
+<li><p><strong>vs2</strong> – S-wave velocity in lower layer</p></li>
+<li><p><strong>rho1</strong> – Density of upper layer</p></li>
+<li><p><strong>rho2</strong> – Density of lower layer</p></li>
+<li><p><strong>theta1</strong> – Angle of incidence of ray</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>R: Reflection coefficients</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>The Rock Physics Handbook, Dvorkin et al.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.syn_angle_gather">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">syn_angle_gather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_time</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lyr_times</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_ref</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_ref</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp_dig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs_dig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_dig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syn_zoep</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rc_zoep</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excursion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.syn_angle_gather" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot synthetic angle gather for three layer model displayed in normal polarity and amplitudes extracted
+along the upper and lower interfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min_time</strong> – Minimum plot time (s)</p></li>
+<li><p><strong>max_time</strong> – Maximum plot time (s)</p></li>
+<li><p><strong>lyr_times</strong> – interface times</p></li>
+<li><p><strong>thickness</strong> – apparent thickness of second layer</p></li>
+<li><p><strong>top_ref</strong> – convolved top reflectivity values</p></li>
+<li><p><strong>base_ref</strong> – convolved base reflectivity values</p></li>
+<li><p><strong>vp_dig</strong> – P-wave velocity in digital time domain</p></li>
+<li><p><strong>vs_dig</strong> – S-wave velocity in digital time domain</p></li>
+<li><p><strong>rho_dig</strong> – Density of layers in digital time domain</p></li>
+<li><p><strong>syn_zoep</strong> – Synthetic seismogram</p></li>
+<li><p><strong>rc_zoep</strong> – Zoeppritz reflectivities</p></li>
+<li><p><strong>t</strong> – regularly spaced time samples</p></li>
+<li><p><strong>excursion</strong> – Adjust plot width</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_prestack.t_domain">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_prestack.</span></span><span class="sig-name descname"><span class="pre">t_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lyr1_index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lyr2_index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.tuning_prestack.t_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a “digital” time domain version of an input property model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – array of regularly spaced time samples</p></li>
+<li><p><strong>vp</strong> – P-wave velocity</p></li>
+<li><p><strong>vs</strong> – S-wave velocity</p></li>
+<li><p><strong>rho</strong> – Density of layers</p></li>
+<li><p><strong>lyr1_index</strong> – Array indices of top interface</p></li>
+<li><p><strong>lyr2_index</strong> – Array indices of base interface</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>vp_dig: P-wave velocity in digital t-domain,
+vs_dig: S-wave velocity in digital t-domain,
+rho_dig: Density in digital t-domain.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.seismodel.tuning_wedge">
+<span id="pyavo-seismodel-tuning-wedge-module"></span><h2>pyavo.seismodel.tuning_wedge module<a class="headerlink" href="#module-pyavo.seismodel.tuning_wedge" title="Permalink to this headline">¶</a></h2>
+<p>Functions to generate a three layer wedge model using the reflection coefficients and travel times</p>
+<p>Reference:</p>
+<blockquote>
+<div><p>Mavko, G., T. Mukerji, and J. Dvorkin, 2009, The rock physics handbook: Tools for seismic analysis of porous media, 2nd ed.: Cambridge University Press. CrossRef</p>
+<p>Shuey, R. T., 1985, A simplification of the Zoeppritz equations: Geophysics, 50, no. 4, 609–614, <a class="reference external" href="http://dx.doi.org/10.1190/1.1441936">http://dx.doi.org/10.1190/1.1441936</a>.</p>
+<p>Widess, M., 1973, How thin is a thin bed?: Geophysics, 38, no. 6, 1176–1180, <a class="reference external" href="http://dx.doi.org/10.1190/1.1440403">http://dx.doi.org/10.1190/1.1440403</a>.</p>
+<p><a class="reference external" href="https://wiki.seg.org/wiki/Thin_beds,_tuning,_and_AVO">https://wiki.seg.org/wiki/Thin_beds,_tuning,_and_AVO</a></p>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.calc_times">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">calc_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z_int</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.calc_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the travel time to a reflector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z_int</strong> – Depth to a reflector</p></li>
+<li><p><strong>vp</strong> – P-Wave Velocity</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>t_int: Interface times</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Usage</dt><dd><p>t_int = calc_times(z_int, vp)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.get_rc">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">get_rc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Vp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.get_rc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Reflection Coefficient at the interface separating two layers. The ratio of amplitude
+of the reflected wave to the incident wave, or how much energy is reflected. Typical values of R
+are approximately −1 from water to air, meaning that nearly 100% of the energy is reflected and
+none is transmitted; ~0.5 from water to rock; and ~0.2 for shale to sand.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Vp</strong> – P-wave velocity (m/s)</p></li>
+<li><p><strong>rho</strong> – Layer density (g/cc)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rc_int: Reflection Coefficient</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.int_depth">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">int_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h_int</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dh_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.int_depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the depth to an interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h_int</strong> – depth to first interface</p></li>
+<li><p><strong>dh_min</strong> – minimum thickness of layer 2</p></li>
+<li><p><strong>dh_step</strong> – Thickness step from trace-to-trace (usually 1.0m)</p></li>
+<li><p><strong>mod</strong> – model traces generated within a thickness or interval</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>d_inteface: depth to interface</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.mod_digitize">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">mod_digitize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rc_int</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_int</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.mod_digitize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Digitize a 3 layer model using reflection coefficients and interface times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rc_int</strong> – reflection coefficients corresponding to interface times</p></li>
+<li><p><strong>t_int</strong> – interface times</p></li>
+<li><p><strong>t</strong> – regularly sampled time series defining model sampling</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rc: Reflection Coefficient</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Usage</dt><dd><p>rc = digitize_model(rc_int, t_int, t)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.n_model">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">n_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.n_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes number of traces within an interval or thickness.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h_min</strong> – minimum thickness</p></li>
+<li><p><strong>h_max</strong> – maximum thickness</p></li>
+<li><p><strong>h_step</strong> – thickness steps, default is 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>n_trace: number of traces</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.ricker">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">ricker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_freq</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.ricker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate time and amplitude values for a zero-phase wavelet. The second derivative of the Gaussian
+function or the third derivative of the normal-probability density function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample_rate</strong> – sample rate in seconds</p></li>
+<li><p><strong>length</strong> – length of time (dt) in seconds</p></li>
+<li><p><strong>c_freq</strong> – central frequency of wavelet (cycles/seconds or Hz).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>wv_time: zero-phase wavelet time,
+wv_amp: zero-phase wavelet amplitude.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Usage:</dt><dd><p>time, wavelet = (sample_rate,duration,c_freq)</p>
+</dd>
+<dt>Reference:</dt><dd><p>A Ricker wavelet is often used as a zero-phase embedded wavelet in modeling and synthetic
+seismogram manufacture. Norman H. Ricker (1896–1980), American geophysicist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.syn_seis">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">syn_seis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_coef</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wav_amp</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.syn_seis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate synthetic seismogram from convolved reflectivities and wavelet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref_coef</strong> – Reflection coefficient</p></li>
+<li><p><strong>wav_amp</strong> – wavelet amplitude</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>smg: array</dt><dd><p>Synthetic seismogram</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.time_samples">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">time_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.time_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create regularly sampled time series defining model sampling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_min</strong> – Minimum time duration</p></li>
+<li><p><strong>t_max</strong> – Maximum time duration</p></li>
+<li><p><strong>dt</strong> – Change in time, default = 0.0001</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.tuning_wedge.wedge_model">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.tuning_wedge.</span></span><span class="sig-name descname"><span class="pre">wedge_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_zo</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_times</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h_step</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excursion</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.tuning_wedge.wedge_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot a three layer wedge model amplitudes and zero offset seismogram.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>syn_zo</strong> – Synthetic Seismogram</p></li>
+<li><p><strong>layer_times</strong> – travel time to reflectors</p></li>
+<li><p><strong>t</strong> – regularly sampled time series defining model sampling</p></li>
+<li><p><strong>t_min</strong> – minimum time duration</p></li>
+<li><p><strong>t_max</strong> – maximum time duration</p></li>
+<li><p><strong>h_max</strong> – maximum depth</p></li>
+<li><p><strong>h_step</strong> – depth steps, default is 1</p></li>
+<li><p><strong>excursion</strong> – adjust plot width</p></li>
+<li><p><strong>dt</strong> – trace parameter, changing this from 0.0001 can affect the display quality.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.seismodel.wavelet">
+<span id="pyavo-seismodel-wavelet-module"></span><h2>pyavo.seismodel.wavelet module<a class="headerlink" href="#module-pyavo.seismodel.wavelet" title="Permalink to this headline">¶</a></h2>
+<p>Functions to generate a ricker and trapezoidal bandpass wavelet.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p><a class="reference external" href="https://wiki.seg.org/wiki/Practical_aspects_of_frequency_filtering">https://wiki.seg.org/wiki/Practical_aspects_of_frequency_filtering</a></p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.wavelet.bandpass">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.wavelet.</span></span><span class="sig-name descname"><span class="pre">bandpass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f3</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f4</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wvlt_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.wavelet.bandpass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a trapezoidal bandpass wavelet.</p>
+<p>f1: Low truncation frequency of wavelet in Hz
+f2: Low cut frequency of wavelet in Hz
+f3: High cut frequency of wavelet in Hz
+f4: High truncation frequency of wavelet in Hz
+phase: wavelet phase in degrees
+dt: sample rate in seconds
+wvlt_length: length of wavelet in seconds</p>
+<dl class="simple">
+<dt>Usage:</dt><dd><p>t, wvlt = wvlt_ricker(f1, f2, f3, f4, phase, dt, wvlt_length)</p>
+</dd>
+<dt>Reference</dt><dd><p>Wes Hamlyn, 2014.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.wavelet.plot_ricker">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.wavelet.</span></span><span class="sig-name descname"><span class="pre">plot_ricker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyavo.seismodel.wavelet.plot_ricker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes and display a zero-phase wavelet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample_rate</strong> – sample rate in seconds.</p></li>
+<li><p><strong>length</strong> – length of time (dt) in seconds.</p></li>
+<li><p><strong>c_freq</strong> – central frequency of wavelet (cycles/seconds or Hz)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Usage:</dt><dd><p>plot_ricker(sample_rate,duration,c_freq)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyavo.seismodel.wavelet.ricker">
+<span class="sig-prename descclassname"><span class="pre">pyavo.seismodel.wavelet.</span></span><span class="sig-name descname"><span class="pre">ricker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#pyavo.seismodel.wavelet.ricker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate time and amplitude values for a zero-phase wavelet. The second derivative of the Gaussian function
+or the third derivative of the normal-probability density function. A Ricker wavelet is often used as a zero-phase
+embedded wavelet in modeling and synthetic seismogram manufacture.</p>
+<dl class="simple">
+<dt>Reference:</dt><dd><p>Norman H. Ricker (1896–1980), American geophysicist.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample_rate</strong> – sample rate in seconds (float, int)</p></li>
+<li><p><strong>length</strong> – length of time (dt) in seconds (float, int)</p></li>
+<li><p><strong>c_freq</strong> – central frequency of wavelet (cycles/seconds or Hz). (float, int)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ndarray</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Usage:</dt><dd><p>time, wavelet = (sample_rate,duration,c_freq)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyavo.seismodel">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyavo.seismodel" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="pyavo.avotools.html" class="btn btn-neutral float-left" title="pyavo.avotools package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tola Abiodun.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
