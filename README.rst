@@ -36,7 +36,7 @@ Install with
 
 Links
 +++++
-* `Documentation <https://pyavo.readthedocs.org>`_
+* `Documentation <https://tolaabiodun.github.io/pyavo/index.html>`_
 * `Project page <https://github.com/TolaAbiodun/pyavo>`_
 * `Issue Tracker <https://github.com/TolaAbiodun/pyavo/issues/>`_
 * `PyPi <http://pypi.python.org/pypi/pyavo/>`_
