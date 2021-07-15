@@ -6,10 +6,6 @@ A python library for AVO analysis.
 Status
 +++++++
 
-.. image:: https://img.shields.io/pypi/status/pyavo.svg
-    :target: https://pypi.python.org/pypi/pyavo/
-    :alt: Development status
-
 .. image:: https://img.shields.io/pypi/v/pyavo.svg
     :target: https://pypi.python.org/pypi/pyavo/
     :alt: Latest version
