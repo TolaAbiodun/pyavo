@@ -7,7 +7,7 @@ Status
 +++++++
 
 .. image:: https://readthedocs.org/projects/pyavo/badge/?version=latest
-    :target: https://pyavo.readthedocs.io/?badge=latest
+    :target: https://tolaabiodun.github.io/pyavo/index.html
     :alt: Documentation Status
 
 .. image:: https://img.shields.io/pypi/status/pyavo.svg
